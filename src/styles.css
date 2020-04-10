@@ -1,5 +1,14 @@
+@font-face {
+    font-family: OpenSansHebrew;
+    src: url(assets/fonts/OpenSansHebrew-Regular.ttf) format("opentype");
+  }
 *{
     direction: rtl;
+    font-family: 'OpenSansHebrew';
+
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%;    background-color: #f2f2f2; }
+
+button{
+    color:  #3f51b5 !important;
+}
