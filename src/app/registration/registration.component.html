@@ -1,37 +1,44 @@
 <mat-card>
-    <form class="registration-form">
+    <form [formGroup]="registrationForm" class="registration-form">
         <h2>הרשמה</h2>
         <p>
             <mat-form-field>
                 <mat-label>שם פרטי</mat-label>
-                <input matInput>
+                <input matInput formControlName="firstName" required>
+                <mat-error *ngIf="f.firstName.errors?.required">חובה להזין שם פרטי</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
                 <mat-label>שם משפחה</mat-label>
-                <input matInput>
+                <input matInput formControlName="lastName" required>
+                <mat-error *ngIf="f.lastName.errors?.required">חובה להזין שם משפחה</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
                 <mat-label>אימייל</mat-label>
-                <input matInput placeholder="ex@gmail.com">
+                <input matInput placeholder="ex@gmail.com" formControlName="email" required>
+                <mat-error *ngIf="f.email.errors?.required">חובה להזין כתובת מייל</mat-error>
+                <mat-error *ngIf="f.email.errors?.email">כתובת מייל אינה תקינה</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
                 <mat-label>סיסמא</mat-label>
-                <input matInput>
+                <input matInput formControlName="password" required>
+                <mat-error *ngIf="f.password.errors?.required">חובה להזין סיסמא</mat-error>
+                <mat-error *ngIf="f.password.errors?.minlength">הסיסמא צריכה להכיל לפחות 6 תוים</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
                 <mat-label>אישור סיסמא</mat-label>
-                <input matInput>
+                <input matInput formControlName="confirmPassword" required>
+                <mat-error *ngIf="f.confirmPassword.errors?.required">חובה להזין סיסמא</mat-error>
             </mat-form-field>
         </p>
-        <button mat-stroked-button>אישור</button>
+        <button type="submit" [disabled]="!registrationForm.valid" mat-stroked-button>אישור</button>
 
     </form>
 </mat-card>    
