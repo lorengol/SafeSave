@@ -6,7 +6,8 @@
    "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "tsc": "tsc",
-      "server": "concurrently \"ng serve\" \"server/node_modules/.bin/ts-node-dev server/server.ts\""
+      "server": "concurrently \"ng serve\" \"server/node_modules/.bin/ts-node-dev server/server.ts\"",
+      "dev": "npm run tsc && node ./dist/server.js"
    },
    "author": "",
    "license": "ISC",
