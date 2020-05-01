@@ -1,6 +1,8 @@
 import "reflect-metadata";
 import express from 'express';
-import {routes} from './routes';
+import { routes } from './routes';
+import { createConnection } from "typeorm";
+import { Users } from "./src/entity/Users";
 
 const app = express();
 
@@ -18,9 +20,14 @@ app.use((req, res, next) => {
 })
 // Handle POST requests that come in formatted as JSON
 app.use(express.json())
+
 // A default hello word route
 app.use('/', routes);
-// start our server on port 4201
-app.listen(4201, '127.0.0.1', function() {
-    console.log("Server now listening on 4201");
-});
+
+// Create connection with the DB
+createConnection().then(async connection => {    
+    // start our server on port 4201
+    app.listen(4201, '127.0.0.1', function() {
+        console.log("Server now listening on 4201");
+    });
+}).catch(error => console.log(error));

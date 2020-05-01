@@ -1,14 +1,14 @@
 {
    "type": "mysql",
-   "host": "localhost",
+   "host": "bamba.cs.colman.ac.il",
    "port": 3306,
-   "username": "test",
-   "password": "test",
-   "database": "test",
-   "synchronize": true,
+   "username": "cs810",
+   "password": "bartar@810@CS",
+   "database": "safe_save",
+   "synchronize": false,
    "logging": false,
    "entities": [
-      "src/entity/**/*.ts"
+      "src/entity/**/*.js"
    ],
    "migrations": [
       "src/migration/**/*.ts"
