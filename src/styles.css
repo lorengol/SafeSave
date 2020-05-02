@@ -3,7 +3,6 @@
     src: url(assets/fonts/OpenSansHebrew-Regular.ttf) format("opentype");
   }
 *{
-    direction: rtl;
     font-family: 'OpenSansHebrew';
 
 }

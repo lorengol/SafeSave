@@ -1,44 +1,44 @@
 <mat-card>
     <form [formGroup]="registrationForm" class="registration-form">
-        <h2>הרשמה</h2>
+        <h2>Create a New Account</h2>
         <p>
             <mat-form-field>
-                <mat-label>שם פרטי</mat-label>
+                <mat-label>First name</mat-label>
                 <input matInput formControlName="firstName" required>
-                <mat-error *ngIf="f.firstName.errors?.required">חובה להזין שם פרטי</mat-error>
+                <mat-error *ngIf="f.firstName.errors?.required">First name is required</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
-                <mat-label>שם משפחה</mat-label>
+                <mat-label>Last name</mat-label>
                 <input matInput formControlName="lastName" required>
-                <mat-error *ngIf="f.lastName.errors?.required">חובה להזין שם משפחה</mat-error>
+                <mat-error *ngIf="f.lastName.errors?.required">Last name is required</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
-                <mat-label>אימייל</mat-label>
+                <mat-label>Email</mat-label>
                 <input matInput placeholder="ex@gmail.com" formControlName="email" required>
-                <mat-error *ngIf="f.email.errors?.required">חובה להזין כתובת מייל</mat-error>
-                <mat-error *ngIf="f.email.errors?.email">כתובת מייל אינה תקינה</mat-error>
+                <mat-error *ngIf="f.email.errors?.required">Email is required</mat-error>
+                <mat-error *ngIf="f.email.errors?.email">Invalid email</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
-                <mat-label>סיסמא</mat-label>
-                <input matInput formControlName="password" required>
-                <mat-error *ngIf="f.password.errors?.required">חובה להזין סיסמא</mat-error>
-                <mat-error *ngIf="f.password.errors?.minlength">הסיסמא צריכה להכיל לפחות 6 תוים</mat-error>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password" required>
+                <mat-error *ngIf="f.password.errors?.required">Password is required</mat-error>
+                <mat-error *ngIf="f.password.errors?.minlength">Password needs to contain at least 6 numbers or letters</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
-                <mat-label>אישור סיסמא</mat-label>
-                <input matInput formControlName="confirmPassword" required>
-                <mat-error *ngIf="f.confirmPassword.errors?.required">חובה להזין סיסמא</mat-error>
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" matInput formControlName="confirmPassword" required>
+                <mat-error *ngIf="f.confirmPassword.errors?.required">Confirm password is required</mat-error>
             </mat-form-field>
         </p>
-        <button type="submit" [disabled]="!registrationForm.valid" mat-stroked-button>אישור</button>
+        <button type="submit" [disabled]="!registrationForm.valid" mat-stroked-button>Sign Up</button>
 
     </form>
 </mat-card>    
