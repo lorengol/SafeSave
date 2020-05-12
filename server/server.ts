@@ -1,9 +1,7 @@
 import "reflect-metadata";
 import express from 'express';
-import { routes } from './routes';
+import { userRoutes } from './userRoutes';
 import { createConnection } from "typeorm";
-import { Users } from "./src/entity/Users";
-
 const app = express();
 
 // Allow any method from any host and log requests
@@ -21,8 +19,8 @@ app.use((req, res, next) => {
 // Handle POST requests that come in formatted as JSON
 app.use(express.json())
 
-// A default hello word route
-app.use('/', routes);
+// User 
+app.use('/users', userRoutes);
 
 // Create connection with the DB
 createConnection().then(async connection => {    
