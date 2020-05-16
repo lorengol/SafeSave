@@ -1,24 +1,10 @@
-import {getRepository} from "typeorm";
-import {User} from "../src/entity/User";
+import { getRepository } from 'typeorm';
+import { User } from '../src/entity/User';
 
-export class userDAL {
-  async getAll() {
-    return getRepository(User).find();
-  };
-  
-  async getUserById (id: number) {
-      return getRepository(User).findOne(id);
-  };
-  
-  async saveUser(user: User) {
-      return getRepository(User).insert(user);
-  };
+export const getAll = async () => getRepository(User).find();
 
-  async getUserByEmail(Email: string) {
-    return getRepository(User).findOne({email: Email});
-  };
-}
+export const getUserById = async (id: number) =>
+  getRepository(User).findOne(id);
 
-
-
-  
+export const saveUser = async (user: User) =>
+  getRepository(User).insert(user);

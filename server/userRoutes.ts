@@ -1,14 +1,12 @@
 import * as express from 'express';
-import { userBl } from "./BL/user-bl";
+import * as userBl from "./BL/user-bl";
 import { User } from './src/entity/User';
 
 export const userRoutes = express.Router();
 
-let userService:userBl = new userBl();
-
 userRoutes.get('/', async (req, res) => {
     try {
-        let users = await userService.getUsers();
+        let users = await userBl.getAllUsers();
         res.status(200).send(users);
     } catch(e) {
         res.status(400).send(e.message);
@@ -29,7 +27,7 @@ userRoutes.post('/', async (req, res) => {
     try {
         const user: User = req.body;
     
-        await userService.saveUser(user);
+        await userBl.saveUser(user);
     
         res.sendStatus(201);
       } catch (e) {

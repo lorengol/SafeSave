@@ -1,26 +1,16 @@
-import { userDAL } from "../DAL/user-dal";
-import { User } from "../src/entity/User";
-var passwordHash = require('password-hash');
+import * as UserDAL from '../DAL/user-dal';
+import { User } from '../src/entity/User';
 
-export class userBl{
+const getAllUsers = async () => {
+  return UserDAL.getAll();
+};
 
-    private userRepository:userDAL = new userDAL();
+const getUser = async (id: number) => {
+  return UserDAL.getUserById(id);
+};
 
-    getUsers() {
-        return this.userRepository.getAll();
-    }
+const saveUser = async (user: User) => {
+  return UserDAL.saveUser(user);
+};
 
-    public getUser(id:number){
-        return this.userRepository.getUserById(id);
-    }
-
-    saveUser(user:User) {
-        var hashedPassword = passwordHash.generate(user.password); 
-        user.password = hashedPassword;
-        this.userRepository.saveUser(user); 
-    }
-
-    getUserByEmail(email) {
-        this.userRepository.getUserByEmail(email)
-    }
-}
+export { getUser, getAllUsers, saveUser };
