@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import express from 'express';
 import { userRoutes } from './userRoutes';
+import {creditCardRoutes} from './creditCardRoutes';
 import { createConnection } from "typeorm";
 const app = express();
 
@@ -21,6 +22,9 @@ app.use(express.json())
 
 // User 
 app.use('/users', userRoutes);
+
+// Credit Cards
+app.use('/credits', creditCardRoutes);
 
 // Create connection with the DB
 createConnection().then(async connection => {    

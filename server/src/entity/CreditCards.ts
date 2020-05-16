@@ -1,6 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, Long} from "typeorm";
 
-@Entity("creditCards")
+@Entity("credit_cards")
 class CreditCard {
 
     @PrimaryGeneratedColumn()
@@ -13,7 +13,7 @@ class CreditCard {
     card_holder_name: string;
 
     @Column()
-    expiration_date: Date;
+    expiration_date: string;
 
     @Column()
     user_id: number;

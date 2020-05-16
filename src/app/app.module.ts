@@ -7,23 +7,30 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {ReactiveFormsModule } from '@angular/forms';
+import { CreditCardDirectivesModule } from 'angular-cc-library';
 
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { httpInterceptor } from './http.interceptor';
+import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
 
 const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationComponent
+  }, 
+  {
+    path: 'credit',
+    component: CreditCardRegistrationComponent
   }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CreditCardRegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +41,7 @@ const routes: Routes = [
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
+    CreditCardDirectivesModule,
     ReactiveFormsModule
     ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
