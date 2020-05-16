@@ -1,19 +1,16 @@
-import { userDAL } from "../DAL/user-dal";
-import { User } from "../src/entity/User";
+import * as UserDAL from '../DAL/user-dal';
+import { User } from '../src/entity/User';
 
-export class userBl{
+const getAllUsers = async () => {
+  return UserDAL.getAll();
+};
 
-    private userRepository:userDAL = new userDAL();
+const getUser = async (id: number) => {
+  return UserDAL.getUserById(id);
+};
 
-    getUsers() {
-        return this.userRepository.getAll();
-    }
+const saveUser = async (user: User) => {
+  return UserDAL.saveUser(user);
+};
 
-    public getUser(id:number){
-        return this.userRepository.getUserById(id);
-    }
-
-    saveUser(user:User) {
-        this.userRepository.saveUser(user); 
-    }
-}
+export { getUser, getAllUsers, saveUser };
