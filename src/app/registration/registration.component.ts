@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {Validators, FormBuilder} from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 export class user {
   id:number;
@@ -36,15 +37,23 @@ export class RegistrationComponent implements OnInit {
       confirmPassword: ['', Validators.required]
     })
 
-    // this.UserToRegister = new user();
+    this.UserToRegister = {} as any;
   }
 
   submit(){
     if(this.f.password.value != this.f.confirmPassword.value) {
-      alert("אישור סיסמא לא תואם לסיסמא שהקלדת")
+      Swal.fire({
+        text:'Confirmation password does not match password',
+        icon: 'warning',
+        confirmButtonColor:'white'
+      });
     } else {
       this.http.post("/users", this.UserToRegister, {responseType: 'text'}).subscribe((res)=> {
-        console.log("success");
+        Swal.fire({
+          text:'You are successfuly registered!',
+          icon: 'success',
+          confirmButtonColor:'white'
+        });
       });
     }
   }

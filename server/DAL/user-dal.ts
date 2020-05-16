@@ -13,6 +13,10 @@ export class userDAL {
   async saveUser(user: User) {
       return getRepository(User).insert(user);
   };
+
+  async getUserByEmail(Email: string) {
+    return getRepository(User).findOne({email: Email});
+  };
 }
 
 

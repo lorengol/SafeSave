@@ -15,6 +15,16 @@ userRoutes.get('/', async (req, res) => {
     }
 });
 
+userRoutes.get('/getUserByEmail', async (req, res) => {
+    try {
+        console.log(req.body)
+        let user = await userService.getUserByEmail(req.body);
+        res.status(200).send(user);
+    } catch(e) {
+        res.status(400).send(e.message);
+    }
+});
+
 userRoutes.post('/', async (req, res) => {
     try {
         const user: User = req.body;
