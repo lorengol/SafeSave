@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,24 @@ export class LoginComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  email
-  password
+  form;
+  email:string;
+  password:string;
 
   ngOnInit(): void {
-
+    this.email = "";
+    this.password = "";
+    this.form = new FormGroup({
+      email: new FormControl(),
+      password: new FormControl()
+   });
   }
 
   signIn() {
-    this.http.post("/users/getUserByEmail", this.email).subscribe((res)=> {
+    const httpParams = new HttpParams().set('email', this.email).set('password', this.password);
+    this.http.get("/users/getUserByEmail", {params: httpParams}).subscribe((res)=> {      
+      if(res['validation'] == "Valid")
+        console.log("123")
       
     });
   }
