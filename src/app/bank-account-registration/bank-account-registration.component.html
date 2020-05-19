@@ -4,21 +4,21 @@
         <p>
             <mat-form-field>
                 <mat-label>First name</mat-label>
-                <input [(ngModel)]="BankAccountToRegister.first_Name" matInput formControlName="firstName" required>
+                <input [(ngModel)]="bankAccountToRegister.first_Name" matInput formControlName="firstName" required>
                 <mat-error *ngIf="formValidations.firstName.errors?.required">First name is required</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
                 <mat-label>Last name</mat-label>
-                <input [(ngModel)]="BankAccountToRegister.last_Name" matInput formControlName="lastName" required>
+                <input [(ngModel)]="bankAccountToRegister.last_Name" matInput formControlName="lastName" required>
                 <mat-error *ngIf="formValidations.lastName.errors?.required">Last name is required</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
                 <mat-label>Choose Bank</mat-label>
-                <mat-select [(ngModel)]="BankAccountToRegister.bank_id" formControlName="bankId"
+                <mat-select [(ngModel)]="bankAccountToRegister.bank_id" formControlName="bankId"
                     (selectionChange)="onBankSelect($event)">
                     <mat-option *ngFor="let bank of banks" [value]="bank.id">
                         {{bank.name}}
@@ -30,7 +30,7 @@
         <p>
             <mat-form-field>
                 <mat-label>Choose Branch</mat-label>
-                <mat-select [(ngModel)]="BankAccountToRegister.branch_number" formControlName="branchNumber">
+                <mat-select [(ngModel)]="bankAccountToRegister.branch_number" formControlName="branchNumber">
                     <mat-option *ngFor="let branch of bankBranches" [value]="branch.id">
                         {{branch.name}}
                     </mat-option>
@@ -41,7 +41,7 @@
         <p>
             <mat-form-field>
                 <mat-label>Social Security Number</mat-label>
-                <input [(ngModel)]="BankAccountToRegister.social_security_number" matInput
+                <input [(ngModel)]="bankAccountToRegister.social_security_number" matInput
                     formControlName="socialSecurityNumber" required>
                 <mat-error *ngIf="formValidations.socialSecurityNumber.errors?.required">Social Security Number is
                     required

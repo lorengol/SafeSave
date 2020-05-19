@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BankAccountRegistrationService } from './bank-account-registration.service';
-import { error } from '@angular/compiler/src/util';
 
 export class bankAccount {
   account_number?: number;
@@ -28,7 +27,7 @@ export class BankAccountRegistrationComponent implements OnInit {
 
   banks;
   bankBranches;
-  BankAccountToRegister: bankAccount = {} as any;
+  bankAccountToRegister: bankAccount = {} as any;
   bankAccountRegistrationForm: any;
 
   constructor(private bankAccountService: BankAccountRegistrationService,
@@ -54,12 +53,12 @@ export class BankAccountRegistrationComponent implements OnInit {
 
   submit() {
     const newBankAccount: bankAccount = {
-      branch_number: this.BankAccountToRegister.branch_number,
-      bank_id: this.BankAccountToRegister.bank_id,
+      branch_number: this.bankAccountToRegister.branch_number,
+      bank_id: this.bankAccountToRegister.bank_id,
       user_id: JSON.parse(localStorage.getItem('currentUser')).id,
-      first_Name: this.BankAccountToRegister.first_Name,
-      last_Name: this.BankAccountToRegister.last_Name,
-      social_security_number: this.BankAccountToRegister.social_security_number
+      first_Name: this.bankAccountToRegister.first_Name,
+      last_Name: this.bankAccountToRegister.last_Name,
+      social_security_number: this.bankAccountToRegister.social_security_number
     };
 
     this.bankAccountService.addBankAccount(newBankAccount).subscribe(

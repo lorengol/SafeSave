@@ -4,7 +4,8 @@
         <p>
             <mat-form-field>
                 <mat-label>card number</mat-label>
-                <input id="cc-number" matInput [(ngModel)]="CreditCardToRegister.card_number" formControlName="cardNumber" type="tel" autocomplete="cc-number" ccNumber required>
+                <input id="cc-number" matInput [(ngModel)]="CreditCardToRegister.card_number"
+                    formControlName="cardNumber" type="tel" autocomplete="cc-number" ccNumber required>
                 <mat-error *ngIf="f.cardNumber.errors?.required">Card number is required</mat-error>
                 <mat-error *ngIf="f.cardNumber.errors?.ccNumber">Invalid credit number</mat-error>
             </mat-form-field>
@@ -12,14 +13,16 @@
         <p>
             <mat-form-field>
                 <mat-label>card holder name</mat-label>
-                <input matInput [(ngModel)]="CreditCardToRegister.card_holder_name" formControlName="cardHolderName" type="text" required>
+                <input matInput [(ngModel)]="CreditCardToRegister.card_holder_name" formControlName="cardHolderName"
+                    type="text" required>
                 <mat-error *ngIf="f.cardHolderName.errors?.required">Card holder name is required</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
                 <mat-label>Expiration date</mat-label>
-                <input id="cc-exp-date" matInput [(ngModel)]="CreditCardToRegister.expiration_date" formControlName="cardExpDate" type="tel" autocomplete="cc-exp" ccExp required>
+                <input id="cc-exp-date" matInput [(ngModel)]="CreditCardToRegister.expiration_date"
+                    formControlName="cardExpDate" type="tel" autocomplete="cc-exp" ccExp required>
                 <mat-error *ngIf="f.cardExpDate.errors?.required">Expiration date is required</mat-error>
                 <mat-error *ngIf="f.cardExpDate.errors?.expDate">Invalid exipration number</mat-error>
             </mat-form-field>
@@ -27,14 +30,16 @@
         <p>
             <mat-form-field>
                 <mat-label>Account number</mat-label>
-                <input id="cc-exp-date" matInput [(ngModel)]="CreditCardToRegister.account_number" formControlName="accountNumber" type="tel" required>
+                <input id="cc-exp-date" matInput [(ngModel)]="CreditCardToRegister.account_number"
+                    formControlName="accountNumber" type="tel" required>
                 <mat-error *ngIf="f.accountNumber.errors?.required">Account number is required</mat-error>
             </mat-form-field>
         </p>
         <p>
             <mat-form-field>
                 <mat-label>CVV</mat-label>
-                <input id="cc-cvc" matInput [(ngModel)]="CreditCardToRegister.CVV" formControlName="cardCvv" type="tel" autocomplete="off" ccCvc required>
+                <input id="cc-cvc" matInput [(ngModel)]="CreditCardToRegister.CVV" formControlName="cardCvv" type="tel"
+                    autocomplete="off" ccCvc required>
                 <mat-error *ngIf="f.cardCvv.errors?.required">CVV is required</mat-error>
                 <mat-error *ngIf="f.cardCvv.errors?.minlength">CVV needs to contain minimum 3 digits</mat-error>
                 <mat-error *ngIf="f.cardCvv.errors?.maxlength">CVV needs to contain maximum 4 digits</mat-error>
@@ -42,4 +47,4 @@
         </p>
         <button type="submit" (click)="submit()" [disabled]="!creditForm.valid" mat-stroked-button>Submit</button>
     </form>
-</mat-card>    
+</mat-card>
