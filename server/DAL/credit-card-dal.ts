@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { CreditCard } from '../src/entity/CreditCards';
+import { CreditCard } from '../src/entity/CreditCard';
 
 export const saveCreditCard = async (newCreditCard: CreditCard) => {
   return getRepository(CreditCard).insert(newCreditCard);

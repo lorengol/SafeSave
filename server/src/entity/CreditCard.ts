@@ -1,6 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
-@Entity("creditCards")
+@Entity("credit_cards")
 class CreditCard {
 
     @PrimaryGeneratedColumn()
