@@ -18,7 +18,6 @@ class BankAccount {
     @Column()
     current: number;
 
-    
     @Column()
     first_Name: string;
 

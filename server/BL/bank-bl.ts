@@ -1,5 +1,4 @@
 import * as BankDAL from '../DAL/bank-dal';
-import { Bank } from '../src/entity/Bank';
 
 const getAllBanks = async () => {
   return BankDAL.getAll();

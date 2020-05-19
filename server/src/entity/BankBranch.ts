@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column } from 'typeorm';
 
 @Entity('bank_branches')
-class BankBranches {
+class BankBranch {
   @PrimaryColumn()
   id: number;
 
@@ -12,4 +12,4 @@ class BankBranches {
   bank_id: number;
 }
 
-export { BankBranches };
+export { BankBranch };

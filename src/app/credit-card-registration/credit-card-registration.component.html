@@ -16,14 +16,6 @@
                 <mat-error *ngIf="f.cardHolderName.errors?.required">Card holder name is required</mat-error>
             </mat-form-field>
         </p>
-        <!-- <p>
-            <mat-form-field>
-                <mat-label>id</mat-label>
-                <input matInput [(ngModel)]="CreditCardToRegister.user_id" formControlName="userId" type="tel" required>
-                <mat-error *ngIf="f.userId.errors?.required">ID is required</mat-error>
-                <mat-error *ngIf="f.userId.errors?.expDate">Invalid credit number</mat-error>
-            </mat-form-field>
-        </p> -->
         <p>
             <mat-form-field>
                 <mat-label>Expiration date</mat-label>

@@ -1,7 +1,9 @@
 import * as BankBranchDAL from '../DAL/bank-branch-dal';
 
-const getBankBrachNameById = async (id: number) => {
+export const getBankBrachNameById = async (id: number) => {
   return BankBranchDAL.getBankBrachNameById(id);
 };
 
-export { getBankBrachNameById };
+export const getBankBranchesByBankId = async (bankId: number) => {
+  return BankBranchDAL.getBankBranchesByBankId(bankId);
+}

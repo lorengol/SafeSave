@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
 import { CreditCardValidators } from 'angular-cc-library';
 
 export class creditCard {
@@ -38,7 +38,6 @@ export class CreditCardRegistrationComponent implements OnInit {
   }
 
   submit() {
-    this.CreditCardToRegister.card_number = this.f.cardNumber.value.split(' ').join('');
     const newCard: creditCard = {
       card_number: this.CreditCardToRegister.card_number.split(' ').join(''),
       card_holder_name: this.CreditCardToRegister.card_holder_name,
