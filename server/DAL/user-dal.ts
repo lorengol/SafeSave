@@ -8,3 +8,6 @@ export const getUserById = async (id: number) =>
 
 export const saveUser = async (user: User) =>
   getRepository(User).insert(user);
+
+export const getUserByEmail = async (email: string) =>
+  getRepository(User).findOne({ email })

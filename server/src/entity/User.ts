@@ -19,7 +19,6 @@ class User {
     password: string;
 
     @Column()
-    income: number;
-
+    income: number;    
 }
 export { User };
