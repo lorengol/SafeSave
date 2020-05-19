@@ -1,14 +1,14 @@
 import { getAll } from './../../../server/DAL/user-dal';
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormGroup, FormBuilder} from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 export class bankAccount {
-  account_number:number;
-  branch_number:string;
-  bank_id:string;
-  user_id:string;
-  first_Name:string;   
+  account_number: number;
+  branch_number: string;
+  bank_id: string;
+  user_id: string;
+  first_Name: string;
   last_Name: string;
   social_security_number: string;
 }
@@ -25,12 +25,13 @@ export class bank {
 })
 export class BankAccountRegistrationComponent implements OnInit {
 
-  banks: any;
+  banks;
+  bankBranches;
   bankAccountRegistrationForm: any;
 
   get f() { return this.bankAccountRegistrationForm.controls; }
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }  
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
   BankAccountToRegister: bankAccount = {} as any;
 
@@ -42,15 +43,13 @@ export class BankAccountRegistrationComponent implements OnInit {
       branchNumber: ['', [Validators.required, Validators.minLength(6)]],
       accountNumber: ['', Validators.required],
       socialSecurityNumber: ['', Validators.required, Validators.minLength(9), Validators.maxLength(9)]
-    })
-
-    this.http.get("/bank").subscribe((banks) => {
-      this.banks = banks
     });
-    
+
+    this.http.get("/bank").subscribe((banks) => this.banks = banks);
+
   }
 
-  submit(){
+  submit() {
     // if(this.f.password.value != this.f.confirmPassword.value) {
     //   alert("אישור סיסמא לא תואם לסיסמא שהקלדת")
     // } else {
