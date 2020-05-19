@@ -5,6 +5,7 @@
             <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input [(ngModel)]="email" matInput placeholder="ex@gmail.com" formControlName="email" required autocomplete="off">
+                <mat-error *ngIf="form.controls.email.errors?.email">Invalid email</mat-error>
             </mat-form-field>
         </p>
         <p>

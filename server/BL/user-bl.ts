@@ -16,8 +16,17 @@ const saveUser = async (user: User) => {
   return UserDAL.saveUser(user);
 };
 
-const getUserByEmail =  async (email:string) => {
-  return UserDAL.getUserByEmail(email);
+const verifyUserLogin = async (email: string, password: string) => {
+  let user = await UserDAL.getUserByEmail(email);
+  if (user != null) {
+    if (passwordHash.verify(password, user.password)) {
+      return user;
+    } else {
+      throw new Error("Incorrect password");
+    }
+  } else {
+    throw new Error("User not found");
+  }
 }
 
-export { getUser, getAllUsers, saveUser, getUserByEmail };
+export { getUser, getAllUsers, saveUser, verifyUserLogin };

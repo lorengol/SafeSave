@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -9,28 +10,37 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  form: FormGroup;
+  email: string;
+  password: string;
 
-  form;
-  email:string;
-  password:string;
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.email = "";
     this.password = "";
     this.form = new FormGroup({
-      email: new FormControl(),
+      email: new FormControl(this.email, Validators.email),
       password: new FormControl()
-   });
+    });
   }
 
   signIn() {
     const httpParams = new HttpParams().set('email', this.email).set('password', this.password);
-    this.http.get("/users/getUserByEmail", {params: httpParams}).subscribe((res)=> {      
-      if(res['validation'] == "Valid")
-        console.log("123")
-      
-    });
+    this.http.get("/users/verifyUserLogin", { params: httpParams }).subscribe(
+      data => {
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        
+        // Should move to dashboard after successfully logged in
+
+      },
+      err => Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.error,
+        confirmButtonColor: 'white'
+      })
+    );
   }
 
 }
