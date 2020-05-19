@@ -34,7 +34,6 @@ export class CreditCardRegistrationComponent implements OnInit {
       cardHolderName: ['', [Validators.required, Validators.minLength(2)]],
       accountNumber: ['', Validators.required]
     });
-    console.log(localStorage.getItem('currentUser'));
   }
 
   submit() {
