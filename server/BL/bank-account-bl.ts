@@ -1,16 +1,17 @@
-import * as BankAccountDAL from '../DAL/bank-acount-dal';
+import * as BankAccountDAL from '../DAL/bank-account-dal';
 import { BankAccount } from '../src/entity/BankAccount';
 
 const getAllBankAccounts = async () => {
   return BankAccountDAL.getAll();
 };
 
-const getBank = async (id: number) => {
-  return BankAccountDAL.getBankById(id);
-};
+// const getBankAccount = async (id: number) => {
+//   return BankAccountDAL.getBankById(id);
+// };
 
 const saveBankAccount = async (bankAccount: BankAccount) => {
+  bankAccount.current = 10000
   return BankAccountDAL.saveBankAccount(bankAccount);
 };
 
-export { getAllBankAccounts, getBank, saveBankAccount };
+export { getAllBankAccounts, saveBankAccount };

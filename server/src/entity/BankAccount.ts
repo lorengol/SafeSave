@@ -18,8 +18,14 @@ class BankAccount {
     @Column()
     current: number;
 
+    
     @Column()
-    income: number;
+    first_Name: string;
 
+    @Column()
+    last_Name: string;
+
+    @Column()
+    social_security_number: string;
 }
 export { BankAccount };

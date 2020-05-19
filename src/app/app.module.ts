@@ -6,6 +6,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 import {ReactiveFormsModule } from '@angular/forms';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
 
@@ -14,6 +15,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { httpInterceptor } from './http.interceptor';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
+import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,10 @@ const routes: Routes = [
   {
     path: 'credit',
     component: CreditCardRegistrationComponent
+  }, 
+  {
+    path: 'bank-account',
+    component: BankAccountRegistrationComponent
   }
 ];
 
@@ -30,7 +36,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     RegistrationComponent,
-    CreditCardRegistrationComponent
+    CreditCardRegistrationComponent,
+    BankAccountRegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +48,7 @@ const routes: Routes = [
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
+    MatSelectModule,
     CreditCardDirectivesModule,
     ReactiveFormsModule
     ],

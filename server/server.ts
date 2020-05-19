@@ -1,3 +1,4 @@
+import { bankRoutes } from './bankRoutes';
 import "reflect-metadata";
 import express from 'express';
 import { userRoutes } from './userRoutes';
@@ -25,6 +26,9 @@ app.use('/users', userRoutes);
 
 // Credit Cards
 app.use('/credits', creditCardRoutes);
+
+// Bank
+app.use('/bank', bankRoutes)
 
 // Create connection with the DB
 createConnection().then(async connection => {    
