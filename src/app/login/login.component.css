@@ -1,0 +1,10 @@
+h2{
+    color:  #3f51b5;
+    font-weight: 700;
+}
+
+mat-card {
+    margin: 0 auto;
+    width: 30%;
+    text-align: center
+}
