@@ -1,4 +1,7 @@
-h2{
+div{
+    text-align: center;
+}   
+h1,h2{
     color:  #3f51b5;
     font-weight: 1000;
 }
