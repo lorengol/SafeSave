@@ -12,18 +12,19 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { httpInterceptor } from './http.interceptor';
+import { OpenPageComponent } from './open-page/open-page.component';
+import { pathToFileURL } from 'url';
 
 const routes: Routes = [
-  {
-    path: 'registration',
-    component: RegistrationComponent
-  }
+  { path: 'registration', component: RegistrationComponent },
+  { path: 'open-page', component: OpenPageComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    OpenPageComponent
   ],
   imports: [
     BrowserModule,
