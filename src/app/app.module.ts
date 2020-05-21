@@ -38,7 +38,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   { 
-    path: 'open-page', 
+    path: '', 
     component: OpenPageComponent 
   }
 ];
