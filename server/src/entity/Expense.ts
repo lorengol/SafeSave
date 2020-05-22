@@ -6,7 +6,7 @@ class Expense {
   id: number;
 
   @Column()
-  expense_type: number;
+  category_id: number;
 
   @Column()
   user_id: number;
