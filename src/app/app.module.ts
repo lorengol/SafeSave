@@ -17,6 +17,8 @@ import { httpInterceptor } from './http.interceptor';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
 import { LoginComponent } from './login/login.component';
+import { CreditCardComponent } from './credit-card/credit-card.component';
+import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  }, 
+  {
+    path: 'debits',
+    component: CreditCardDebitsComponent
   }
 ];
 
@@ -43,7 +49,9 @@ const routes: Routes = [
     RegistrationComponent,
     CreditCardRegistrationComponent,
     BankAccountRegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    CreditCardComponent,
+    CreditCardDebitsComponent
   ],
   imports: [
     BrowserModule,
