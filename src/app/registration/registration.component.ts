@@ -9,7 +9,7 @@ export class user {
   last_Name: string;
   email: string;
   password: string;
-  imcome: number;
+  income: number;
 }
 
 @Component({
