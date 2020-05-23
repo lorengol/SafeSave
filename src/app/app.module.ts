@@ -10,8 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { ReactiveFormsModule, FormsModule, NgControl } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
-
-
+import {MatDialogModule} from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -66,7 +65,8 @@ const routes: Routes = [
     CreditCardDirectivesModule,
     ReactiveFormsModule,
     FormsModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]
