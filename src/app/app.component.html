@@ -1,8 +1,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
-      <mat-toolbar color="primary">
+      <mat-toolbar *ngIf="LoggedIn" color="primary">
         <span>Safe Save</span>
+        <a class="log-out">Log Out</a>
       </mat-toolbar>
         <router-outlet></router-outlet>
     </div>

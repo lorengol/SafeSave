@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injectable } from '@angular/core';
+import { NgModule, Injectable, Component } from '@angular/core';
 import { HttpClientModule, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { ReactiveFormsModule, FormsModule, NgControl } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+
 
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -17,6 +19,7 @@ import { httpInterceptor } from './http.interceptor';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
 import { LoginComponent } from './login/login.component';
+import { PaymentAccountsComponent } from './payment-accounts/payment-accounts.component';
 
 const routes: Routes = [
   {
@@ -34,6 +37,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'Accounts',
+    component: PaymentAccountsComponent
   }
 ];
 
@@ -43,7 +50,8 @@ const routes: Routes = [
     RegistrationComponent,
     CreditCardRegistrationComponent,
     BankAccountRegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    PaymentAccountsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +65,8 @@ const routes: Routes = [
     MatSelectModule,
     CreditCardDirectivesModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]
