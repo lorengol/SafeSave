@@ -4,4 +4,8 @@ const getExpensesByUserId = async (userId: number) => {
   return ExpenseDAL.getExpensesByUserId(userId);
 };
 
-export { getExpensesByUserId };
+const getExpensesByCreditcardId = async (creditCardId: number) => {
+  return ExpenseDAL.getExpensesByCreditcardId(creditCardId);
+};
+
+export { getExpensesByUserId, getExpensesByCreditcardId };

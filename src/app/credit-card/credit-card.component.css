@@ -92,10 +92,11 @@ input {
 
 .container {
     width: 100%;
-    max-width: 400px;
-    max-height: 251px;
+    max-width: 350px;
+    max-height: 222px;
     height: 54vw;
     padding: 20px;
+    margin: auto;
 }
 
 #ccsingle {
@@ -201,11 +202,11 @@ input {
 }
 
 .creditcard .grey {
-    fill: #bdbdbd;
+    fill: #408ee0;
 }
 
 .creditcard .greydark {
-    fill: #616161;
+    fill: #0051a2;
 }
 
 /* FRONT OF CARD */
@@ -353,4 +354,8 @@ input {
 .creditcard.flipped {
     -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
+}
+
+.chip {
+    fill: #c0c0c0 !important;
 }

@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { BankAccountRegistrationService } from './bank-account-registration.service';
 
 export class bankAccount {
-  account_number?: number;
+  account_number: number;
   branch_number: number;
   bank_id: number;
   user_id: number;
@@ -37,6 +37,7 @@ export class BankAccountRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.bankAccountRegistrationForm = this.formBuilder.group({
+      accountNumber: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       bankId: ['', Validators.required],
@@ -53,6 +54,7 @@ export class BankAccountRegistrationComponent implements OnInit {
 
   submit() {
     const newBankAccount: bankAccount = {
+      account_number: this.bankAccountToRegister.account_number,
       branch_number: this.bankAccountToRegister.branch_number,
       bank_id: this.bankAccountToRegister.bank_id,
       user_id: JSON.parse(localStorage.getItem('currentUser')).id,

@@ -1,9 +1,9 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity("bank_accounts")
 class BankAccount {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     account_number: number;
 
     @Column()

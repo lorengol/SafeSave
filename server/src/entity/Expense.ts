@@ -6,7 +6,7 @@ class Expense {
   id: number;
 
   @Column()
-  expense_type: number;
+  category_id: number;
 
   @Column()
   user_id: number;
@@ -16,8 +16,14 @@ class Expense {
 
   @Column()
   credit_card_id: number;
+
+  @Column()
+  expense: number;
   
   @Column()
   bank_account_id: number;
+
+  @Column()
+  date: string;
 }
 export { Expense };

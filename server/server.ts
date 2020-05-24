@@ -1,3 +1,4 @@
+import { expenseRoutes } from './expenseRouter';
 import { bankRoutes } from './bankRoutes';
 import "reflect-metadata";
 import express from 'express';
@@ -29,6 +30,9 @@ app.use('/credits', creditCardRoutes);
 
 // Bank
 app.use('/bank', bankRoutes)
+
+// Expense
+app.use('/expenses', expenseRoutes)
 
 // Create connection with the DB
 createConnection().then(async connection => {    

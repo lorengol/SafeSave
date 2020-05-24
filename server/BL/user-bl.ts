@@ -11,9 +11,14 @@ const getUser = async (id: number) => {
 };
 
 const saveUser = async (user: User) => {
-  let hasedPassword = passwordHash.generate(user.password);
-  user.password = hasedPassword;
-  return UserDAL.saveUser(user);
+  let Existinguser = await UserDAL.getUserByEmail(user.email);
+  if(Existinguser == null) {
+    let hasedPassword = passwordHash.generate(user.password);
+    user.password = hasedPassword;
+    return UserDAL.saveUser(user);
+  } else {
+    throw new Error("Email already in use");
+  }
 };
 
 const verifyUserLogin = async (email: string, password: string) => {

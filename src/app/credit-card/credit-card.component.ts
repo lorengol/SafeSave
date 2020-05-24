@@ -14,6 +14,7 @@ export class CreditCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.card_number = this.card_number.match(/.{1,4}/g).join(' ').replace(/\d{4}(?= \d{4})/g, "****");
   }
 
 }

@@ -9,11 +9,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { ReactiveFormsModule, FormsModule, NgControl } from '@angular/forms';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { httpInterceptor } from './http.interceptor';
+import { OpenPageComponent } from './open-page/open-page.component';
+import { pathToFileURL } from 'url';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
 import { LoginComponent } from './login/login.component';
@@ -40,6 +45,10 @@ const routes: Routes = [
   {
     path: 'debits',
     component: CreditCardDebitsComponent
+  },
+  { 
+    path: '', 
+    component: OpenPageComponent 
   }
 ];
 
@@ -47,6 +56,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     RegistrationComponent,
+    OpenPageComponent,
     CreditCardRegistrationComponent,
     BankAccountRegistrationComponent,
     LoginComponent,
@@ -65,7 +75,10 @@ const routes: Routes = [
     MatSelectModule,
     CreditCardDirectivesModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CarouselModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]
