@@ -1,4 +1,5 @@
-import { Entity, PrimaryColumn, Column } from 'typeorm';
+import { Entity, PrimaryColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import { Bank } from './Bank';
 
 @Entity('bank_branches')
 class BankBranch {
@@ -10,6 +11,12 @@ class BankBranch {
 
   @Column()
   bank_id: number;
+
+  @OneToOne((type) => Bank, {
+    eager: true,
+  })
+  @JoinColumn()
+  bank: Bank;
 }
 
 export { BankBranch };
