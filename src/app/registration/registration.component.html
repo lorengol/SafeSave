@@ -25,6 +25,13 @@
         </p>
         <p>
             <mat-form-field>
+                <mat-label>Income</mat-label>
+                <input [(ngModel)]="UserToRegister.income" type="number" matInput formControlName="income">
+                <mat-error *ngIf="f.income.errors?.income">Income most be positive</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
                 <mat-label>Password</mat-label>
                 <input [(ngModel)]="UserToRegister.password" type="password" matInput formControlName="password" required>
                 <mat-error *ngIf="f.password.errors?.required">Password is required</mat-error>
