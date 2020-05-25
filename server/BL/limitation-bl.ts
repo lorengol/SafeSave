@@ -1,4 +1,4 @@
-import * as LimitationDAL from '../DAL/limitatoin-dal';
+import * as LimitationDAL from '../DAL/limitation-dal';
 import { Limitation } from '../src/entity/Limitation';
 
 const getAllUserLimitations = async (usreId: number) => {

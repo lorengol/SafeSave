@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injectable } from '@angular/core';
+import { NgModule, Injectable, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
@@ -19,6 +19,8 @@ import { pathToFileURL } from 'url';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
 import { LoginComponent } from './login/login.component';
+import { LimitationsComponent, LimitationRegistration } from './limitations/limitations.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes: Routes = [
   {
@@ -40,6 +42,10 @@ const routes: Routes = [
   { 
     path: '', 
     component: OpenPageComponent 
+  },
+  { 
+    path: 'limitations', 
+    component: LimitationsComponent 
   }
 ];
 
@@ -50,7 +56,9 @@ const routes: Routes = [
     OpenPageComponent,
     CreditCardRegistrationComponent,
     BankAccountRegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    LimitationsComponent,
+    LimitationRegistration
   ],
   imports: [
     BrowserModule,
@@ -64,7 +72,8 @@ const routes: Routes = [
     MatSelectModule,
     CreditCardDirectivesModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]

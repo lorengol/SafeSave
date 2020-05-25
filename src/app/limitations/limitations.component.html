@@ -1,0 +1,8 @@
+<h1>My Limitations</h1>
+<ul>
+    <li *ngFor="let limitation of limitations">
+        {{limitation.id}}
+        {{limitation.limit}}
+    </li>
+</ul> 
+<button type="submit" (click)="openDialog()" mat-stroked-button>Add limitation</button> 

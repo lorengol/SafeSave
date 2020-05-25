@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Add new limitation</h1>
+<div mat-dialog-content>  
+  <mat-form-field>
+    <mat-label>Category name</mat-label>
+    <mat-select [(ngModel)]="data.limitation">
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+        {{category.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Limit price</mat-label>
+    <input matInput [(ngModel)]="data.limitation"> 
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.limitation" cdkFocusInitial>Add</button>
+</div>
