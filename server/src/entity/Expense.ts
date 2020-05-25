@@ -5,7 +5,6 @@ import {
   OneToOne,
   JoinColumn,
 } from 'typeorm';
-import { Category } from './Category';
 import { Business } from './Business';
 import { BankAccount } from './BankAccount';
 import { CreditCard } from './CreditCard';
@@ -14,15 +13,6 @@ import { CreditCard } from './CreditCard';
 class Expense {
   @PrimaryGeneratedColumn()
   id: number;
-
-  @Column()
-  category_id: number;
-
-  @OneToOne((type) => Category, {
-    eager: true,
-  })
-  @JoinColumn()
-  category: Category;
 
   @Column()
   user_id: number;
