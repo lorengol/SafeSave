@@ -6,7 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export interface PeriodicElement {
   date: string;
-  category: string;
   business: string;
   expense: number;
 }
@@ -19,7 +18,7 @@ export interface PeriodicElement {
 export class CreditCardDebitsComponent implements OnInit {
 
   creditCards;
-  displayedColumns: string[] = ['date', 'category', 'business', 'expense'];
+  displayedColumns: string[] = ['date', 'business', 'expense'];
   dataSource;
   activeSlides: SlidesOutputData;
 

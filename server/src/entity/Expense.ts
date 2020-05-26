@@ -43,5 +43,11 @@ class Expense {
   })
   @JoinColumn()
   bank_account: BankAccount;
+
+  @Column()
+  expense: number;
+
+  @Column()
+  date: string;
 }
 export { Expense };
