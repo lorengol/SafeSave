@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { httpInterceptor } from './http.interceptor';
+import { OpenPageComponent } from './open-page/open-page.component';
+import { pathToFileURL } from 'url';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
 import { LoginComponent } from './login/login.component';
@@ -40,6 +42,10 @@ const routes: Routes = [
   {
     path: 'Accounts',
     component: PaymentAccountsComponent
+  },
+  { 
+    path: '', 
+    component: OpenPageComponent 
   }
 ];
 
@@ -47,6 +53,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     RegistrationComponent,
+    OpenPageComponent,
     CreditCardRegistrationComponent,
     BankAccountRegistrationComponent,
     LoginComponent,

@@ -9,7 +9,7 @@ export class user {
   last_Name: string;
   email: string;
   password: string;
-  imcome: number;
+  income: number;
 }
 
 @Component({
@@ -33,6 +33,7 @@ export class RegistrationComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      income: ['', [Validators.min(1), Validators.pattern('^(0|[1-9][0-9]*)$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     })
@@ -48,7 +49,8 @@ export class RegistrationComponent implements OnInit {
         confirmButtonColor: 'white'
       });
     } else {
-      this.http.post("/users", this.UserToRegister, { responseType: 'text' }).subscribe((res) => {
+      this.http.post("/users", this.UserToRegister, { responseType: 'text' }).subscribe(
+        data => {
         localStorage.setItem('currentUser', JSON.stringify(this.UserToRegister));
         Swal.fire({
           text: 'You are successfuly registered!',
@@ -59,7 +61,13 @@ export class RegistrationComponent implements OnInit {
 
         // Should move to dashboard after successfully logged in
 
-      });
+      },      
+      err => Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.error,
+        confirmButtonColor: 'white'
+      }));
     }
   }
 }

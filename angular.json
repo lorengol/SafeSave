@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "safe-save"
+  "defaultProject": "safe-save",
+  "cli": {
+    "analytics": "6532c545-404d-4d1d-afea-82598b1aa721"
+  }
 }
