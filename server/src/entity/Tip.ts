@@ -1,15 +1,27 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm';
+import { Category } from './Category';
 
-@Entity("tips")
+@Entity('tips')
 class Tip {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column()
+  tip_content: string;
 
-    @Column()
-    tip_content: string;
+  @Column()
+  category_id: number;
 
-    @Column()
-    category_Id: number;
+  @OneToOne((type) => Category, {
+    eager: true,
+  })
+  @JoinColumn({name: 'category_id'})
+  category: Category;
 }
 export { Tip };
