@@ -18,7 +18,7 @@ class Saving {
   @OneToOne((type) => BankAccount, {
     eager: true,
   })
-  @JoinColumn()
+  @JoinColumn({name: 'account_number'})
   bank_account: BankAccount;
 
   @Column()
