@@ -31,3 +31,10 @@ bankRoutes.get('/bankBranches', async (req, res) => {
     }
 });
 
+bankRoutes.get('/UserBankAcounts', async (req, res) => {
+    try {
+        res.status(200).send(await BankAccountBL.getBankAccountByUserId(req.query.userId));
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});
