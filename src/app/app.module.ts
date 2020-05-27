@@ -1,24 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injectable } from '@angular/core';
-import { HttpClientModule, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
-import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { CreditCardDirectivesModule } from 'angular-cc-library';
-import { ReactiveFormsModule, FormsModule, NgControl } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { httpInterceptor } from './http.interceptor';
-import { OpenPageComponent } from './open-page/open-page.component';
-import { pathToFileURL } from 'url';
-import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
+import { RouterModule, Routes } from '@angular/router';
+import { CreditCardDirectivesModule } from 'angular-cc-library';
+import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
+import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { httpInterceptor } from './http.interceptor';
 import { LoginComponent } from './login/login.component';
+import { OpenPageComponent } from './open-page/open-page.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { DashboardStatisticsPanelComponent } from './dashboard/dashboard-statistics-panel/dashboard-statistics-panel.component';
+
 
 const routes: Routes = [
   {
@@ -37,6 +39,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
   { 
     path: '', 
     component: OpenPageComponent 
@@ -50,7 +56,9 @@ const routes: Routes = [
     OpenPageComponent,
     CreditCardRegistrationComponent,
     BankAccountRegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    DashboardStatisticsPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +72,8 @@ const routes: Routes = [
     MatSelectModule,
     CreditCardDirectivesModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]

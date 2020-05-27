@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.0",
     "angular-cc-library": "^2.0.1",
     "angular2-jwt": "^0.2.3",
+    "chart.js": "^2.9.3",
     "password-hash": "^1.2.2",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.5",
