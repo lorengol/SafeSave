@@ -26,6 +26,11 @@ import { RegistrationComponent } from './registration/registration.component';
 import { DashboardStatisticsPanelComponent } from './dashboard/dashboard-statistics-panel/dashboard-statistics-panel.component';
 import { CreditCardComponent } from './credit-card/credit-card.component';
 import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
+import { DashboardIncomePanelComponent } from './dashboard/dashboard-income-panel/dashboard-income-panel.component';
+import { DashboardComparisonPanelComponent } from './dashboard/dashboard-comparison-panel/dashboard-comparison-panel.component';
+import { DashboardLimitationsPanelComponent } from './dashboard/dashboard-limitations-panel/dashboard-limitations-panel.component';
+import { DashboardSavedMoneyPanelComponent } from './dashboard/dashboard-saved-money-panel/dashboard-saved-money-panel.component';
+import { DashboardTipPanelComponent } from './dashboard/dashboard-tip-panel/dashboard-tip-panel.component';
 
 const routes: Routes = [
   {
@@ -69,7 +74,12 @@ const routes: Routes = [
     DashboardComponent,
     DashboardStatisticsPanelComponent,
     CreditCardComponent,
-    CreditCardDebitsComponent
+    CreditCardDebitsComponent,
+    DashboardIncomePanelComponent,
+    DashboardComparisonPanelComponent,
+    DashboardLimitationsPanelComponent,
+    DashboardSavedMoneyPanelComponent,
+    DashboardTipPanelComponent
   ],
   imports: [
     BrowserModule,

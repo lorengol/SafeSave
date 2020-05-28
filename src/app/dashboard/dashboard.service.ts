@@ -10,6 +10,6 @@ export class DashboardService {
 
   getExpensesForUser(userId) {
     const httpParams = new HttpParams().set('userId', userId);
-    return this.http.get('/bank/expenses', { params: httpParams });
+    return this.http.get('/expenses/userExpenses', { params: httpParams });
   }
 }
