@@ -1,29 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injectable } from '@angular/core';
-import { HttpClientModule, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
-import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
-import { ReactiveFormsModule, FormsModule, NgControl } from '@angular/forms';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppComponent } from './app.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { httpInterceptor } from './http.interceptor';
-import { OpenPageComponent } from './open-page/open-page.component';
-import { pathToFileURL } from 'url';
-import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
+import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { httpInterceptor } from './http.interceptor';
 import { LoginComponent } from './login/login.component';
+import { OpenPageComponent } from './open-page/open-page.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { DashboardStatisticsPanelComponent } from './dashboard/dashboard-statistics-panel/dashboard-statistics-panel.component';
 import { CreditCardComponent } from './credit-card/credit-card.component';
 import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
+import { DashboardIncomePanelComponent } from './dashboard/dashboard-income-panel/dashboard-income-panel.component';
+import { DashboardComparisonPanelComponent } from './dashboard/dashboard-comparison-panel/dashboard-comparison-panel.component';
+import { DashboardLimitationsPanelComponent } from './dashboard/dashboard-limitations-panel/dashboard-limitations-panel.component';
+import { DashboardSavedMoneyPanelComponent } from './dashboard/dashboard-saved-money-panel/dashboard-saved-money-panel.component';
+import { DashboardTipPanelComponent } from './dashboard/dashboard-tip-panel/dashboard-tip-panel.component';
 
 const routes: Routes = [
   {
@@ -46,6 +53,10 @@ const routes: Routes = [
     path: 'debits',
     component: CreditCardDebitsComponent
   },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
   { 
     path: '', 
     component: OpenPageComponent 
@@ -60,8 +71,15 @@ const routes: Routes = [
     CreditCardRegistrationComponent,
     BankAccountRegistrationComponent,
     LoginComponent,
+    DashboardComponent,
+    DashboardStatisticsPanelComponent,
     CreditCardComponent,
-    CreditCardDebitsComponent
+    CreditCardDebitsComponent,
+    DashboardIncomePanelComponent,
+    DashboardComparisonPanelComponent,
+    DashboardLimitationsPanelComponent,
+    DashboardSavedMoneyPanelComponent,
+    DashboardTipPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +94,7 @@ const routes: Routes = [
     CreditCardDirectivesModule,
     ReactiveFormsModule,
     FormsModule,
+    MatGridListModule,
     CarouselModule,
     MatTableModule,
     MatPaginatorModule

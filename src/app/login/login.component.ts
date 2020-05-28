@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.email = "";
@@ -30,9 +32,8 @@ export class LoginComponent implements OnInit {
     this.http.get("/users/verifyUserLogin", { params: httpParams }).subscribe(
       data => {
         localStorage.setItem('currentUser', JSON.stringify(data));
-        
-        // Should move to dashboard after successfully logged in
 
+        this.router.navigate(['/dashboard'])
       },
       err => Swal.fire({
         icon: 'error',
