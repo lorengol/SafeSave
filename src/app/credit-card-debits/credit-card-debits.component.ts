@@ -28,7 +28,7 @@ export class CreditCardDebitsComponent implements OnInit {
 
   ngOnInit(): void {
     // get credit cards
-    const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
+    const httpParams = new HttpParams().set('user_id', JSON.parse(localStorage.getItem('currentUser')).id);
     this.http.get('/credits', { params: httpParams }).subscribe((res) => {
       console.log(res);
       this.creditCards = res;

@@ -5,7 +5,10 @@ const getExpensesByUserId = async (userId: number) => {
 };
 
 const getExpensesByCreditcardId = async (creditCardId: number) => {
-  return ExpenseDAL.getExpensesByCreditcardId(creditCardId);
+  // return (await ExpenseDAL.getExpensesByCreditcardId(creditCardId));
+  const expenses =  (await ExpenseDAL.getExpensesByCreditcardId(creditCardId));
+  expenses.sort((a,b) => a.date > b.date ? 1 : -1);
+  return expenses;
 };
 
 export { getExpensesByUserId, getExpensesByCreditcardId };

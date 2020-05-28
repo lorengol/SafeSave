@@ -18,7 +18,7 @@ creditCardRoutes.post('/', async (req, res) => {
 
 creditCardRoutes.get('/', async (req, res) => {
   try {
-      let users = await CreditCardBL.getCreditCardByUserId(req.query.userId);
+      let users = await CreditCardBL.getCreditCardByUserId(req.query.user_id);
       res.status(200).send(users);
   } catch (e) {
       res.status(400).send(e.message);

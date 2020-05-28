@@ -18,7 +18,7 @@ class Business {
   @OneToOne((type) => Category, {
     eager: true,
   })
-  @JoinColumn()
+  @JoinColumn({name:'category_id'})
   category: Category;
 
   @Column()

@@ -23,26 +23,26 @@ class Expense {
   @OneToOne((type) => Business, {
     eager: true,
   })
-  @JoinColumn()
+  @JoinColumn({name:'business_id'})
   business: Business;
 
   @Column()
   credit_card_id: number;
 
-  @OneToOne((type) => CreditCard, {
-    eager: true,
-  })
-  @JoinColumn()
-  credit_Card: CreditCard;
+  // @OneToOne((type) => CreditCard, {
+  //   eager: true,
+  // })
+  // @JoinColumn({name:'credit_card_id'})
+  // credit_Card: CreditCard;
 
   @Column()
   bank_account_id: number;
 
-  @OneToOne((type) => BankAccount, {
-    eager: true,
-  })
-  @JoinColumn()
-  bank_account: BankAccount;
+  // @OneToOne((type) => BankAccount, {
+  //   eager: true,
+  // })
+  // @JoinColumn({name:'bank_account_id'})
+  // bank_account: BankAccount;
 
   @Column()
   expense: number;
