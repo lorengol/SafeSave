@@ -59,7 +59,8 @@ export class CreditCardDebitsComponent implements OnInit {
 
     const httpParams = new HttpParams().set('creditCardId', this.activeSlides.slides[0].id.toString());
     this.http.get('/expenses', { params: httpParams }).subscribe((res) => {
-      console.log(res);
+      console.log("id: " + this.activeSlides.slides[0].id.toString())
+      console.log("expenses: " + res);
       this.dataSource = res;
     });     
   }

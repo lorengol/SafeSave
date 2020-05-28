@@ -16,7 +16,7 @@ class BankAccount {
   @OneToOne((type) => Bank, {
     eager: true,
   })
-  @JoinColumn({name:'bank_id'})
+  @JoinColumn({name: 'bank_id'})
   bank: Bank;
 
   @Column()
@@ -25,7 +25,7 @@ class BankAccount {
   @OneToOne((type) => User, {
     eager: true,
   })
-  @JoinColumn({name:'user_id'})
+  @JoinColumn({name: 'user_id'})
   user: User;
 
   @Column()

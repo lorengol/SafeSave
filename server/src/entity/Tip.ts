@@ -16,11 +16,12 @@ class Tip {
   tip_content: string;
 
   @Column()
-  category_Id: number;
+  category_id: number;
+
   @OneToOne((type) => Category, {
     eager: true,
   })
-  @JoinColumn()
+  @JoinColumn({name: 'category_id'})
   category: Category;
 }
 export { Tip };

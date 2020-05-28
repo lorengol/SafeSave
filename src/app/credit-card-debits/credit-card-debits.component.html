@@ -1,6 +1,6 @@
 <div>
   <div style="text-align:center">
-    <owl-carousel-o [options]="customOptions" (change)="getData($event)" (initialized)="getData($event)">
+    <owl-carousel-o [options]="customOptions" (translated)="getData($event)" (initialized)="getData($event)">
       <ng-container *ngFor="let credit of creditCards">
         <ng-template carouselSlide [id]="credit.id" style="height: 40%;">
             <credit-card [card_number]="credit.card_number" [card_holder_name]="credit.card_holder_name" [expiration]="credit.expiration_date"></credit-card>

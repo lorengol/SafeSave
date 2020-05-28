@@ -27,7 +27,7 @@ class CreditCard {
   @OneToOne((type) => User, {
     eager: true,
   })
-  @JoinColumn({name:'user_id'})
+  @JoinColumn({name: 'user_id'})
   user: User;
 
   @Column()

@@ -7,5 +7,4 @@ export const getExpensesByUserId = async (userId: number) => {
 
 export const getExpensesByCreditcardId = async (creditCardId: number) => {
   return getRepository(Expense).find({credit_card_id: creditCardId});
-  // return getRepository(Expense).createQueryBuilder().where({credit_card_id: creditCardId}).orderBy('date','DESC').getMany();
 };
