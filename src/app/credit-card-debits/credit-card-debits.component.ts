@@ -1,3 +1,4 @@
+import { creditCard } from './../credit-card-registration/credit-card-registration.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
@@ -26,11 +27,10 @@ export class CreditCardDebitsComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     // get credit cards
     const httpParams = new HttpParams().set('user_id', JSON.parse(localStorage.getItem('currentUser')).id);
     this.http.get('/credits', { params: httpParams }).subscribe((res) => {
-      console.log(res);
       this.creditCards = res;
     });    
 
@@ -55,13 +55,10 @@ export class CreditCardDebitsComponent implements OnInit {
 
   getData(data: SlidesOutputData) {
     this.activeSlides = data;
-    console.log(this.activeSlides);
 
     const httpParams = new HttpParams().set('creditCardId', this.activeSlides.slides[0].id.toString());
     this.http.get('/expenses', { params: httpParams }).subscribe((res) => {
-      console.log("id: " + this.activeSlides.slides[0].id.toString())
-      console.log("expenses: " + res);
       this.dataSource = res;
-    });     
+    });
   }
 }
