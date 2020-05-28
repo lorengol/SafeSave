@@ -1,21 +1,24 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FormBuilder, Validators } from '@angular/forms';
 
 export class limitation {
-  id: number;
-  user_Id: number;
-  category_Id: number;
+  user_id: number;
+  category_id: number;
   limit: number;
+  category?: Category;
 }
 
-export class Category{
+export class Category {
   id: number;
   name: string;
 }
 
 export interface DialogData {
-  limitation: limitation;
+  category_id: number;
+  category: Category;
+  limit: number;
 }
 
 @Component({
@@ -25,19 +28,32 @@ export interface DialogData {
 })
 export class LimitationsComponent implements OnInit {
   limitations;
-  limitation: limitation = new limitation;
+  category_id: number;
+  category: Category;
+  limit: number;
+  limitationToPush: limitation;
 
   constructor(private http: HttpClient, public dialog: MatDialog) { }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LimitationRegistration, {
-      width: '250px',
-      data: {id: this.limitation.id, limit: this.limitation.limit}
+      width: '270px',
+      data: { category: this.category, limit: this.limit }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      // this.limitations.push(result);
+      if (result != null) {
+        const newLimitation:limitation = {
+        user_id: JSON.parse(localStorage.getItem('currentUser')).id,
+        limit: result.limit,
+        category_id: result.category.id,
+      }
+      this.http.post("/limitations", newLimitation, { responseType: 'text' }).subscribe(
+        data => {});
+        newLimitation.category = result.category;
+        this.limitations.push(newLimitation);
+      }
     });
   }
 
@@ -49,33 +65,47 @@ export class LimitationsComponent implements OnInit {
     });
   }
 
+  onRemove(){
+
+  }
+
+  onEdit(){
+
+  }
+
 }
 
 @Component({
   selector: 'limitation-registration',
   templateUrl: './limitation-registration.html',
+  styleUrls: ['./limitations.component.css']
 })
 export class LimitationRegistration implements OnInit {
   categories;
+  limitationForm;
+
+  get f() { return this.limitationForm.controls; }
 
   constructor(
+    private formBuilder: FormBuilder, 
     private http: HttpClient,
     public dialogRef: MatDialogRef<LimitationRegistration>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
     ngOnInit(): void {
+      this.limitationForm = this.formBuilder.group({
+        categoryName: ['', Validators.required],
+        limitPrice: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]]
+      })
       this.http.get('/category').subscribe((res) => {
         this.categories = res
         console.log(res);
       });
+      console.log(this.f);
     }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-  // onCategorySelect(event) {
-  //   this.bankAccountService.getBankBranchesByBankId(event.value).subscribe(branches => this.bankBranches = branches);
-  // }
 
 }

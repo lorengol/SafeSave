@@ -14,22 +14,23 @@ class Limitation {
   id: number;
 
   @Column()
-  user_Id: number;
+  user_id: number;
 
   @OneToOne((type) => User, {
     eager: true,
   })
-  @JoinColumn()
+
+  @JoinColumn({name: 'user_id'})
   user: User;
   
-
   @Column()
-  category_Id: number;
+  category_id: number;
 
   @OneToOne((type) => Category, {
     eager: true,
   })
-  @JoinColumn()
+
+  @JoinColumn({name: 'category_id'})
   category: Category;
 
   @Column()
