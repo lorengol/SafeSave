@@ -11,6 +11,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
@@ -20,7 +24,8 @@ import { LoginComponent } from './login/login.component';
 import { OpenPageComponent } from './open-page/open-page.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardStatisticsPanelComponent } from './dashboard/dashboard-statistics-panel/dashboard-statistics-panel.component';
-
+import { CreditCardComponent } from './credit-card/credit-card.component';
+import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
 
 const routes: Routes = [
   {
@@ -38,6 +43,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  }, 
+  {
+    path: 'debits',
+    component: CreditCardDebitsComponent
   },
   {
     path: 'dashboard',
@@ -58,7 +67,9 @@ const routes: Routes = [
     BankAccountRegistrationComponent,
     LoginComponent,
     DashboardComponent,
-    DashboardStatisticsPanelComponent
+    DashboardStatisticsPanelComponent,
+    CreditCardComponent,
+    CreditCardDebitsComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +84,10 @@ const routes: Routes = [
     CreditCardDirectivesModule,
     ReactiveFormsModule,
     FormsModule,
-    MatGridListModule
+    MatGridListModule,
+    CarouselModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]
