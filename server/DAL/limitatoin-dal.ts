@@ -12,3 +12,7 @@ export const getAllUserLimitations = async (userId: number) => {
 export const saveNewLimitation = async (newLimitation: Limitation) => {
   return getRepository(Limitation).insert(newLimitation);
 };
+
+export const deleteLimitationById = async (id: number) => {
+  return getRepository(Limitation).delete(id);
+};
