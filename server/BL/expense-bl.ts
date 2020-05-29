@@ -11,4 +11,9 @@ const getExpensesByCreditcardId = async (creditCardId: number) => {
   return expenses;
 };
 
-export { getExpensesByUserId, getExpensesByCreditcardId };
+const getAllExpensesByCategory = async (userId: number, categoryId: number ) => {
+  const allExpensesByUser = await getExpensesByUserId(userId);
+  return allExpensesByUser.map(expense => expense.business.category_id === categoryId);
+}
+  
+export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory };
