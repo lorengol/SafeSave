@@ -23,9 +23,10 @@ export class PaymentAccountsComponent implements OnInit {
   }
 
   getUserBanks() {
-    const httpParams = new HttpParams().set('userId', localStorage.getItem('currentUser'));
+    const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
     this.http.get('/bank/UserBankAcounts', { params: httpParams }).subscribe( bankAccounts => {
       this.bankAcoounts = bankAccounts;
+      console.log(this.bankAcoounts)
     })
   }
 
@@ -35,9 +36,12 @@ export class PaymentAccountsComponent implements OnInit {
 
   openBankAccountModal() {
     this.dialog.open(BankAccountRegistrationComponent, {
-      height: '500px',
       width: '500px',
     });
+  }
+
+  deleteCredidCard() {
+    
   }
 
   openCreditCardModal() {

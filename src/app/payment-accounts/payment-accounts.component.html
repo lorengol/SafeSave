@@ -1,3 +1,4 @@
+<div>
 <mat-card class="banks-card">
     <mat-card-header>
       <mat-card-title>Bank Accounts</mat-card-title>
@@ -11,13 +12,13 @@
               <th>Owner</th>
               <th></th>
             </tr>
-            <tr>
-              <td>Hapoalim</td>
+            <tr *ngFor="let account of bankAcoounts">
+              <td>{{account.bank.name}}</td>
               <td>Shoham</td>
-              <td>123456</td>
-              <td>Lior Paz</td>
+              <td>{{account.account_number}}</td>
+              <td>{{account.first_Name}} {{account.last_Name}}</td>
               <td>
-                <button mat-stroked-button>remove</button>
+                <button mat-stroked-button (click)="deleteCredidCard()">remove</button>
               </td>            
             </tr>
         </table>
@@ -34,7 +35,7 @@
     <mat-card-content>
         <table>
             <tr>
-              <th>Card Nomber</th>
+              <th>Card Number</th>
               <th>Owner</th>
               <th></th>
             </tr>
@@ -55,4 +56,5 @@
       <button mat-button (click)="openCreditCardModal()">add</button>
     </mat-card-actions>
 </mat-card>
+</div>
   

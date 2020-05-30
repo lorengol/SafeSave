@@ -3,6 +3,13 @@
             <h2>Add Bank Account</h2>
             <p>
                 <mat-form-field>
+                    <mat-label>Account number</mat-label>
+                    <input [(ngModel)]="bankAccountToRegister.account_number" matInput formControlName="accountNumber" required>
+                    <mat-error *ngIf="formValidations.firstName.errors?.required">Account number is required</mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
                     <mat-label>First name</mat-label>
                     <input [(ngModel)]="bankAccountToRegister.first_Name" matInput formControlName="firstName" required>
                     <mat-error *ngIf="formValidations.firstName.errors?.required">First name is required</mat-error>
