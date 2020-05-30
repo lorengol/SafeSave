@@ -18,4 +18,8 @@ const getBankAccountByUserId = async (userId: number) => {
   return BankAccountDAL.getBankAccountByUserId(userId);
 };
 
-export { getAllBankAccounts, saveBankAccount, getBankAccountByUserId };
+const deleteBankAccountById = async (bankAccount: number) => {
+  return BankAccountDAL.deleteBankAccountById(bankAccount);
+};
+
+export { getAllBankAccounts, saveBankAccount, getBankAccountByUserId, deleteBankAccountById };

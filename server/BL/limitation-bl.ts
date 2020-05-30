@@ -12,4 +12,19 @@ const getLimitationById = async (id: number) => {
 const saveNewLimitation = async (newLimiation: Limitation) => {
   return LimitationDAL.saveNewLimitation(newLimiation);
 };
-export { getAllUserLimitations, getLimitationById, saveNewLimitation };
+
+const deleteLimitationById = async (id: number) => {
+  return LimitationDAL.deleteLimitationById(id);
+};
+
+const updateLimitation = async (updatedLimitatipn: Limitation) => {
+  return LimitationDAL.updateLimitation(updatedLimitatipn);
+};
+
+export {
+  getAllUserLimitations,
+  getLimitationById,
+  saveNewLimitation,
+  deleteLimitationById,
+  updateLimitation
+};
