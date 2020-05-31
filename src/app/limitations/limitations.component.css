@@ -24,20 +24,30 @@ html{
     flex-wrap:wrap;
     counter-reset:number;
   }
-  
+
   .subject li{
     position: relative;
     width: 340px;
     margin: 18px 30px 0 0;
-    padding: 14px 0;
+    padding: 14px 0;  
     font-size: 1.2rem;
-    color: #333;
+    /* color: #333; */
     text-align: center;
-    font-weight: bold;
+    /* font-weight: bold; */
     background: #fff;
     border-radius: 50px;
   }
-  
+
+  .icon{
+    cursor: pointer;
+    color: #3f51b5;
+  }
+
+  .limit{
+    /* color: #3f51b5; */
+    font-weight: bold;
+  }
+
   .subject li:before{
     position: absolute;
     top: 20%;
@@ -79,8 +89,8 @@ html{
     margin: 18px 0 0;
   }
   
-  @media (max-width: 899px){
+  /* @media (max-width: 899px){
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-  }
+  } */

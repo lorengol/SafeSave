@@ -2,6 +2,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
+import { pipe } from 'rxjs';
+import { Limitation } from 'server/src/entity/Limitation';
 
 export class limitation {
   user_id: number;
@@ -65,11 +67,12 @@ export class LimitationsComponent implements OnInit {
     });
   }
 
-  onRemove(){
-
+  onRemove(limitation){
+    let index = this.limitations.indexOf(limitation);
+    this.limitations.splice(index,1);
   }
 
-  onEdit(){
+  onEdit(limitation){
 
   }
 
@@ -80,6 +83,7 @@ export class LimitationsComponent implements OnInit {
   templateUrl: './limitation-registration.html',
   styleUrls: ['./limitations.component.css']
 })
+
 export class LimitationRegistration implements OnInit {
   categories;
   limitationForm;

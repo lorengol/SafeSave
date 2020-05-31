@@ -1,18 +1,19 @@
 <body>
     <h1>My Limitations</h1>
+    <mat-icon class="icon" (click)="openDialog()">add_circle</mat-icon>
     <div class="subject scroll">
         <ol>
             <li *ngFor="let limitation of limitations">
-                 <div>{{limitation.category.name}}</div>
-                 <div>{{limitation.limit}}</div> 
-                <button type="submit" (click)="onEdit()">Edit</button>
-                <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-plus-sign"></span> Plus
-                  </button>
-                <button type="submit" (click)="onRemove()" mat-stroked-button>Remove</button>
+                 {{limitation.category.name}}
+                 <span class="limit">
+                ${{limitation.limit}}
+                 </span>
+                 <div>
+                 <mat-icon class="icon" (click)="onEdit(limitation)">edit</mat-icon>
+                <mat-icon class="icon" (click)="onRemove(limitation)">delete_outline</mat-icon>
+                 </div>
             </li>
         </ol>
     </div>
-<button type="submit" (click)="openDialog()" mat-stroked-button>Add limitation</button> 
-<button type="button" class="glyphicon glyphicon-plus-sign">Add limitation</button> 
+<!-- <button  mat-stroked-button>Add limitation</button>  -->
 </body>

@@ -21,6 +21,7 @@ import { BankAccountRegistrationComponent } from './bank-account-registration/ba
 import { LoginComponent } from './login/login.component';
 import { LimitationsComponent, LimitationRegistration } from './limitations/limitations.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
 const routes: Routes = [
   {
@@ -73,9 +74,11 @@ const routes: Routes = [
     CreditCardDirectivesModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
