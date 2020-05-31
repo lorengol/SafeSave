@@ -20,35 +20,18 @@ export class DashboardStatisticsPanelComponent implements OnInit {
     this.dashboardService.getExpensesForUser(JSON.parse(localStorage.getItem('currentUser')).id)
       .subscribe(data => {
         this.expenses = data;
-        const groupedByExpenses = this.groupExpenses(data);
 
-        this.createChart(ctx, groupedByExpenses);
+        this.createChart(ctx);
       });
   }
 
-  private groupExpenses(expenses) {
-    const formatedExpenses = expenses.map(expense => {
-      return {
-        expense: expense.expense,
-        category: expense.business.category.name
-      };
-    });
-
-    return _(formatedExpenses)
-      .groupBy('category')
-      .map((expense, category) => ({
-        category: category,
-        expense: _.sumBy(expense, 'expense')
-      })).value();
-  }
-
-  private createChart(ctx, groupedByExpenses) {
+  private createChart(ctx) {
     const data = {
       datasets: [{
-        data: groupedByExpenses.map(expense => expense.expense),
+        data: this.expenses.map(expense => expense.expense),
         backgroundColor: ['#083D77', '#F94144', '#e5989b', '#F8961E', '#F9C74F', '#90BE6D', '#43AA8B', '#577590']
       }],
-      labels: groupedByExpenses.map(expense => expense.category)
+      labels: this.expenses.map(expense => expense.category)
     }
 
     new Chart(ctx, {
