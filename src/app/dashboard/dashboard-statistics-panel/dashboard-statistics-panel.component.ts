@@ -54,6 +54,10 @@ export class DashboardStatisticsPanelComponent implements OnInit {
     });
   }
 
+  // ******************************************************************
+  // *    this intialization is only for rendering the text inside    *
+  // *    the chart, and is not needed for every use of Chart.js      *
+  // ******************************************************************
   private initChart() {
     Chart.pluginService.register({
       beforeDraw: function (chart) {
