@@ -14,4 +14,9 @@ const getUserMonthlyExpenses = async (userId: number) => {
   return ExpenseDAL.getUserMonthlyExpenses(userId);
 };
 
-export { getExpensesByUserId, getExpensesByCreditcardId, getUserMonthlyExpenses };
+const getAllExpensesByCategory = async (userId: number, categoryId: number ) => {
+  const allExpensesByUser = await getExpensesByUserId(userId);
+  return allExpensesByUser.map(expense => expense.business.category_id === categoryId);
+}
+  
+export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory, getUserMonthlyExpenses };
