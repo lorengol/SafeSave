@@ -58,9 +58,9 @@ export class LimitationsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id)
+    const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
     this.http.get('/limitations',{ params: httpParams }).subscribe((res) => {
-      this.limitations = res
+      this.limitations = res;
       console.log(res);
     });
   }

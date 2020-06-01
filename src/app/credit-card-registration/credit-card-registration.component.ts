@@ -46,7 +46,6 @@ export class CreditCardRegistrationComponent implements OnInit {
       CVV: this.CreditCardToRegister.CVV
     }
     this.http.post('/credits', newCard, { responseType: 'text' }).subscribe((res) => {
-      console.log('success');
     });
   }
 }

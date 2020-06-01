@@ -14,7 +14,8 @@ import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
@@ -33,7 +34,7 @@ import { DashboardLimitationsPanelComponent } from './dashboard/dashboard-limita
 import { DashboardSavedMoneyPanelComponent } from './dashboard/dashboard-saved-money-panel/dashboard-saved-money-panel.component';
 import { DashboardTipPanelComponent } from './dashboard/dashboard-tip-panel/dashboard-tip-panel.component';
 import { LimitationsComponent, LimitationRegistration } from './limitations/limitations.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { ProgressBarColorDirective } from './progress-bar-color.directive';
 
 const routes: Routes = [
   {
@@ -88,7 +89,8 @@ const routes: Routes = [
     DashboardSavedMoneyPanelComponent,
     DashboardTipPanelComponent,
     LimitationsComponent,
-    LimitationRegistration
+    LimitationRegistration,
+    ProgressBarColorDirective
   ],
   imports: [
     BrowserModule,
@@ -107,8 +109,8 @@ const routes: Routes = [
     CarouselModule,
     MatTableModule,
     MatPaginatorModule,
-    MatProgressBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]

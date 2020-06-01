@@ -1,1 +1,10 @@
-<mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+<div *ngFor="let limitation of limitations">
+    <div class="container">
+        <div class="progressbar-title">
+            <p class="category-name">{{ limitation.category.name }}</p>
+        </div>
+        <div id="progressbar">
+            <div class="percentage" [ngStyle]="{'background-color': limitation.color, 'width': limitation.percentage}">{{ limitation.percentage }}</div>
+        </div>
+    </div>
+</div>

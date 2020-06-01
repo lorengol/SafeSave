@@ -1,3 +1,23 @@
-/* mat-grid-tile {
+mat-grid-tile {
     background: lightblue;
- } */
+ }
+
+ mat-card {
+    width: calc(100% - 70px);
+    height: calc(100% - 70px);
+}
+
+.mat-card.scrollable-content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+  
+.mat-card.scrollable-content > .mat-card-title-group {
+    display: block;
+}
+  
+.mat-card.scrollable-content > .mat-card-content {
+    overflow-y: auto;
+}
