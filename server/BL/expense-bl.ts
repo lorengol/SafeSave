@@ -5,10 +5,13 @@ const getExpensesByUserId = async (userId: number) => {
 };
 
 const getExpensesByCreditcardId = async (creditCardId: number) => {
-  // return (await ExpenseDAL.getExpensesByCreditcardId(creditCardId));
   const expenses =  (await ExpenseDAL.getExpensesByCreditcardId(creditCardId));
   expenses.sort((a,b) => a.date > b.date ? 1 : -1);
   return expenses;
+};
+
+const getUserMonthlyExpenses = async (userId: number) => {
+  return ExpenseDAL.getUserMonthlyExpenses(userId);
 };
 
 const getAllExpensesByCategory = async (userId: number, categoryId: number ) => {
@@ -17,4 +20,4 @@ const getAllExpensesByCategory = async (userId: number, categoryId: number ) => 
   return expensesByCategory.reduce((total, value) => total + value.expense, 0).toString();
 };
   
-export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory };
+export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory, getUserMonthlyExpenses };

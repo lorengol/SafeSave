@@ -16,3 +16,7 @@ export const saveNewLimitation = async (newLimitation: Limitation) => {
 export const deleteLimitationById = async (id: number) => {
   return getRepository(Limitation).delete(id);
 };
+
+export const updateLimitation = async (updatedLimitation) => {
+  return getRepository(Limitation).save(updatedLimitation);
+};

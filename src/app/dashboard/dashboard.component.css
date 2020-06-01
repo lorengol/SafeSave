@@ -1,6 +1,6 @@
 mat-grid-tile {
     background: lightblue;
- }
+}
 
  mat-card {
     width: calc(100% - 70px);
@@ -21,3 +21,7 @@ mat-grid-tile {
 .mat-card.scrollable-content > .mat-card-content {
     overflow-y: auto;
 }
+ 
+ /* mat-card {
+    width: 80%;
+} */
