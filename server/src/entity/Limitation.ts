@@ -18,16 +18,18 @@ class Limitation {
 
   @OneToOne((type) => User, {
     eager: true,
+    onDelete: 'CASCADE',
   })
 
   @JoinColumn({name: 'user_id'})
   user: User;
-  
+
   @Column()
   category_id: number;
 
   @OneToOne((type) => Category, {
     eager: true,
+    onDelete: 'CASCADE',
   })
 
   @JoinColumn({name: 'category_id'})

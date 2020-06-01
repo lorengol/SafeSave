@@ -15,7 +15,7 @@ class BankBranch {
   @OneToOne((type) => Bank, {
     eager: true,
   })
-  @JoinColumn()
+  @JoinColumn({name: 'bank_id'})
   bank: Bank;
 }
 

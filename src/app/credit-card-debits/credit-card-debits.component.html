@@ -1,0 +1,42 @@
+<div>
+  <div style="text-align:center">
+    <owl-carousel-o [options]="customOptions" (translated)="getData($event)" (initialized)="getData($event)">
+      <ng-container *ngFor="let credit of creditCards">
+        <ng-template carouselSlide [id]="credit.id" style="height: 40%;">
+            <credit-card [card_number]="credit.card_number" [card_holder_name]="credit.card_holder_name" [expiration]="credit.expiration_date"></credit-card>
+        </ng-template> 
+      </ng-container> 
+    </owl-carousel-o>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+    
+      <!-- <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container> -->
+    
+      <ng-container matColumnDef="business">
+        <th mat-header-cell *matHeaderCellDef> Business </th>
+        <td mat-cell *matCellDef="let element"> {{element.business.name}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="expense">
+        <th mat-header-cell *matHeaderCellDef> Expense </th>
+        <td mat-cell *matCellDef="let element"> {{element.expense}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>
+  
+  

@@ -15,8 +15,9 @@ class BankAccount {
 
   @OneToOne((type) => Bank, {
     eager: true,
+    onDelete: 'CASCADE',
   })
-  @JoinColumn()
+  @JoinColumn({name: 'bank_id'})
   bank: Bank;
 
   @Column()
@@ -24,8 +25,9 @@ class BankAccount {
 
   @OneToOne((type) => User, {
     eager: true,
+    onDelete: 'CASCADE',
   })
-  @JoinColumn()
+  @JoinColumn({name: 'user_id'})
   user: User;
 
   @Column()

@@ -23,7 +23,7 @@ class Expense {
   @OneToOne((type) => Business, {
     eager: true,
   })
-  @JoinColumn()
+  @JoinColumn({name:'business_id'})
   business: Business;
 
   @Column()
@@ -32,7 +32,7 @@ class Expense {
   @OneToOne((type) => CreditCard, {
     eager: true,
   })
-  @JoinColumn()
+  @JoinColumn({name:'credit_card_id'})
   credit_Card: CreditCard;
 
   @Column()
@@ -41,7 +41,13 @@ class Expense {
   @OneToOne((type) => BankAccount, {
     eager: true,
   })
-  @JoinColumn()
+  @JoinColumn({name:'bank_account_id'})
   bank_account: BankAccount;
+
+  @Column()
+  expense: number;
+
+  @Column()
+  date: string;
 }
 export { Expense };
