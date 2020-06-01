@@ -13,7 +13,8 @@ const getExpensesByCreditcardId = async (creditCardId: number) => {
 
 const getAllExpensesByCategory = async (userId: number, categoryId: number ) => {
   const allExpensesByUser = await getExpensesByUserId(userId);
-  return allExpensesByUser.map(expense => expense.business.category_id === categoryId);
-}
+  const expensesByCategory = allExpensesByUser.filter(expense => expense.business.category_id == categoryId);
+  return expensesByCategory.reduce((total, value) => total + value.expense, 0).toString();
+};
   
 export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory };

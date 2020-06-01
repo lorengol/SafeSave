@@ -14,23 +14,25 @@ class Limitation {
   id: number;
 
   @Column()
-  user_Id: number;
+  user_id: number;
 
   @OneToOne((type) => User, {
     eager: true,
     onDelete: 'CASCADE',
   })
-  @JoinColumn()
-  user: User;
 
+  @JoinColumn({name: 'user_id'})
+  user: User;
+  
   @Column()
-  category_Id: number;
+  category_id: number;
 
   @OneToOne((type) => Category, {
     eager: true,
     onDelete: 'CASCADE',
   })
-  @JoinColumn()
+
+  @JoinColumn({name: 'category_id'})
   category: Category;
 
   @Column()

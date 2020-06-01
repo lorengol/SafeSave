@@ -1,6 +1,6 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgModule, Injectable, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HttpClientModule, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -32,6 +32,8 @@ import { DashboardComparisonPanelComponent } from './dashboard/dashboard-compari
 import { DashboardLimitationsPanelComponent } from './dashboard/dashboard-limitations-panel/dashboard-limitations-panel.component';
 import { DashboardSavedMoneyPanelComponent } from './dashboard/dashboard-saved-money-panel/dashboard-saved-money-panel.component';
 import { DashboardTipPanelComponent } from './dashboard/dashboard-tip-panel/dashboard-tip-panel.component';
+import { LimitationsComponent, LimitationRegistration } from './limitations/limitations.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const routes: Routes = [
   {
@@ -61,6 +63,10 @@ const routes: Routes = [
   { 
     path: '', 
     component: OpenPageComponent 
+  },
+  { 
+    path: 'limitations', 
+    component: LimitationsComponent 
   }
 ];
 
@@ -80,7 +86,9 @@ const routes: Routes = [
     DashboardComparisonPanelComponent,
     DashboardLimitationsPanelComponent,
     DashboardSavedMoneyPanelComponent,
-    DashboardTipPanelComponent
+    DashboardTipPanelComponent,
+    LimitationsComponent,
+    LimitationRegistration
   ],
   imports: [
     BrowserModule,
@@ -99,7 +107,8 @@ const routes: Routes = [
     CarouselModule,
     MatTableModule,
     MatPaginatorModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]
