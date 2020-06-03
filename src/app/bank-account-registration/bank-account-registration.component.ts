@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BankAccountRegistrationService } from './bank-account-registration.service';
+import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
+import { PaymentAccountsComponent } from '../payment-accounts/payment-accounts.component';
 
 export class bankAccount {
   account_number: number;
@@ -24,14 +27,14 @@ export class bank {
   styleUrls: ['./bank-account-registration.component.css']
 })
 export class BankAccountRegistrationComponent implements OnInit {
-
+  
   banks;
   bankBranches;
   bankAccountToRegister: bankAccount = {} as any;
   bankAccountRegistrationForm: any;
 
   constructor(private bankAccountService: BankAccountRegistrationService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   get formValidations() { return this.bankAccountRegistrationForm.controls; }
 
@@ -64,7 +67,14 @@ export class BankAccountRegistrationComponent implements OnInit {
     };
 
     this.bankAccountService.addBankAccount(newBankAccount).subscribe(
-      data => console.log('success'),
+      data => {Swal.fire({
+        text: 'Bank account successfuly added!',
+        icon: 'success',
+        confirmButtonColor: 'white',
+        timer: 1500
+      });
+      this.dialog.closeAll();
+    },
       error => console.log('error', error)
     );
   }

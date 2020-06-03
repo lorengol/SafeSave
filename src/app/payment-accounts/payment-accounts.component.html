@@ -14,11 +14,11 @@
             </tr>
             <tr *ngFor="let account of bankAcoounts">
               <td>{{account.bank.name}}</td>
-              <td>Shoham</td>
+              <td>{{account.branch.name}}</td>
               <td>{{account.account_number}}</td>
               <td>{{account.first_Name}} {{account.last_Name}}</td>
               <td>
-                <button mat-stroked-button (click)="deleteCredidCard()">remove</button>
+                <button mat-stroked-button (click)="deleteBankAccount(account.account_number)">remove</button>
               </td>            
             </tr>
         </table>
@@ -39,15 +39,15 @@
               <th>Owner</th>
               <th></th>
             </tr>
-            <tr>
+            <tr *ngFor="let card of creditCards">
                 <td>
-                    **** **** **** 1234
+                    **** **** **** {{card.card_number}}
                 </td>
                 <td>
-                    Lior Paz
+                    {{card.card_holder_name}}
                 </td>
               <td>
-                <button mat-stroked-button>remove</button>
+                <button mat-stroked-button (click)="deleteCreditCard(card.id)">remove</button>
               </td>            
             </tr>
         </table>

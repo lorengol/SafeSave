@@ -26,28 +26,58 @@ export class PaymentAccountsComponent implements OnInit {
     const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
     this.http.get('/bank/UserBankAcounts', { params: httpParams }).subscribe( bankAccounts => {
       this.bankAcoounts = bankAccounts;
-      console.log(this.bankAcoounts)
-    })
+    })  
   }
 
   getUsersCreditCards() {
-
+    const httpParams = new HttpParams().set('user_id', JSON.parse(localStorage.getItem('currentUser')).id);
+    this.http.get('/credits', { params: httpParams }).subscribe( creditCards => {
+      this.creditCards = creditCards;
+      
+      for(let card of this.creditCards) {
+        card.card_number = card.card_number.substring(12);
+      }
+    })
   }
 
   openBankAccountModal() {
-    this.dialog.open(BankAccountRegistrationComponent, {
+    const bankAccountsDialog = this.dialog.open(BankAccountRegistrationComponent, {
       width: '500px',
+    });
+
+    bankAccountsDialog.afterClosed().subscribe(() => {
+     this.getUserBanks();
     });
   }
 
-  deleteCredidCard() {
+  deleteBankAccount(id) {
+    const httpParams = new HttpParams().set('bankAccountId', id);
+    this.http.get('/bank/deleteBankAcount', { params: httpParams }).subscribe( res => {
+     this.bankAcoounts = this.bankAcoounts.filter(account => account.account_number != id)
+    }, 
+    error => console.log(error) 
+    );
     
   }
 
   openCreditCardModal() {
-    this.dialog.open(CreditCardRegistrationComponent, {
+    let creditCardDialog = this.dialog.open(CreditCardRegistrationComponent, {
       height: '500px',
       width: '500px',
     });
+
+    creditCardDialog.afterClosed().subscribe(() => {
+      this.getUsersCreditCards();
+     });
+  }
+
+  deleteCreditCard(id) {
+    const httpParams = new HttpParams().set('creditCardId', id);
+    this.http.get('/credits/deleteCreditCard', { params: httpParams }).subscribe( res => {
+     this.creditCards = this.creditCards.filter(card => card.id != id);
+    }, 
+    error => console.log(error) 
+    );
+    
   }
 }
