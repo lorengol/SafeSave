@@ -1,16 +1,17 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -24,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { OpenPageComponent } from './open-page/open-page.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { DashboardStatisticsPanelComponent } from './dashboard/dashboard-statistics-panel/dashboard-statistics-panel.component';
+import { PaymentAccountsComponent } from './payment-accounts/payment-accounts.component';
 import { CreditCardComponent } from './credit-card/credit-card.component';
 import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
 import { DashboardIncomePanelComponent } from './dashboard/dashboard-income-panel/dashboard-income-panel.component';
@@ -57,6 +59,10 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent
   },
+  {
+    path: 'Accounts',
+    component: PaymentAccountsComponent
+  },
   { 
     path: '', 
     component: OpenPageComponent 
@@ -73,6 +79,7 @@ const routes: Routes = [
     LoginComponent,
     DashboardComponent,
     DashboardStatisticsPanelComponent,
+    PaymentAccountsComponent,
     CreditCardComponent,
     CreditCardDebitsComponent,
     DashboardIncomePanelComponent,
@@ -97,6 +104,8 @@ const routes: Routes = [
     MatGridListModule,
     CarouselModule,
     MatTableModule,
+    MatDialogModule,
+    CarouselModule,
     MatPaginatorModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],

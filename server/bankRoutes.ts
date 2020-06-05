@@ -30,3 +30,21 @@ bankRoutes.get('/bankBranches', async (req, res) => {
         res.status(400).send(e.message);
     }
 });
+
+bankRoutes.get('/UserBankAcounts', async (req, res) => {
+    try {
+        res.status(200).send(await BankAccountBL.getBankAccountByUserId(req.query.userId));
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});
+
+bankRoutes.get('/deleteBankAcount', async (req, res) => {
+    try {
+        BankAccountBL.deleteBankAccountById(req.query.bankAccountId)
+        res.status(201).send({message: 'deleted successfully'});
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});
+
