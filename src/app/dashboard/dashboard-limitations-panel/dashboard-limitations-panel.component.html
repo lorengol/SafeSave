@@ -1,1 +1,17 @@
-<p>dashboard-limitations-panel works!</p>
+<ngx-simplebar [options]="options">
+    <h2>
+        <b>Limitation</b>
+    </h2>
+    <div *ngFor="let limitation of limitations">
+        <div class="container">
+            <div class="progressbar-title">
+                <p class="category-name">{{ limitation.category.name }}</p>
+            </div>
+            <div id="progressbar">
+                <div class="percentage"
+                    [ngStyle]="{'background-color': limitation.color, 'width': limitation.percentage}">
+                    {{ limitation.percentage }}</div>
+            </div>
+        </div>
+    </div>
+</ngx-simplebar>

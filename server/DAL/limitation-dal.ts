@@ -6,7 +6,7 @@ export const getLimitationById = async (id: number) => {
 };
 
 export const getAllUserLimitations = async (userId: number) => {
-  return getRepository(Limitation).find({ user_Id: userId });
+  return getRepository(Limitation).find({ user_id: userId });
 };
 
 export const saveNewLimitation = async (newLimitation: Limitation) => {

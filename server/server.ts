@@ -5,6 +5,8 @@ import express from 'express';
 import { userRoutes } from './userRoutes';
 import {creditCardRoutes} from './creditCardRoutes';
 import { createConnection } from "typeorm";
+import { limitationRoutes } from './limitationsRoutes';
+import { categoryRoutes } from './categoryRoutes';
 const app = express();
 
 // Allow any method from any host and log requests
@@ -29,7 +31,13 @@ app.use('/users', userRoutes);
 app.use('/credits', creditCardRoutes);
 
 // Bank
-app.use('/bank', bankRoutes)
+app.use('/bank', bankRoutes);
+
+//Limitations
+app.use('/limitations', limitationRoutes);
+
+//Category
+app.use('/category', categoryRoutes);
 
 // Expense
 app.use('/expenses', expenseRoutes)

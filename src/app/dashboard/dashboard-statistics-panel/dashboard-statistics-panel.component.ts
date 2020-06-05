@@ -20,7 +20,6 @@ export class DashboardStatisticsPanelComponent implements OnInit {
     this.dashboardService.getExpensesForUser(JSON.parse(localStorage.getItem('currentUser')).id)
       .subscribe(data => {
         this.expenses = data;
-
         this.createChart(ctx);
       });
   }
@@ -42,8 +41,9 @@ export class DashboardStatisticsPanelComponent implements OnInit {
       type: 'doughnut',
       data: data,
       options: {
+        responsive: true,
         legend: {
-          position: 'bottom'
+          position: 'bottom',
         },
         elements: {
           center: {

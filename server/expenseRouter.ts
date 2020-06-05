@@ -20,6 +20,14 @@ expenseRoutes.get('/userExpenses', async (req, res) => {
     }
 });
 
+expenseRoutes.get('/expensesByCategory', async (req, res) => {
+    try {
+        res.status(200).send(await ExpenseBL.getAllExpensesByCategory(req.query.userId, req.query.categoryId));
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});
+
 expenseRoutes.get('/monthlyExpenses', async (req, res) =>{
     try {
         res.status(200).send(await ExpenseBL.getUserMonthlyExpenses(req.query.userId));
