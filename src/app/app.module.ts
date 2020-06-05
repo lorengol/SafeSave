@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatListModule } from '@angular/material/list';
+import { SimplebarAngularModule } from 'simplebar-angular';
 
 import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
@@ -110,7 +111,8 @@ const routes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    SimplebarAngularModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]

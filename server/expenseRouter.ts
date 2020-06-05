@@ -27,6 +27,7 @@ expenseRoutes.get('/expensesByCategory', async (req, res) => {
         res.status(400).send(e.message);
     }
 });
+
 expenseRoutes.get('/monthlyExpenses', async (req, res) =>{
     try {
         res.status(200).send(await ExpenseBL.getUserMonthlyExpenses(req.query.userId));

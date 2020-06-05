@@ -1,4 +1,5 @@
 import * as ExpenseDAL from '../DAL/expense-dal';
+import { Expense } from '../src/entity/Expense';
 
 const getExpensesByUserId = async (userId: number) => {
   return ExpenseDAL.getExpensesByUserId(userId);
@@ -14,10 +15,8 @@ const getUserMonthlyExpenses = async (userId: number) => {
   return ExpenseDAL.getUserMonthlyExpenses(userId);
 };
 
-const getAllExpensesByCategory = async (userId: number, categoryId: number ) => {
-  const allExpensesByUser = await getExpensesByUserId(userId);
-  const expensesByCategory = allExpensesByUser.filter(expense => expense.business.category_id == categoryId);
-  return expensesByCategory.reduce((total, value) => total + value.expense, 0).toString();
+const getAllExpensesByCategory = async (userId: number, categoryId: number) => {
+ return ExpenseDAL.getUserMonthlyExpensesByCategory(userId, categoryId);
 };
   
 export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory, getUserMonthlyExpenses };

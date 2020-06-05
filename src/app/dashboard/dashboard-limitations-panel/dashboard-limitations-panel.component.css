@@ -18,11 +18,20 @@
 }
 
 .container {        
-    padding: 4px;
+    padding-bottom: 4px;
 }
 
 .category-name {
     margin: 4px auto;
     font-weight: bold;
     padding-left: 4px;
+}
+
+ngx-simplebar {
+    width: 240px;
+    height: 240px;
+}
+
+#progressbar {
+    width: 94%;
 }
