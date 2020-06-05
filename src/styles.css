@@ -6,7 +6,11 @@
     font-family: 'OpenSansHebrew';
 
 }
-html, body { height: 100%;    background-color: #f2f2f2; }
+html, body { 
+    height: 99%;
+    background-color: #f2f2f2;
+    margin: 0px;
+}
 
 button{
     color:  #3f51b5 !important;

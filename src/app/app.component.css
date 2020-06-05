@@ -1,15 +1,16 @@
 .mat-toolbar{
     direction: ltr;
-    margin-bottom: 1%;
-
 }
+
+.title {
+    padding-right: 16px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
 .log-out {
     float: right;
-}
-
-a {
-    color: white;
-    font-size: 14px;
-    padding-left: 1%;
 }
 
