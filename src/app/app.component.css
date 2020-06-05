@@ -1,4 +1,15 @@
 .mat-toolbar{
     direction: ltr;
     margin-bottom: 1%;
+
 }
+.log-out {
+    float: right;
+}
+
+a {
+    color: white;
+    font-size: 14px;
+    padding-left: 1%;
+}
+

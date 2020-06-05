@@ -13,4 +13,8 @@ const saveCreditCard = async (creditCard: CreditCard) => {
   return CreditCardDAL.saveCreditCard(creditCard);
 };
 
-export { getCreditCardByUserId, getCreditCardById, saveCreditCard };
+const deleteCreditCard = async (id: number) => {
+  return CreditCardDAL.deleteCreditCardById(id);
+};
+
+export { getCreditCardByUserId, getCreditCardById, saveCreditCard, deleteCreditCard };

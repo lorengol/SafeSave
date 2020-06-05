@@ -1,4 +1,4 @@
-<mat-card>
+<mat-dialog-content>
     <form [formGroup]="creditForm" class="registration-form">
         <h2>Add a new credit card</h2>
         <p>
@@ -47,4 +47,4 @@
         </p>
         <button type="submit" (click)="submit()" [disabled]="!creditForm.valid" mat-stroked-button>Submit</button>
     </form>
-</mat-card>
+</mat-dialog-content>

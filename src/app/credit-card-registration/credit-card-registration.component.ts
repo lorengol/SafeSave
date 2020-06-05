@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CreditCardValidators } from 'angular-cc-library';
+import Swal from 'sweetalert2';
+import { MatDialog } from '@angular/material/dialog';
 
 export class creditCard {
   card_number: number;
@@ -22,7 +24,7 @@ export class CreditCardRegistrationComponent implements OnInit {
 
   get f() { return this.creditForm.controls; }
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, public dialog: MatDialog) { }
 
   CreditCardToRegister = {} as any;
 
@@ -46,6 +48,13 @@ export class CreditCardRegistrationComponent implements OnInit {
       CVV: this.CreditCardToRegister.CVV
     }
     this.http.post('/credits', newCard, { responseType: 'text' }).subscribe((res) => {
+      Swal.fire({
+        text: 'Card successfuly added!',
+        icon: 'success',
+        confirmButtonColor: 'white',
+        timer: 1500
+      });
+      this.dialog.closeAll();
     });
   }
 }
