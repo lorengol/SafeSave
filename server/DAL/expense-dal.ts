@@ -8,3 +8,8 @@ export const getExpensesByUserId = async (userId: number) => {
 export const getExpensesByCreditcardId = async (creditCardId: number) => {
   return getRepository(Expense).find({credit_card_id: creditCardId});
 };
+
+export const getExpensesByUserAndMonthAndYear = async (userId: number, month: number, year: number) => {
+  return getRepository(Expense).query('select sum(e.expense) from expenses e where e.user_id = ${userId}' +
+                                      'and year(e.date) = ${year} and month(e.date) = ${month}');
+};
