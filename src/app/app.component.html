@@ -2,11 +2,13 @@
   <div class="row">
     <div class="col-xs-12">
       <mat-toolbar *ngIf="LoggedIn" color="primary">
-        <span>Safe Save</span>
-        <a [routerLink]="['/Accounts']">Payment Accounts</a>
+        <span class="title">Safe Save</span>
+        <span class="spacer"></span>
+        <a mat-button [routerLink]="['/dashboard']">Dashboard</a>
+        <a mat-button [routerLink]="['/Accounts']">Payment Accounts</a>
         <!-- <a class="log-out">Log Out</a> -->
       </mat-toolbar>
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

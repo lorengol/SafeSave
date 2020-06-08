@@ -6,7 +6,7 @@ export const getLimitationById = async (id: number) => {
 };
 
 export const getAllUserLimitations = async (userId: number) => {
-  return getRepository(Limitation).find({ user_Id: userId, date_deleted: null });
+  return getRepository(Limitation).find({where: { user_Id: userId, date_deleted: null } });
 };
 
 export const saveNewLimitation = async (newLimitation: Limitation) => {
