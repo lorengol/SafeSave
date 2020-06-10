@@ -10,8 +10,8 @@ export const getExpensesByCreditcardId = async (creditCardId: number) => {
 };
 
 export const getExpensesByUserAndMonthAndYear = async (userId: number, month: number, year: number) => {
-  return getRepository(Expense).query('select sum(e.expense) from expenses e where e.user_id = ${userId}' +
-                                      'and year(e.date) = ${year} and month(e.date) = ${month}');
+  return getRepository(Expense).query(`select ifnull(sum(e.expense), 0) as expense from expenses e where e.user_id = ${userId} 
+                                      and year(e.date) = ${year} and month(e.date) = ${month}`);
 }
 
 export const getUserMonthlyExpenses = async (userId: number) => {

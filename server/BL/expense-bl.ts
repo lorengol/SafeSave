@@ -19,18 +19,27 @@ const getAllExpensesByCategory = async (userId: number, categoryId: number ) => 
 
 const getUserSavings = async (userId: number) => {
   var today = new Date();
-  var month =  +today.getMonth;
-  var year = +today.getFullYear;
-  var firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+  var month =  today.getMonth();
+  var year = today.getFullYear();
+  var firstDay = new Date(today.getFullYear(), today.getMonth(), 1).toLocaleString().substring(0,8);
+
+  console.log(today)
+  console.log('month:' + month)
+  console.log('year:' + year)
+  console.log('first:' + firstDay)
 
   if(month == 0) {
     month = 12;
     year = year - 1;
   }
 
-  let expanses = +ExpenseDAL.getExpensesByUserAndMonthAndYear(userId, month, year);
-  let limitations =  +LimitationDAL.getLastMonthLimitations(userId, firstDay);
-  
+  let expanses = (await ExpenseDAL.getExpensesByUserAndMonthAndYear(userId, month, year))[0].expense;
+  let limitations = (await  LimitationDAL.getLastMonthLimitations(userId, firstDay))[0].limitation;
+
+  console.log(expanses)
+  console.log(limitations)
+  console.log(limitations - expanses)
+
   return (limitations - expanses);
 }
   

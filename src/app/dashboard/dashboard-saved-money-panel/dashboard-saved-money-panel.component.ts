@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'dashboard-saved-money-panel',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardSavedMoneyPanelComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
+    this.http.get("/expenses/getSavings", { params: httpParams }).subscribe(
+      data => {
+       console.log(data)
+      },
+      err => console.log(err)
+    );
   }
 
 }
