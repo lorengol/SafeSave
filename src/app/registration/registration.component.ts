@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 export class user {
   id: number;
@@ -13,7 +14,7 @@ export class user {
 }
 
 @Component({
-  selector: 'app-registration',
+  selector: 'registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
@@ -24,7 +25,7 @@ export class RegistrationComponent implements OnInit {
 
   get f() { return this.registrationForm.controls; }
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
 
   UserToRegister: user = {} as any;
 
@@ -51,23 +52,23 @@ export class RegistrationComponent implements OnInit {
     } else {
       this.http.post("/users", this.UserToRegister, { responseType: 'text' }).subscribe(
         data => {
-        localStorage.setItem('currentUser', JSON.stringify(this.UserToRegister));
-        Swal.fire({
-          text: 'You are successfuly registered!',
-          icon: 'success',
-          confirmButtonColor: 'white',
-          timer: 2000
-        });
+          this.UserToRegister.id = JSON.parse(data).identifiers[0].id;
+          localStorage.setItem('currentUser', JSON.stringify(this.UserToRegister));
+          Swal.fire({
+            text: 'You are successfuly registered!',
+            icon: 'success',
+            confirmButtonColor: 'white',
+            timer: 2000
+          });
 
-        // Should move to dashboard after successfully logged in
-
-      },      
-      err => Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: err.error,
-        confirmButtonColor: 'white'
-      }));
+          this.router.navigate(['/dashboard']);
+        },
+        err => Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.error,
+          confirmButtonColor: 'white'
+        }));
     }
   }
 }

@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
-      <mat-toolbar *ngIf="LoggedIn" color="primary">
+      <mat-toolbar *ngIf="isLoggedIn()" color="primary">
         <span class="title">Safe Save</span>
-        <span class="spacer"></span>
         <a mat-button [routerLink]="['/dashboard']">Dashboard</a>
         <a mat-button [routerLink]="['/Accounts']">Payment Accounts</a>
-        <!-- <a class="log-out">Log Out</a> -->
+        <span class="spacer"></span>
+        <a mat-button [routerLink]="['/']" (click)="logOut()">Log Out</a>
       </mat-toolbar>
       <router-outlet></router-outlet>
     </div>

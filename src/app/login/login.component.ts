@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       data => {
         localStorage.setItem('currentUser', JSON.stringify(data));
 
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/dashboard']);
       },
       err => Swal.fire({
         icon: 'error',
