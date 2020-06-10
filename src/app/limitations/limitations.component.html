@@ -1,18 +1,75 @@
-<body>
+<!-- <body>
     <h1>My Limitations</h1>
     <div class="subject scroll">
         <ol>
             <li *ngFor="let limitation of limitations">
-                 <div>{{limitation.category.name}}</div>
-                 <div>{{limitation.limit}}</div> 
-                <button type="submit" (click)="onEdit()">Edit</button>
-                <button type="button" class="btn btn-default btn-sm">
-                    <span class="glyphicon glyphicon-plus-sign"></span> Plus
-                  </button>
-                <button type="submit" (click)="onRemove()" mat-stroked-button>Remove</button>
+                {{limitation.category.name}}
+                <span *ngIf="!limitation.inputshow" class="limit">
+                    ${{limitation.limit}}
+                </span>
+                <form [formGroup]="updateLimitForm" *ngIf="limitation.inputshow">
+                    <mat-form-field class="updateLimitForm">
+                        <input formControlName="limitPrice" matInput [(ngModel)]="limit" required>
+                        <mat-error *ngIf="g.limitPrice.errors?.required">Limit price is required</mat-error>
+                        <mat-error *ngIf="g.limitPrice.errors?.pattern">Limit price is not valid</mat-error>
+                    </mat-form-field>
+                </form>
+                <div *ngIf="!limitation.inputshow">
+                    <mat-icon class="icon" (click)="limitation.inputshow = !limitation.inputshow; limit = limitation.limit">edit</mat-icon>
+                    <mat-icon class="icon" (click)="onDelete(limitation)">delete_outline</mat-icon>
+                </div>
+                <div *ngIf="limitation.inputshow">
+                    <span>
+                        <mat-icon class="icon" (click)="limitation.inputshow = !limitation.inputshow">cancel</mat-icon>
+                        <mat-icon class="icon" (click)="onSave(limitation)">save</mat-icon>
+                    </span>
+                </div>
             </li>
         </ol>
+        <mat-icon class="addButton" (click)="openDialog()">add_circle</mat-icon>
     </div>
-<button type="submit" (click)="openDialog()" mat-stroked-button>Add limitation</button> 
-<button type="button" class="glyphicon glyphicon-plus-sign">Add limitation</button> 
-</body>
+    <span >
+</span>
+</body> -->
+
+<div class="layout">
+  <!-- <ul class="list"> -->
+    <!-- <ul> -->
+    <div class="profile" *ngFor="let limitation of limitations">
+      <div class="profile__picture"><img src="assets/img/{{limitation.category.name}}.png" /></div>
+      <div class="profile__header">
+        <div class="profile__account">
+          <h4 class="profile__username">{{limitation.category.name}}</h4>
+        </div>
+        <!-- <div class="profile__edit"><a class="profile__button" href="#">Edit Profile</a></div> -->
+      </div>
+      <div class="profile__stats">
+        <div class="profile__stat">
+          <!-- <div class="profile__icon profile__icon--gold"><i class="fas fa-wallet"></i></div> -->
+          <div class="profile__value" *ngIf="!limitation.inputshow">${{limitation.limit}}
+            <div class="profile__key">Limit Price</div>
+          </div>
+          <form [formGroup]="updateLimitForm" *ngIf="limitation.inputshow">
+            <mat-form-field class="updateLimitForm">
+              <input formControlName="limitPrice" matInput [(ngModel)]="limit" required>
+              <mat-error *ngIf="g.limitPrice.errors?.required">Limit price is required</mat-error>
+              <mat-error *ngIf="g.limitPrice.errors?.pattern">Limit price is not valid</mat-error>
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="profile__stat">
+          <div *ngIf="!limitation.inputshow">
+            <mat-icon class="icon" (click)="limitation.inputshow = !limitation.inputshow; limit = limitation.limit">edit
+            </mat-icon>
+            <mat-icon class="rightIcon" (click)="onDelete(limitation)">delete_outline</mat-icon>
+          </div>
+          <div *ngIf="limitation.inputshow">
+            <mat-icon class="icon" (click)="limitation.inputshow = !limitation.inputshow">cancel</mat-icon>
+            <mat-icon class="rightIcon" (click)="onSave(limitation)">save</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </ul> -->
+</div>
+<mat-icon class="addButton" (click)="openDialog()">add_circle</mat-icon>

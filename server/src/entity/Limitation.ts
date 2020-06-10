@@ -20,10 +20,8 @@ class Limitation {
     eager: true,
     onDelete: 'CASCADE',
   })
-
   @JoinColumn({name: 'user_id'})
   user: User;
-  
   @Column()
   category_id: number;
 
@@ -31,7 +29,6 @@ class Limitation {
     eager: true,
     onDelete: 'CASCADE',
   })
-
   @JoinColumn({name: 'category_id'})
   category: Category;
 
