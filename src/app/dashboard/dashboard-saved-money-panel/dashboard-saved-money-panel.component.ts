@@ -12,7 +12,7 @@ export class DashboardSavedMoneyPanelComponent implements OnInit {
 
   ngOnInit(): void {
     const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
-    this.http.get("/expenses/getSavings", { params: httpParams }).subscribe(
+    this.http.get("/expenses/getSavings", { params: httpParams , responseType : 'text' }).subscribe(
       data => {
        console.log(data)
       },
