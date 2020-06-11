@@ -3,7 +3,7 @@ import { Validators, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 
-export class user {
+export class User {
   id: number;
   first_Name: string;
   last_Name: string;
@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
-  UserToRegister: user = {} as any;
+  UserToRegister: User = {} as any;
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({

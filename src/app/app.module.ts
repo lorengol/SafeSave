@@ -24,6 +24,7 @@ import { BankAccountRegistrationComponent } from './bank-account-registration/ba
 import { LoginComponent } from './login/login.component';
 import { CreditCardComponent } from './credit-card/credit-card.component';
 import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
   { 
     path: '', 
     component: OpenPageComponent 
+  },
+  { 
+    path: 'user-info', 
+    component: UserInfoComponent 
   }
 ];
 
@@ -61,7 +66,8 @@ const routes: Routes = [
     BankAccountRegistrationComponent,
     LoginComponent,
     CreditCardComponent,
-    CreditCardDebitsComponent
+    CreditCardDebitsComponent,
+    UserInfoComponent
   ],
   imports: [
     BrowserModule,
