@@ -40,9 +40,7 @@ userRoutes.post('/', async (req, res) => {
     try {
         const user: User = req.body;
 
-        await userBl.saveUser(user);
-
-        res.sendStatus(201);
+        res.status(201).send(await userBl.saveUser(user));
     } catch (e) {
         res.status(404).send(e.message);
     }

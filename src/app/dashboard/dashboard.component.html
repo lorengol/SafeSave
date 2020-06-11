@@ -1,0 +1,34 @@
+<mat-grid-list cols="4" rowHeight="10:9">
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-card>
+            <dashboard-statistics-panel></dashboard-statistics-panel>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-card>
+            <dashboard-income-panel></dashboard-income-panel>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <mat-card>
+            <dashboard-comparison-panel></dashboard-comparison-panel>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-card class="scrollable-content">
+            <mat-card-content>
+                <dashboard-limitations-panel></dashboard-limitations-panel>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-card>
+            <dashboard-saved-money-panel></dashboard-saved-money-panel>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-card>
+            <dashboard-tip-panel></dashboard-tip-panel>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

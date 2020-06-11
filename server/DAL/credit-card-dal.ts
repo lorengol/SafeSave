@@ -12,3 +12,7 @@ export const getCreditCardById = async (id: number) => {
 export const getCreditCardByUserId = async (userId: number) => {
   return getRepository(CreditCard).find({ user_id: userId });
 };
+
+export const deleteCreditCardById = async (id: number) => {
+  return getRepository(CreditCard).delete(id);
+};

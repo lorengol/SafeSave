@@ -25,3 +25,12 @@ creditCardRoutes.get('/', async (req, res) => {
   }
 });
 
+creditCardRoutes.get('/deleteCreditCard', async (req, res) => {
+  try {
+      CreditCardBL.deleteCreditCard(req.query.creditCardId)
+      res.status(201).send({message: 'deleted successfully'});
+  } catch (e) {
+      res.status(400).send(e.message);
+  }
+});
+

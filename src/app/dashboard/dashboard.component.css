@@ -1,0 +1,8 @@
+/* mat-grid-tile {
+    background: lightblue;
+} */
+
+mat-card {
+    width: calc(100% - 50px);
+    height: calc(100% - 50px);
+}
