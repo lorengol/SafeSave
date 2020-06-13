@@ -17,6 +17,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SimplebarAngularModule } from 'simplebar-angular';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
@@ -121,7 +122,8 @@ const routes: Routes = [
     MatPaginatorModule,
     MatDialogModule,
     MatListModule,
-    SimplebarAngularModule
+    SimplebarAngularModule, 
+    MatIconModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent]

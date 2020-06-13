@@ -10,11 +10,20 @@ export class DashboardSavedMoneyPanelComponent implements OnInit {
 
   constructor(private http: HttpClient) { }
 
+  savedInd:boolean;
+  savedMoney;
+
   ngOnInit(): void {
     const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
     this.http.get("/expenses/getSavings", { params: httpParams , responseType : 'text' }).subscribe(
-      data => {
-       console.log(data)
+      savedMoney => {
+        this.savedMoney = savedMoney;
+
+       if(+savedMoney > 0) {
+        this.savedInd = true;
+       } else {
+        this.savedInd = false; 
+       }
       },
       err => console.log(err)
     );
