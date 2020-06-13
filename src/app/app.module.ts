@@ -22,6 +22,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
 import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
+import { UserInfoComponent } from './user-info/user-info.component';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
 import { CreditCardComponent } from './credit-card/credit-card.component';
 import { DashboardComparisonPanelComponent } from './dashboard/dashboard-comparison-panel/dashboard-comparison-panel.component';
@@ -74,6 +75,10 @@ const routes: Routes = [
     component: OpenPageComponent 
   },
   { 
+    path: 'user-info', 
+    component: UserInfoComponent 
+  },
+  {
     path: 'limitations', 
     component: LimitationsComponent 
   }
@@ -92,6 +97,7 @@ const routes: Routes = [
     PaymentAccountsComponent,
     CreditCardComponent,
     CreditCardDebitsComponent,
+    UserInfoComponent,
     DashboardIncomePanelComponent,
     DashboardComparisonPanelComponent,
     DashboardLimitationsPanelComponent,

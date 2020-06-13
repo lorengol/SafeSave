@@ -14,6 +14,18 @@ userRoutes.get('/', async (req, res) => {
     }
 });
 
+userRoutes.get('/userById', async (req, res) => {
+    try {
+        const id = req.body;
+        let user = await userBl.getUser(id);
+        
+        res.status(200).send(user);
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});
+
+
 userRoutes.get('/verifyUserLogin', async (req, res) => {
     try {
         let resJson = await userBl.verifyUserLogin(req.query.email, req.query.password);
@@ -28,7 +40,17 @@ userRoutes.post('/', async (req, res) => {
     try {
         const user: User = req.body;
 
-        await userBl.saveUser(user);
+        res.status(201).send(await userBl.saveUser(user));
+    } catch (e) {
+        res.status(404).send(e.message);
+    }
+});
+
+userRoutes.post('/update', async (req, res) => {
+    try {
+        const user: User = req.body;
+
+        await userBl.updateUser(user);
 
         res.sendStatus(201);
     } catch (e) {
