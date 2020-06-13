@@ -44,6 +44,9 @@ export class LimitationsComponent implements OnInit {
 
   openDialog(): void {
     this.limit = undefined;
+    this.limitations.forEach(limitation => {
+      limitation.inputshow = false;
+    });
     const dialogRef = this.dialog.open(LimitationRegistration, {
       width: '270px',
       data: { category: this.category, limit: this.limit, limitationsToFilter: this.limitations }
@@ -69,7 +72,7 @@ export class LimitationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateLimitForm = this.formBuilder.group({
-      limitPrice: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]]
+      limitPrice: ['', [Validators.required, Validators.pattern('^([1-9][0-9]*)$')]]
     })
     const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id)
     this.http.get('/limitations', { params: httpParams }).subscribe((limitations) => {
@@ -78,6 +81,9 @@ export class LimitationsComponent implements OnInit {
   }
 
   onDelete(deletedlimitation) {
+    this.limitations.forEach(limitation => {
+      limitation.inputshow = false;
+    });
     let index = this.limitations.indexOf(deletedlimitation);
     const httpParams = new HttpParams().set('limitationId', deletedlimitation.id);
     this.http.delete("/limitations/delete", { params: httpParams }).subscribe(
@@ -87,11 +93,18 @@ export class LimitationsComponent implements OnInit {
 
   onSave(updatedlimitation) {
     if (!this.updateLimitForm.valid) return;
-      updatedlimitation.limit = this.limit;
-      this.http.post("/limitations/update", updatedlimitation, { responseType: 'text' }).subscribe(
-        data => { });
-        updatedlimitation.inputshow = false;
-      }
+    updatedlimitation.limit = this.limit;
+    this.http.post("/limitations/update", updatedlimitation, { responseType: 'text' }).subscribe(
+      data => { });
+    updatedlimitation.inputshow = false;
+  }
+
+  onEdit(editedLimitation) {
+    this.limitations.forEach(limitation => {
+      limitation.inputshow = false;
+    });
+    editedLimitation.inputshow = true;
+  }
 }
 
 @Component({
@@ -115,7 +128,7 @@ export class LimitationRegistration implements OnInit {
   ngOnInit(): void {
     this.limitationForm = this.formBuilder.group({
       categoryName: ['', Validators.required],
-      limitPrice: ['', [Validators.required, Validators.pattern('^(0|[1-9][0-9]*)$')]]
+      limitPrice: ['', [Validators.required, Validators.pattern('^([1-9][0-9]*)$')]]
     })
     this.http.get('/category').subscribe((categories) => {
       this.categories = categories

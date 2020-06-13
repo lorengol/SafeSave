@@ -59,7 +59,7 @@
         </div>
         <div class="profile__stat">
           <div *ngIf="!limitation.inputshow">
-            <mat-icon class="icon" (click)="limitation.inputshow = !limitation.inputshow; limit = limitation.limit">edit
+            <mat-icon class="icon" (click)="onEdit(limitation); limit = limitation.limit">edit
             </mat-icon>
             <mat-icon class="rightIcon" (click)="onDelete(limitation)">delete_outline</mat-icon>
           </div>
