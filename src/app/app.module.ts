@@ -38,6 +38,10 @@ import { OpenPageComponent } from './open-page/open-page.component';
 import { PaymentAccountsComponent } from './payment-accounts/payment-accounts.component';
 import { ProgressBarColorDirective } from './progress-bar-color.directive';
 import { RegistrationComponent } from './registration/registration.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { StatisticsMonthlyPanelComponent } from './statistics/statistics-monthly-panel/statistics-monthly-panel.component';
+import { StatisticsBusinessPanelComponent } from './statistics/statistics-business-panel/statistics-business-panel.component';
+import { StatisticsExpensesPanelComponent } from './statistics/statistics-expenses-panel/statistics-expenses-panel.component';
 
 
 const routes: Routes = [
@@ -80,6 +84,9 @@ const routes: Routes = [
   {
     path: 'limitations', 
     component: LimitationsComponent 
+  }, {
+    path: 'statistics',
+    component: StatisticsComponent
   }
 ];
 
@@ -104,7 +111,11 @@ const routes: Routes = [
     DashboardTipPanelComponent,
     LimitationsComponent,
     LimitationRegistration,
-    ProgressBarColorDirective
+    ProgressBarColorDirective,
+    StatisticsComponent,
+    StatisticsMonthlyPanelComponent,
+    StatisticsBusinessPanelComponent,
+    StatisticsExpensesPanelComponent
   ],
   imports: [
     BrowserModule,
