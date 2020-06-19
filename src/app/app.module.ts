@@ -1,5 +1,5 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -19,13 +19,8 @@ import { SimplebarAngularModule } from 'simplebar-angular';
 
 import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
-import { LimitationsComponent, LimitationRegistration } from './limitations/limitations.component';
-import { MatDialogModule } from '@angular/material/dialog';
-import {MatIconModule} from '@angular/material/icon';
-import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
-import { CreditCardComponent } from './credit-card/credit-card.component';
 import { DashboardComparisonPanelComponent } from './dashboard/dashboard-comparison-panel/dashboard-comparison-panel.component';
 import { DashboardIncomePanelComponent } from './dashboard/dashboard-income-panel/dashboard-income-panel.component';
 import { DashboardLimitationsPanelComponent } from './dashboard/dashboard-limitations-panel/dashboard-limitations-panel.component';
@@ -34,12 +29,17 @@ import { DashboardStatisticsPanelComponent } from './dashboard/dashboard-statist
 import { DashboardTipPanelComponent } from './dashboard/dashboard-tip-panel/dashboard-tip-panel.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { httpInterceptor } from './http.interceptor';
-import { LoginComponent } from './login/login.component';
 import { OpenPageComponent } from './open-page/open-page.component';
 import { PaymentAccountsComponent } from './payment-accounts/payment-accounts.component';
 import { ProgressBarColorDirective } from './progress-bar-color.directive';
 import { RegistrationComponent } from './registration/registration.component';
 
+import { LoginComponent } from './login/login.component';
+import { LimitationsComponent, LimitationRegistration } from './limitations/limitations.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+import { CreditCardComponent } from './credit-card/credit-card.component';
+import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
 
 const routes: Routes = [
   {
@@ -109,7 +109,9 @@ const routes: Routes = [
     DashboardTipPanelComponent,
     LimitationsComponent,
     LimitationRegistration,
-    ProgressBarColorDirective
+    ProgressBarColorDirective,
+    LimitationsComponent,
+    LimitationRegistration,
   ],
   imports: [
     BrowserModule,
@@ -136,8 +138,12 @@ const routes: Routes = [
     CarouselModule,
     MatPaginatorModule,
     MatDialogModule,
-    MatListModule,
-    SimplebarAngularModule
+    SimplebarAngularModule,
+    MatDialogModule,
+    MatIconModule,
+    CarouselModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent],
