@@ -1,5 +1,5 @@
+<h1>My Limitations</h1>
 <div class="container">
-  <h1>My Limitations</h1>
   <div class="list-container">
     <div class="layout" *ngFor="let limitation of limitations">
       <div class="profile">
@@ -14,7 +14,7 @@
             <div class="profile__value" *ngIf="!limitation.inputshow">${{limitation.limit}}
               <div class="profile__key">Limit Price</div>
             </div>
-            <form [formGroup]="updateLimitForm" *ngIf="limitation.inputshow">
+            <form class="form" [formGroup]="updateLimitForm" *ngIf="limitation.inputshow">
               <mat-form-field class="updateLimitForm">
                 <input formControlName="limitPrice" matInput [(ngModel)]="limit" required>
                 <mat-error *ngIf="g.limitPrice.errors?.required">Limit price is required</mat-error>
@@ -24,7 +24,7 @@
           </div>
           <div class="profile__stat">
             <div *ngIf="!limitation.inputshow">
-              <mat-icon class="icon" (click)="limitation.inputshow = !limitation.inputshow; limit = limitation.limit">
+              <mat-icon class="icon" (click)="onEdit(limitation); limit = limitation.limit">
                 edit
               </mat-icon>
               <mat-icon class="rightIcon" (click)="onDelete(limitation)">delete_outline</mat-icon>
