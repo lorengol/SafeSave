@@ -1,17 +1,17 @@
-<mat-grid-list cols="3" rowHeight="2:1">
+<mat-grid-list cols="3" rowHeight="10:8">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-card>
-            <dashboard-statistics-panel></dashboard-statistics-panel>
-        </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-card>
-            <dashboard-comparison-panel></dashboard-comparison-panel>
+            <statistics-business-panel></statistics-business-panel>
         </mat-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="2">
         <mat-card>
-            <dashboard-income-panel></dashboard-income-panel>
+          <statistics-monthly-panel></statistics-monthly-panel>
+        </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+        <mat-card>
+            <statistics-expenses-panel></statistics-expenses-panel>
         </mat-card>
     </mat-grid-tile>  
 </mat-grid-list>
