@@ -8,14 +8,23 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class AppComponent implements OnInit{
+  
   constructor(private http: HttpClient) { }
+  
   ngOnInit(){
     // http try
     this.http.get("/users").subscribe((kaki)=> {
       console.log(kaki);
     });
   }
-  title = 'safe-save';
+
+  isLoggedIn() {
+    return localStorage.getItem('currentUser') != null;
+  }
+
+  logOut() {
+    localStorage.removeItem('currentUser');
+  }
 }
 
 

@@ -21,6 +21,10 @@ const saveUser = async (user: User) => {
   }
 };
 
+const updateUser = async(user:User) => {
+  UserDAL.updateUser(user);
+}
+
 const verifyUserLogin = async (email: string, password: string) => {
   let user = await UserDAL.getUserByEmail(email);
   if (user != null) {
@@ -34,4 +38,4 @@ const verifyUserLogin = async (email: string, password: string) => {
   }
 }
 
-export { getUser, getAllUsers, saveUser, verifyUserLogin };
+export { getUser, getAllUsers, saveUser, verifyUserLogin, updateUser };

@@ -1,6 +1,7 @@
 import { Column, Entity, PrimaryColumn, OneToOne, JoinColumn } from 'typeorm';
 import { Bank } from './Bank';
 import { User } from './User';
+import { BankBranch } from './BankBranch';
 
 @Entity('bank_accounts')
 class BankAccount {
@@ -9,6 +10,13 @@ class BankAccount {
 
   @Column()
   branch_number: number;
+
+  @OneToOne((type) => BankBranch, {
+    eager: true,
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({name: 'branch_number'})
+  branch:BankBranch;
 
   @Column()
   bank_id: number;

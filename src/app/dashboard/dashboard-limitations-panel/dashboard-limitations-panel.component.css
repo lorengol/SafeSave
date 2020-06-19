@@ -1,0 +1,59 @@
+#progressbar {
+    background-color: #e0ecf8;
+    border-radius: 13px; /* (height of inner div) / 2 + padding */
+    padding: 3px;
+    text-align: center;
+    width: 94%;
+}
+  
+#progressbar > div {
+     height: 20px;
+     border-radius: 10px;
+     max-width: 100%;
+}
+
+.percentage {
+    color: #fbfbf8;
+    text-align: center;
+}
+
+.container {        
+    padding-bottom: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.category-name {
+    margin: 4px auto;
+    font-weight: bold;
+    padding-left: 4px;
+}
+
+ngx-simplebar {
+    width: 96%;
+    height: 96%;
+}
+
+.wrapper {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 50px);
+    /* top: 0; */
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    height: 25px;
+}
+
+.title {
+    left: 0;
+    position: absolute;
+    padding-left: 3%;
+    padding-bottom: 3%;
+}

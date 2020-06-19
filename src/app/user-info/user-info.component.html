@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="container">
+        <h1>My Profile</h1>
+        <div class="body">
+            <mat-form-field>
+                NAME: <input matInput [(ngModel)]="fullName" type="text" [attr.value]="fullName" [disabled]="onEdit"/>
+            </mat-form-field>
+                <p>ID: {{user.id}}</p>
+                <p>EMAIL: {{user.email}}</p>
+            <mat-form-field>
+                INCOME: <input matInput [(ngModel)]="user.income" type="number" [attr.value]="user.income" [disabled]="onEdit"/>
+            </mat-form-field>
+        </div>
+        <br>
+        <div>
+            <button mat-stroked-button (click)="onClickEdit()">Edit</button>
+            &nbsp;
+            <button mat-stroked-button (click)="submit()">Save</button>
+        </div>
+        <br>
+    </div>
+</div>

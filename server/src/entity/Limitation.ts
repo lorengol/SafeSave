@@ -22,7 +22,7 @@ class Limitation {
   })
   @JoinColumn({name: 'user_id'})
   user: User;
-
+  
   @Column()
   category_id: number;
 
