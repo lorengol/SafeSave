@@ -20,7 +20,8 @@ const getUserSavings = async (userId: number) => {
   var today = new Date();
   var month =  today.getMonth();
   var year = today.getFullYear();
-  var firstDay = new Date(today.getFullYear(), today.getMonth(), 1).toLocaleString().substring(0,8);
+  let a : string[] = new Date(today.getFullYear(), today.getMonth(), 1).toLocaleString().substring(0,8).split('/');
+  let firstDay = a[2] + '-0' + a[0] + '-0' + a[1];
 
   if(month == 0) {
     month = 12;

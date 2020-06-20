@@ -1,7 +1,7 @@
 <div *ngIf="savedInd">
     <p>Last month you saved</p>
     <p class="bold">{{savedMoney}}<mat-icon>attach_money</mat-icon></p>
-    <button mat-stroked-button>Move To Piggy Bank</button>
+    <button mat-stroked-button (click)="saveMoney()">Move To Piggy Bank</button>
     <img src="../../../assets/piggy.png">
 </div>
 
