@@ -22,7 +22,7 @@ export class User {
 export class RegistrationComponent implements OnInit {
 
   registrationForm;
-
+    
   get f() { return this.registrationForm.controls; }
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
