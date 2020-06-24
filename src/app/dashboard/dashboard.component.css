@@ -6,3 +6,7 @@ mat-card {
     width: calc(100% - 50px);
     height: calc(100% - 50px);
 }
+
+.saved-money {
+    text-align: center;
+}
