@@ -6,8 +6,8 @@ export const limitationRoutes = express.Router();
 
 limitationRoutes.get('/', async (req, res) => {
     try {
-        let users = await limitationBl.getAllUserLimitations(req.query.userId);
-        res.status(200).send(users);
+        let limitations = await limitationBl.getAllUserLimitations(req.query.userId);
+        res.status(200).send(limitations);
     } catch (e) {
         res.status(400).send(e.message);
     }

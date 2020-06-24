@@ -6,6 +6,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { BankAccount } from './BankAccount';
+import { User } from './User';
 
 @Entity('savings')
 class Saving {
@@ -13,15 +14,20 @@ class Saving {
   id: number;
 
   @Column()
-  account_number: number;
+  user_id: number;
 
-  @OneToOne((type) => BankAccount, {
+  @OneToOne((type) => User, {
     eager: true,
+    onDelete: 'CASCADE',
   })
-  @JoinColumn({name: 'account_number'})
-  bank_account: BankAccount;
+
+  @JoinColumn({name: 'user_id'})
+  user: User;
 
   @Column()
   savings: number;
+
+  @Column()
+  date: Date;
 }
 export { Saving };

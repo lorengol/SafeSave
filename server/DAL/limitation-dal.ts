@@ -6,7 +6,7 @@ export const getLimitationById = async (id: number) => {
 };
 
 export const getAllUserLimitations = async (userId: number) => {
-  return getRepository(Limitation).find({ user_id: userId });
+  return getRepository(Limitation).find({where: { user_id: userId, date_deleted: null } });
 };
 
 export const saveNewLimitation = async (newLimitation: Limitation) => {
@@ -14,9 +14,17 @@ export const saveNewLimitation = async (newLimitation: Limitation) => {
 };
 
 export const deleteLimitationById = async (id: number) => {
-  return getRepository(Limitation).delete(id);
+  let limitationToDelete = await getRepository(Limitation).findOne(id);
+  limitationToDelete.date_deleted = new Date();
+  return getRepository(Limitation).save(limitationToDelete);
 };
 
 export const updateLimitation = async (updatedLimitation) => {
   return getRepository(Limitation).save(updatedLimitation);
+};
+
+export const getLastMonthLimitations = async (userId: number, firstDayOfMonth: string) => {  
+  return getRepository(Limitation).query(`select ifnull(sum(l.limit),0) as limitation from limitations l where l.date_created < '${firstDayOfMonth}'
+                                          and (l.date_deleted >= '${firstDayOfMonth}' or l.date_deleted is null)
+                                          and l.user_id = ${userId}`);
 };

@@ -12,6 +12,16 @@ expenseRoutes.get('/', async (req, res) => {
     }
 });
 
+expenseRoutes.get('/getSavings', async (req, res) => {
+    try {
+        let savings = await ExpenseBL.getUserSavings(req.query.userId);
+        res.status(200).send(savings.toString());
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+
+});
+
 expenseRoutes.get('/userExpenses', async (req, res) => {
     try {
         res.status(200).send(await ExpenseBL.getExpensesByUserId(req.query.userId));

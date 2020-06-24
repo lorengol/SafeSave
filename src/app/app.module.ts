@@ -131,12 +131,7 @@ const routes: Routes = [
     MatIconModule,
     CarouselModule,
     MatTableModule,
-    MatPaginatorModule,
     MatGridListModule,
-    CarouselModule,
-    MatTableModule,
-    MatDialogModule,
-    CarouselModule,
     MatPaginatorModule,
     MatDialogModule,
     SimplebarAngularModule,
@@ -145,7 +140,9 @@ const routes: Routes = [
     CarouselModule,
     MatTableModule,
     MatPaginatorModule,
-    MatMenuModule
+    MatMenuModule,
+    MatListModule,
+    SimplebarAngularModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent],
