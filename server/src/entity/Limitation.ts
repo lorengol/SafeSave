@@ -35,5 +35,11 @@ class Limitation {
 
   @Column()
   limit: number;
+
+  @Column()
+  date_created: Date;
+
+  @Column()
+  date_deleted: Date;
 }
 export { Limitation };
