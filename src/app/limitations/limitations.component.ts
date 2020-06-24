@@ -37,6 +37,7 @@ export class LimitationsComponent implements OnInit {
   limit: number;
   limitationToPush: limitation;
   updateLimitForm;
+  totalLimitations = 0;
 
   get g() { return this.updateLimitForm.controls; }
 
@@ -53,7 +54,6 @@ export class LimitationsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if (result != null) {
         const newLimitation: limitation = {
           user_id: JSON.parse(localStorage.getItem('currentUser')).id,
@@ -65,6 +65,7 @@ export class LimitationsComponent implements OnInit {
             newLimitation.category = result.category;
             newLimitation.id = JSON.parse(data).raw.insertId;
             this.limitations.push(newLimitation);
+            this.totalLimitations += Number(newLimitation.limit);
           });
       }
     });
@@ -77,6 +78,9 @@ export class LimitationsComponent implements OnInit {
     const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id)
     this.http.get('/limitations', { params: httpParams }).subscribe((limitations) => {
       this.limitations = limitations
+      this.limitations.forEach(limitation => {
+        this.totalLimitations += limitation.limit;
+      });
     });
   }
 
@@ -89,14 +93,17 @@ export class LimitationsComponent implements OnInit {
     this.http.delete("/limitations/delete", { params: httpParams }).subscribe(
       data => { });
     this.limitations.splice(index, 1);
+    this.totalLimitations -= deletedlimitation.limit;
   }
 
-  onSave(updatedlimitation) {
+  onSave(savedlimitation) {
     if (!this.updateLimitForm.valid) return;
-    updatedlimitation.limit = this.limit;
-    this.http.post("/limitations/update", updatedlimitation, { responseType: 'text' }).subscribe(
+    this.totalLimitations -= Number(savedlimitation.limit)
+    savedlimitation.limit = this.limit;
+    this.http.post("/limitations/update", savedlimitation, { responseType: 'text' }).subscribe(
       data => { });
-    updatedlimitation.inputshow = false;
+    savedlimitation.inputshow = false;
+    this.totalLimitations += Number(this.limit);
   }
 
   onEdit(editedLimitation) {
