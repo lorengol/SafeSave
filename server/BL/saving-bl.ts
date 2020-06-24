@@ -10,4 +10,12 @@ const addMonthlySavings = async (userId: number, amount: number) => {
   return SavingDAL.addNewSavings(newSavings);
 };
 
-export { addMonthlySavings };
+const getSavingsByCurrMonthAndUser = async (userId: number) => {
+  return SavingDAL.getSavingsByCurrMonthAndUser(userId);
+};
+
+const getTotalSavingsForUser = async (userId: number) => {
+  return SavingDAL.getTotalSavingsForUser(userId);
+}
+
+export { addMonthlySavings,  getSavingsByCurrMonthAndUser, getTotalSavingsForUser};

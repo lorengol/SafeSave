@@ -14,7 +14,9 @@ export const saveNewLimitation = async (newLimitation: Limitation) => {
 };
 
 export const deleteLimitationById = async (id: number) => {
-  return getRepository(Limitation).delete(id);
+  let limitationToDelete = await getRepository(Limitation).findOne(id);
+  limitationToDelete.date_deleted = new Date();
+  return getRepository(Limitation).save(limitationToDelete);
 };
 
 export const updateLimitation = async (updatedLimitation) => {

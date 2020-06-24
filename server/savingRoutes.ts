@@ -13,3 +13,14 @@ savingRoutes.post('/', async (req, res) => {
         res.status(404).send(e.message);
     }
 });
+
+savingRoutes.get('/', async (req, res) => {
+    try {
+        let totalSavings = await savingBl.getTotalSavingsForUser(req.query.userId);
+        let indMonthExists = await savingBl.getSavingsByCurrMonthAndUser(req.query.userId);
+        res.status(200).json({totalSavings: totalSavings[0],
+                              indMonthExists: indMonthExists[0]});
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});
