@@ -21,7 +21,7 @@ class User {
     @Column()
     income: number;
     
-    ֲ@Column()
+    @Column()
     birth_date: Date;
 }
 export { User };

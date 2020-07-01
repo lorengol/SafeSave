@@ -51,9 +51,9 @@ export const getCurrentUserLimitation = async (userId: number) => {
           `);
 };
 
-export const getSimilarUsersData = async () => {
+export const getSimilarUsersData = async (birthYear: number) => {
   return getRepository(Limitation)
-    .query(`select ec.user_id, ec.id, ec.category, ec.expense, l.limit, ec.expense_month, ec.expense_year, IF(ec.expense > l.limit, true, false)
+    .query(`select ec.user_id, ec.id, ec.category, ec.expense, l.limit, ec.expense_month, ec.expense_year, IF(ec.expense > l.limit, "true", "false") as overlapsed
     from (select c.id as id, c.name as category, e.user_id, sum(e.expense) as expense, month(e.date) as expense_month, year(e.date) expense_year
         from safe_save.expenses e, safe_save.businesses b, safe_save.categories c
         where e.business_id = b.id
@@ -66,7 +66,6 @@ export const getSimilarUsersData = async () => {
     where l.category_id = ec.id
     and l.user_id = ec.user_id
     and l.user_id = u.id
-    and 2000 between year(u.birth_date) - 2 and year(u.birth_date) + 2
-    and 0.8 between ec.expense/l.limit - 0.05 and ec.expense/l.limit + 0.05
+    and ${birthYear} between year(u.birth_date) - 2 and year(u.birth_date) + 2
     and l.date_deleted is null`);
 };

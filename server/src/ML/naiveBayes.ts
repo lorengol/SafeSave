@@ -38,7 +38,7 @@ interface IMap<V> {
     correlations: IMap<IMap<IMap<IMap<number>>>>
   }
   
-  class NaiveBayes implements Classifier {
+  export class NaiveBayes implements Classifier {
     
     /**
      * creates a new classifier.
