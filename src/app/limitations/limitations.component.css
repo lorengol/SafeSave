@@ -238,6 +238,7 @@ html, body {
   font-size: 68px;
   width: 100%;
   cursor: pointer;
+  padding-top: 20px;
 }
 
 .updateLimitForm{
@@ -252,6 +253,14 @@ html, body {
 
   h1 {
     padding-top: 10px;
+    padding-left: 10px;
+    text-align: left;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .total {
+    font-size: 20px;
     text-align: center;
     font-weight: bold;
     font-family: "Montserrat", sans-serif;

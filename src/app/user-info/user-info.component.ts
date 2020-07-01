@@ -23,18 +23,9 @@ export class UserInfoComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    const httpParams = new HttpParams().set(
-      'user_id',
-      JSON.parse(localStorage.getItem('currentUser')).id
-    );
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    this.fullName = this.user.first_Name + ' ' + this.user.last_Name;
     this.onEdit = true;
-    this.http
-      .get('/users/userById', { params: httpParams })
-      .subscribe((res: User) => {
-        console.log(res);
-        this.user = res;
-        this.fullName = this.user.first_Name + ' ' + this.user.last_Name;
-      });
   }
 
   submit() {
