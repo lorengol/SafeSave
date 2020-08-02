@@ -20,3 +20,11 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.margin {
+    margin-right: 7px;
+}
+
+.wider {
+    width: 230px;
+}

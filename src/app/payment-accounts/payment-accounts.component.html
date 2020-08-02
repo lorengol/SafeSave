@@ -4,6 +4,7 @@
       <mat-card-title>Bank Accounts</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <div class="scroll">
       <table>
         <tr>
           <th>Bank</th>
@@ -18,13 +19,14 @@
           <td>{{account.account_number}}</td>
           <td>{{account.first_Name}} {{account.last_Name}}</td>
           <td>
-            <button mat-stroked-button (click)="deleteBankAccount(account.account_number)">remove</button>
+            <button mat-stroked-button (click)="deleteBankAccount(account.account_number)">Remove</button>
           </td>
         </tr>
       </table>
+    </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="openBankAccountModal()">add</button>
+      <button mat-button (click)="openBankAccountModal()">Add</button>
     </mat-card-actions>
   </mat-card>
 
@@ -33,9 +35,11 @@
       <mat-card-title>Credit Cards</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+      <div class="scroll">
       <table>
         <tr>
           <th>Card Number</th>
+          <th>Expiration</th>
           <th>Owner</th>
           <th></th>
         </tr>
@@ -44,16 +48,20 @@
             **** **** **** {{card.card_number}}
           </td>
           <td>
+            {{card.expiration_date}}
+          </td>
+          <td>
             {{card.card_holder_name}}
           </td>
           <td>
-            <button mat-stroked-button (click)="deleteCreditCard(card.id)">remove</button>
+            <button mat-stroked-button (click)="deleteCreditCard(card.id)">Remove</button>
           </td>
         </tr>
       </table>
+    </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="openCreditCardModal()">add</button>
+      <button mat-button (click)="openCreditCardModal()">Add</button>
     </mat-card-actions>
   </mat-card>
 </div>

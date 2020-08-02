@@ -17,6 +17,8 @@ import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SimplebarAngularModule } from 'simplebar-angular';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
@@ -142,7 +144,9 @@ const routes: Routes = [
     MatPaginatorModule,
     MatMenuModule,
     MatListModule,
-    SimplebarAngularModule
+    SimplebarAngularModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent],
