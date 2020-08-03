@@ -11,6 +11,7 @@ export class User {
   email: string;
   password: string;
   income: number;
+  birth_date: Date;
 }
 
 @Component({
@@ -36,7 +37,8 @@ export class RegistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       income: ['', [Validators.min(1), Validators.pattern('^(0|[1-9][0-9]*)$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      birthDate:['', Validators.required]
     })
 
     this.UserToRegister = {} as any;
@@ -46,6 +48,12 @@ export class RegistrationComponent implements OnInit {
     if (this.f.password.value != this.f.confirmPassword.value) {
       Swal.fire({
         text: 'Confirmation password does not match password',
+        icon: 'warning',
+        confirmButtonColor: 'white'
+      });
+    } else if(this.UserToRegister.birth_date > new Date()) {
+      Swal.fire({
+        text: 'Birthdate cannot be a future date',
         icon: 'warning',
         confirmButtonColor: 'white'
       });
