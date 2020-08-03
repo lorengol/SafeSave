@@ -28,6 +28,7 @@ const tipsAI = async (userId: number, birthYear: number) => {
       overlapsed: limit.overlapsed,
     });
   });
+
   const willOverlap = userLimitations.find((limitation) => {
     let p = classifier.classify('overlapsed', {
       user_id: String(userId),
