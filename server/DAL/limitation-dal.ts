@@ -47,6 +47,7 @@ export const getCurrentUserLimitation = async (userId: number) => {
               and month(e.date) = month(curdate())
               group by c.id, c.name) as ec, safe_save.limitations l
             where l.category_id = ec.id
+            and l.user_id = ${userId}
             order by (ec.expense / l.limit) desc
           `);
 };
