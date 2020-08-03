@@ -2,3 +2,7 @@ mat-card {
     width: calc(100% - 50px);
     height: calc(100% - 50px);
 }
+
+.wrapper {
+    margin: 2% 2% 2% 2%;
+}

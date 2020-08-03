@@ -1,1 +1,9 @@
-<p>statistics-business-panel works!</p>
+<div class="container">
+    <h2>
+        <b>Top 3 Expenses</b>
+    </h2>
+    <div *ngFor="let expense of expenses">
+        <p>{{ expense.name }}</p>
+        <p>{{ expense.expenses }}</p>
+    </div>
+</div>
