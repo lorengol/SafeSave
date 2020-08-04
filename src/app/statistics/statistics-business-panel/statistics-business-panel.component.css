@@ -1,6 +1,7 @@
 .container {
-    max-width: 90%;
-    max-height: 100%;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
 }
 
 h2 {
@@ -10,8 +11,18 @@ h2 {
     height: 25px;
 }
 
-.chart-container {
-    position: relative;
-    width: calc(100% - 95px);
-    margin: auto;
+.expensesContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4%;
+}
+
+.wrapper {
+    flex-grow : 1;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0;
 }

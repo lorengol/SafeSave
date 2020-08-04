@@ -34,7 +34,7 @@ expenseRoutes.get('/monthlyExpenses', async (req, res) => {
     } catch (e) {
         res.status(400).send(e.message);
     }
-})
+});
 
 expenseRoutes.get('/expnesesByMonths', async (req, res) => {
     try {
@@ -42,7 +42,7 @@ expenseRoutes.get('/expnesesByMonths', async (req, res) => {
     } catch (e) {
         res.status(400).send(e.message);
     }
-})
+});
 
 expenseRoutes.get('/topExpensesPerBusiness', async (req, res) => {
     try {
@@ -50,4 +50,12 @@ expenseRoutes.get('/topExpensesPerBusiness', async (req, res) => {
     } catch (e) {
         res.status(400).send(e.message);
     }
-})
+});
+
+expenseRoutes.get('/balance', async (req, res) => {
+    try {
+        res.status(200).send(await ExpenseBL.getBalance(req.query.userId));
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});

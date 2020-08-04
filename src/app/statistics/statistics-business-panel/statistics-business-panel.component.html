@@ -2,8 +2,10 @@
     <h2>
         <b>Top 3 Expenses</b>
     </h2>
-    <div *ngFor="let expense of expenses">
-        <p>{{ expense.name }}</p>
-        <p>{{ expense.expenses }}</p>
+    <div class="wrapper">
+        <div *ngFor="let expense of expenses" class="expensesContainer">
+            <span>{{ expense.name }}</span>
+            <span>${{ expense.expenses }}</span>
+        </div>
     </div>
 </div>

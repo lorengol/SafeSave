@@ -51,4 +51,14 @@ export const getTopExpensesPerBusiness = async (userId: number) => {
   group by b.name
   order by expenses desc
   LIMIT 3;`);
-}
+};
+
+export const getBalance = async (userId: number) => {
+  return getRepository(Expense).query(`select u.income, monthname(curdate()) as month, (select sum(e.expense)
+  from expenses e
+  where e.user_id = ${userId}
+  and year(e.date) = year(curdate())
+  and month(e.date) = month(curdate())) as monthlyExpenses
+  from users u
+  where u.id = ${userId}`);
+};
