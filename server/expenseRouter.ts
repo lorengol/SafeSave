@@ -28,10 +28,34 @@ expenseRoutes.get('/expensesByCategory', async (req, res) => {
     }
 });
 
-expenseRoutes.get('/monthlyExpenses', async (req, res) =>{
+expenseRoutes.get('/monthlyExpenses', async (req, res) => {
     try {
         res.status(200).send(await ExpenseBL.getUserMonthlyExpenses(req.query.userId));
     } catch (e) {
         res.status(400).send(e.message);
     }
-})
+});
+
+expenseRoutes.get('/expnesesByMonths', async (req, res) => {
+    try {
+        res.status(200).send(await ExpenseBL.getUserExpensesByMonths(req.query.userId));
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});
+
+expenseRoutes.get('/topExpensesPerBusiness', async (req, res) => {
+    try {
+        res.status(200).send(await ExpenseBL.getTopExpensesPerBusiness(req.query.userId));
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});
+
+expenseRoutes.get('/balance', async (req, res) => {
+    try {
+        res.status(200).send(await ExpenseBL.getBalance(req.query.userId));
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});

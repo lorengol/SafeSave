@@ -1,0 +1,11 @@
+<div class="container">
+    <h2>
+        <b>Top 3 Expenses</b>
+    </h2>
+    <div class="wrapper">
+        <div *ngFor="let expense of expenses" class="expensesContainer">
+            <span>{{ expense.name }}</span>
+            <span>${{ expense.expenses }}</span>
+        </div>
+    </div>
+</div>

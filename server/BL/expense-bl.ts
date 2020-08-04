@@ -18,5 +18,17 @@ const getUserMonthlyExpenses = async (userId: number) => {
 const getAllExpensesByCategory = async (userId: number, categoryId: number) => {
  return ExpenseDAL.getUserMonthlyExpensesByCategory(userId, categoryId);
 };
+
+const getUserExpensesByMonths = async (userId: number) => {
+  return ExpenseDAL.getUserExpensesByMonths(userId);
+};
+
+const getTopExpensesPerBusiness = async (userId: number) => {
+  return ExpenseDAL.getTopExpensesPerBusiness(userId);
+};
+
+const getBalance = async (userId: number) => {
+  return ExpenseDAL.getBalance(userId);
+};
   
-export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory, getUserMonthlyExpenses };
+export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory, getUserMonthlyExpenses, getUserExpensesByMonths, getTopExpensesPerBusiness, getBalance };
