@@ -38,17 +38,17 @@ export const getUserExpensesByMonths = async (userId: number) => {
   where e.user_id = ${userId}
   and year(e.date) = year(curdate()) or (year(e.date) = (year(curdate()) - 1) and month(e.date) > month(curdate()))
   group by monthname(e.date), year(e.date), month(e.date)
-  order by year(e.date) desc, month(e.date) desc;`);
+  order by year(e.date), month(e.date);`);
 };
 
 export const getTopExpensesPerBusiness = async (userId: number) => {
-  return getRepository(Expense).query(`select b.name, sum(e.expense) as expenses
-  from expenses e, businesses b
-  where e.business_id = b.id
+  return getRepository(Expense).query(`select b.name, sum(e.expense) as expenses, c.name as category
+  from expenses e, businesses b, categories c
+  where e.business_id = b.id and b.category_id = c.id
   and e.user_id = ${userId}
   and year(e.date) = year(curdate())
   and month(e.date) = month(curdate())
-  group by b.name
+  group by b.name, c.name
   order by expenses desc
   LIMIT 3;`);
 };

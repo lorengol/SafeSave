@@ -4,8 +4,9 @@
     </h2>
     <div class="wrapper">
         <div *ngFor="let expense of expenses" class="expensesContainer">
-            <span>{{ expense.name }}</span>
-            <span>${{ expense.expenses }}</span>
+            <img src="assets/img/{{expense.category}}.png" style="width: 40px; height: 40px;"/>
+            <span class="line-text">{{ expense.name }}</span>
+            <span class="line-text">${{ expense.expenses }}</span>
         </div>
     </div>
 </div>
