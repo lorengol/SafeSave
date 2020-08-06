@@ -6,5 +6,5 @@ export const getBusinessNameById = async (id: number) => {
 };
 
 export const getBusinessByCategory = async (categoryId: number) => {
-  return getRepository(Business).findOne({category_id : categoryId});
+  return getRepository(Business).find({category_id : categoryId});
 };

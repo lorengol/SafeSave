@@ -38,4 +38,8 @@ const getUserMonthlyExpenses = async (userId: number) => {
   return ExpenseDAL.getUserMonthlyExpenses(userId);
 };
 
-export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory, getUserMonthlyExpenses, getUserSavings };
+const insertExpense = async (newExpense: Expense) => {
+   ExpenseDAL.insertExpense(newExpense);
+};
+
+export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory, getUserMonthlyExpenses, getUserSavings, insertExpense };

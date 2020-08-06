@@ -36,3 +36,7 @@ export const getUserMonthlyExpensesByCategory = async (userId: number, categoryI
                                       and month(e.date) = month(curdate())
                                       group by c.name`);
 };
+
+export const insertExpense = async (newExpense: Expense) => {
+  return getRepository(Expense).insert(newExpense);
+};
