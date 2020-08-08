@@ -22,8 +22,6 @@ export const generate = (Age: number, currUserId: number, currBankAccountId, cur
     userId = currUserId;
     bankAccountId = currBankAccountId;
     creditCardId = currCreditCardId;
-
-    console.log("generate")
     
     if(Age <= 20) {
         addExpense(FOOD, 50, 150);
@@ -103,14 +101,19 @@ export const generate = (Age: number, currUserId: number, currBankAccountId, cur
 const addExpense = async (category: number, min: number, max: number) => {
     let business:any = [];
     business = await getBusinessByCategory(category);
-    console.log(business);
     let randomValue = Math.floor(Math.random() * business.length);
     let expense: Expense = new Expense();        
     expense.business_id = business[randomValue].id
     randomValue = Math.floor(Math.random() * (max - min + 1)) + min;
     expense.expense = randomValue
     expense.user_id = userId;
-    expense.date = new Date();
+
+    // Nadav
+    var today = new Date();
+    var firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+    var date = randomDate(firstDay, today)
+    expense.date = date;
+    //
 
     if(creditCardId != null) {
         expense.credit_card_id = creditCardId;
@@ -120,7 +123,12 @@ const addExpense = async (category: number, min: number, max: number) => {
         expense.bank_account_id = bankAccountId;
     }
 
-    console.log(expense);
-
     expenseBL.insertExpense(expense);
+}
+
+
+const randomDate = (from, to) => {
+    from = from.getTime();
+    to = to.getTime();
+    return new Date(from + Math.random() * (to - from));
 }
