@@ -24,8 +24,6 @@ const saveCreditCard = async (creditCard: CreditCard) => {
     let timeDiff = Math.abs(Date.now() - user.birth_date.getTime())
     let Age = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
 
-    console.log(Age);
-
     expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id)
   } else {
     expenseGenerator.generate(99, creditCard.user_id, null, creditCard.id)
