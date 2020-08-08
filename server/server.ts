@@ -7,6 +7,7 @@ import {creditCardRoutes} from './creditCardRoutes';
 import { createConnection } from "typeorm";
 import { limitationRoutes } from './limitationsRoutes';
 import { categoryRoutes } from './categoryRoutes';
+import { savingRoutes } from './savingRoutes';
 const app = express();
 
 // Allow any method from any host and log requests
@@ -40,7 +41,10 @@ app.use('/limitations', limitationRoutes);
 app.use('/category', categoryRoutes);
 
 // Expense
-app.use('/expenses', expenseRoutes)
+app.use('/expenses', expenseRoutes);
+
+// Savings
+app.use('/savings', savingRoutes);
 
 // Create connection with the DB
 createConnection().then(async connection => {    

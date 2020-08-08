@@ -1,9 +1,8 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
@@ -17,13 +16,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SimplebarAngularModule } from 'simplebar-angular';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
-import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { CreditCardRegistrationComponent } from './credit-card-registration/credit-card-registration.component';
-import { CreditCardComponent } from './credit-card/credit-card.component';
 import { DashboardComparisonPanelComponent } from './dashboard/dashboard-comparison-panel/dashboard-comparison-panel.component';
 import { DashboardIncomePanelComponent } from './dashboard/dashboard-income-panel/dashboard-income-panel.component';
 import { DashboardLimitationsPanelComponent } from './dashboard/dashboard-limitations-panel/dashboard-limitations-panel.component';
@@ -32,8 +32,6 @@ import { DashboardStatisticsPanelComponent } from './dashboard/dashboard-statist
 import { DashboardTipPanelComponent } from './dashboard/dashboard-tip-panel/dashboard-tip-panel.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { httpInterceptor } from './http.interceptor';
-import { LimitationRegistration, LimitationsComponent } from './limitations/limitations.component';
-import { LoginComponent } from './login/login.component';
 import { OpenPageComponent } from './open-page/open-page.component';
 import { PaymentAccountsComponent } from './payment-accounts/payment-accounts.component';
 import { ProgressBarColorDirective } from './progress-bar-color.directive';
@@ -43,6 +41,12 @@ import { StatisticsMonthlyPanelComponent } from './statistics/statistics-monthly
 import { StatisticsBusinessPanelComponent } from './statistics/statistics-business-panel/statistics-business-panel.component';
 import { StatisticsExpensesPanelComponent } from './statistics/statistics-expenses-panel/statistics-expenses-panel.component';
 
+import { LoginComponent } from './login/login.component';
+import { LimitationsComponent, LimitationRegistration } from './limitations/limitations.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { CreditCardComponent } from './credit-card/credit-card.component';
+import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
 
 const routes: Routes = [
   {
@@ -60,7 +64,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  }, 
+  },
   {
     path: 'debits',
     component: CreditCardDebitsComponent
@@ -73,13 +77,13 @@ const routes: Routes = [
     path: 'Accounts',
     component: PaymentAccountsComponent
   },
-  { 
-    path: '', 
-    component: OpenPageComponent 
+  {
+    path: '',
+    component: OpenPageComponent
   },
-  { 
-    path: 'user-info', 
-    component: UserInfoComponent 
+  {
+    path: 'user-info',
+    component: UserInfoComponent
   },
   {
     path: 'limitations', 
@@ -98,6 +102,10 @@ const routes: Routes = [
     CreditCardRegistrationComponent,
     BankAccountRegistrationComponent,
     LoginComponent,
+    LimitationsComponent,
+    LimitationRegistration,
+    CreditCardComponent,
+    CreditCardDebitsComponent,
     DashboardComponent,
     DashboardStatisticsPanelComponent,
     PaymentAccountsComponent,
@@ -130,17 +138,26 @@ const routes: Routes = [
     CreditCardDirectivesModule,
     ReactiveFormsModule,
     FormsModule,
-    MatGridListModule,
+    MatDialogModule,
+    MatIconModule,
     CarouselModule,
     MatTableModule,
-    MatDialogModule,
-    CarouselModule,
+    MatGridListModule,
     MatPaginatorModule,
     MatDialogModule,
+    SimplebarAngularModule,
+    MatDialogModule,
+    MatIconModule,
+    CarouselModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatMenuModule,
     MatListModule,
-    SimplebarAngularModule
+    SimplebarAngularModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

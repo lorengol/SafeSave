@@ -16,8 +16,7 @@ userRoutes.get('/', async (req, res) => {
 
 userRoutes.get('/userById', async (req, res) => {
     try {
-        const id = req.body;
-        let user = await userBl.getUser(id);
+        let user = await userBl.getUser(req.query.userId);
         
         res.status(200).send(user);
     } catch (e) {

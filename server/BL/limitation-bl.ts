@@ -10,6 +10,7 @@ const getLimitationById = async (id: number) => {
 };
 
 const saveNewLimitation = async (newLimiation: Limitation) => {
+  newLimiation.date_created = new Date();
   return LimitationDAL.saveNewLimitation(newLimiation);
 };
 
