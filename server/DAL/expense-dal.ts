@@ -9,6 +9,11 @@ export const getExpensesByCreditcardId = async (creditCardId: number) => {
   return getRepository(Expense).find({credit_card_id: creditCardId});
 };
 
+export const getExpensesByUserAndMonthAndYear = async (userId: number, month: number, year: number) => {
+  return getRepository(Expense).query(`select ifnull(sum(e.expense), 0) as expense from expenses e where e.user_id = ${userId} 
+                                      and year(e.date) = ${year} and month(e.date) = ${month}`);
+}
+
 export const getUserMonthlyExpenses = async (userId: number) => {
   return getRepository(Expense).query(`select c.name as category, sum(e.expense) as expense
                                        from safe_save.expenses e, safe_save.businesses b, safe_save.categories c
@@ -61,4 +66,8 @@ export const getBalance = async (userId: number) => {
   and month(e.date) = month(curdate())) as monthlyExpenses
   from users u
   where u.id = ${userId}`);
+};
+
+export const insertExpense = async (newExpense: Expense) => {
+  return getRepository(Expense).insert(newExpense);
 };

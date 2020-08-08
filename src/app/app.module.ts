@@ -16,6 +16,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SimplebarAngularModule } from 'simplebar-angular';
+import { MatMenuModule } from '@angular/material/menu';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { BankAccountRegistrationComponent } from './bank-account-registration/bank-account-registration.component';
@@ -41,7 +44,7 @@ import { StatisticsExpensesPanelComponent } from './statistics/statistics-expens
 import { LoginComponent } from './login/login.component';
 import { LimitationsComponent, LimitationRegistration } from './limitations/limitations.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { CreditCardComponent } from './credit-card/credit-card.component';
 import { CreditCardDebitsComponent } from './credit-card-debits/credit-card-debits.component';
 
@@ -61,7 +64,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  }, 
+  },
   {
     path: 'debits',
     component: CreditCardDebitsComponent
@@ -74,13 +77,13 @@ const routes: Routes = [
     path: 'Accounts',
     component: PaymentAccountsComponent
   },
-  { 
-    path: '', 
-    component: OpenPageComponent 
+  {
+    path: '',
+    component: OpenPageComponent
   },
-  { 
-    path: 'user-info', 
-    component: UserInfoComponent 
+  {
+    path: 'user-info',
+    component: UserInfoComponent
   },
   {
     path: 'limitations', 
@@ -141,12 +144,7 @@ const routes: Routes = [
     MatIconModule,
     CarouselModule,
     MatTableModule,
-    MatPaginatorModule,
     MatGridListModule,
-    CarouselModule,
-    MatTableModule,
-    MatDialogModule,
-    CarouselModule,
     MatPaginatorModule,
     MatDialogModule,
     SimplebarAngularModule,
@@ -154,7 +152,12 @@ const routes: Routes = [
     MatIconModule,
     CarouselModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatMenuModule,
+    MatListModule,
+    SimplebarAngularModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: httpInterceptor, multi: true }],
   bootstrap: [AppComponent],

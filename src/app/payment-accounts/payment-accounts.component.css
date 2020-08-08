@@ -4,8 +4,8 @@
 
 mat-card {
     margin: 0 auto;
-    width: 30%;
-    text-align: center
+    width: 52%;
+    text-align: center;
 }
 
 .banks-card {
@@ -16,8 +16,16 @@ th, td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-  }
+}
 
 table {
     width: 100%;
+    table-layout: fixed;
+}
+
+.scroll {
+    display: block;
+    overflow-y:scroll;
+    height:150px;
+    width:100%;
 }
