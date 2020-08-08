@@ -120,8 +120,6 @@ const routes: Routes = [
     LimitationsComponent,
     LimitationRegistration,
     ProgressBarColorDirective,
-    LimitationsComponent,
-    LimitationRegistration,
     StatisticsComponent,
     StatisticsMonthlyPanelComponent,
     StatisticsBusinessPanelComponent,
