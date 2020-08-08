@@ -53,19 +53,28 @@ const tipsAI = async (userId: number, birthYear: number) => {
 
   var classifier = bayes();
 
+  console.log('similar');
   similarLimitation.forEach(async (limit) => {
+    const percentage = getRoundedExpensePercentage(limit.expense, limit.limit);
     await classifier.learn(
-      `${limit.user_id} ${limit.id} ${limit.expense} ${limit.limit}`,
+      `${limit.user_id}, ${limit.category}, ${percentage}`,
       `${limit.overlapsed}`
     );
   });
 
-  const willOverlap = userLimitations.find(async (limitation) => {
+  console.log('user');
+  const willOverlap = userLimitations.forEach(async (limitation) => {
+    const percentage = getRoundedExpensePercentage(limitation.expense, limitation.limit);
     let p = await classifier.categorize(
-      `${userId} ${limitation.id} ${limitation.expense} ${limitation.limit}`
+      `${userId}, ${limitation.category}, ${percentage}`
     );
     console.log(p);
   });
-
+  
 };
+
+const getRoundedExpensePercentage = (expense, limit) => {
+  console.log(expense, limit, expense / limit, Math.round(expense / limit * 10) * 10);
+  return Math.round(expense / limit * 10) * 10;
+}
 export { getAllTips, getTipById, tipsAI };
