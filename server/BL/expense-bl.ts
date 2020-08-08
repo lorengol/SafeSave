@@ -50,4 +50,8 @@ const getBalance = async (userId: number) => {
   return ExpenseDAL.getBalance(userId);
 };
   
-export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory, getUserMonthlyExpenses, getUserExpensesByMonths, getTopExpensesPerBusiness, getBalance, getUserSavings };
+const insertExpense = async (newExpense: Expense) => {
+   ExpenseDAL.insertExpense(newExpense);
+};
+
+export { getExpensesByUserId, getExpensesByCreditcardId, getAllExpensesByCategory, getUserMonthlyExpenses, getUserSavings, insertExpense, getUserExpensesByMonths, getTopExpensesPerBusiness, getBalance };

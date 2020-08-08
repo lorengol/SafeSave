@@ -67,3 +67,6 @@ export const getBalance = async (userId: number) => {
   from users u
   where u.id = ${userId}`);
 };
+export const insertExpense = async (newExpense: Expense) => {
+  return getRepository(Expense).insert(newExpense);
+};
