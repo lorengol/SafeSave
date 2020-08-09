@@ -1,7 +1,9 @@
-<div>
+<body>
     <div>
-        <img src="assets/img/cover2.png" class="logo">
+        <div>
+            <img src="assets/img/Logo.png" class="logo">
+        </div>
+        <button type="submit" [routerLink]="['../login']" mat-stroked-button>Sign In</button>
+        <button type="submit" [routerLink]="['../registration']" mat-stroked-button>Sign Up</button>
     </div>
-    <button type="submit" [routerLink]="['../login']" mat-stroked-button>Sign In</button>
-    <button type="submit" [routerLink]="['../registration']" mat-stroked-button>Sign Up</button>
-</div>
+</body>
