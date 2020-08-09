@@ -1,8 +1,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
-      <mat-toolbar *ngIf="isLoggedIn()" color="primary">
-        <span class="title">Safe Save</span>
+      <mat-toolbar *ngIf="isLoggedIn()">
+        <a mat-button [routerLink]="['/']"><img src="assets/img/Logo.png" class="logo"></a>
+        <!-- <span class="title">Safe Save</span> -->
         <a mat-button [routerLink]="['/dashboard']">Dashboard</a>
         <a mat-button [routerLink]="['/Accounts']">Payment Accounts</a>
         <a mat-button [routerLink]="['/limitations']">Limitations</a>

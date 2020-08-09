@@ -1,9 +1,12 @@
-.mat-toolbar {
-    direction: ltr;
+.logo {
+    /* padding-top: 10px; */
+    height: 45px;
 }
 
-.title {
-    padding-right: 16px;
+.mat-toolbar {
+    direction: ltr;
+    background-color:  #172469;
+    color: white;
 }
 
 .spacer {
