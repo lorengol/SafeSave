@@ -17,12 +17,27 @@ body{
     margin-left: auto;
     margin-right: auto;
     padding-top: 11%;
-    padding-bottom: 4%;
+    padding-bottom: 2%;
 }
 
 button{
     padding-right: 2%;
     padding-left: 2%;
+    border-color: white;
+    font-size: 20%;
+}
+
+a{
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    border: 1px solid white;
+    margin: 3px;
+}
+
+.a{
+    color: black;
+    background-color: white;
 }
 
 
