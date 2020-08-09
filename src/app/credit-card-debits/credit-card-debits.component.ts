@@ -33,8 +33,6 @@ export class CreditCardDebitsComponent implements OnInit {
     this.http.get('/credits', { params: httpParams }).subscribe((res) => {
       this.creditCards = res;
     });    
-
-    this.dataSource.paginator = this.paginator;
   }
 
   customOptions: OwlOptions  = {
@@ -58,7 +56,8 @@ export class CreditCardDebitsComponent implements OnInit {
 
     const httpParams = new HttpParams().set('creditCardId', this.activeSlides.slides[0].id.toString());
     this.http.get('/expenses', { params: httpParams }).subscribe((res) => {
-      this.dataSource = res;
+      this.dataSource = new MatTableDataSource(res as any);
+      this.dataSource.paginator = this.paginator;
     });
   }
 }
