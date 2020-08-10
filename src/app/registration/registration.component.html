@@ -14,6 +14,23 @@
                         <input [(ngModel)]="UserToRegister.last_Name" matInput formControlName="lastName" required>
                         <mat-error *ngIf="f.lastName.errors?.required">Last name is required</mat-error>
                     </mat-form-field>
+
+                    <br>
+
+                    <mat-form-field class="margin">
+                        <mat-label>Password</mat-label>
+                        <input [(ngModel)]="UserToRegister.password" type="password" matInput formControlName="password"
+                            required>
+                        <mat-error *ngIf="f.password.errors?.required">Password is required</mat-error>
+                        <mat-error *ngIf="f.password.errors?.minlength">Password needs to contain at least 6 numbers or
+                            letters</mat-error>
+                    </mat-form-field>
+                             
+                    <mat-form-field>
+                        <mat-label>Confirm Password</mat-label>
+                        <input type="password" matInput formControlName="confirmPassword" required>
+                        <mat-error *ngIf="f.confirmPassword.errors?.required">Confirm password is required</mat-error>
+                    </mat-form-field>
                 
                 <p>
                     <mat-form-field class="wider">
@@ -33,29 +50,15 @@
                   </mat-form-field>
                 </p>
                 <p>
-                    <mat-form-field>
+                    <mat-form-field class="wider">
                         <mat-label>Income</mat-label>
                         <input [(ngModel)]="UserToRegister.income" type="number" matInput formControlName="income">
                         <mat-error *ngIf="f.income.errors?.income">Income most be positive</mat-error>
                     </mat-form-field>
                 </p>
-                <p>
-                    <mat-form-field>
-                        <mat-label>Password</mat-label>
-                        <input [(ngModel)]="UserToRegister.password" type="password" matInput formControlName="password"
-                            required>
-                        <mat-error *ngIf="f.password.errors?.required">Password is required</mat-error>
-                        <mat-error *ngIf="f.password.errors?.minlength">Password needs to contain at least 6 numbers or
-                            letters</mat-error>
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field>
-                        <mat-label>Confirm Password</mat-label>
-                        <input type="password" matInput formControlName="confirmPassword" required>
-                        <mat-error *ngIf="f.confirmPassword.errors?.required">Confirm password is required</mat-error>
-                    </mat-form-field>
-                </p>
+                
+                
+            <br>
                 <button type="submit" (click)="submit()" [disabled]="!registrationForm.valid" mat-stroked-button>Sign
                     Up</button>
 
