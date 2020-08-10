@@ -1,12 +1,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
-      <mat-toolbar *ngIf="isLoggedIn()" color="primary">
-        <span class="title">Safe Save</span>
+      <mat-toolbar *ngIf="isLoggedIn()">
+        <a><img src="assets/img/Logo.png" class="logo"></a>
         <a mat-button [routerLink]="['/dashboard']">Dashboard</a>
         <a mat-button [routerLink]="['/Accounts']">Payment Accounts</a>
         <a mat-button [routerLink]="['/limitations']">Limitations</a>
         <a mat-button [routerLink]="['/debits']">Debits</a>
+        <a mat-button [routerLink]="['/statistics']">Statistics</a>
         <span class="spacer"></span>
         <a mat-button [matMenuTriggerFor]="menu">Hi {{userName}}!</a>
         <mat-menu #menu="matMenu">
