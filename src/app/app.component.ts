@@ -1,5 +1,4 @@
-import { Component,OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { User } from 'server/src/entity/User';
 
 @Component({
@@ -8,24 +7,17 @@ import { User } from 'server/src/entity/User';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
-
-  userName: String;
+export class AppComponent {
   
-  constructor(private http: HttpClient) { }
-  
-  ngOnInit(){
-    // http try
-    this.http.get("/users").subscribe((kaki)=> {
-      console.log(kaki);
-    });
-
-    const loggedInUser = JSON.parse(localStorage.getItem('currentUser')) as User;
-    this.userName = `${loggedInUser.first_Name} ${loggedInUser.last_Name}`;
-  }
+  constructor() { }
 
   isLoggedIn() {
     return localStorage.getItem('currentUser') != null;
+  }
+
+  getUserName() {
+    const loggedInUser = JSON.parse(localStorage.getItem('currentUser')) as User;
+    return `${loggedInUser.first_Name} ${loggedInUser.last_Name}`;
   }
 
   logOut() {

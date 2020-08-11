@@ -9,7 +9,7 @@
         <a mat-button [routerLink]="['/debits']">Debits</a>
         <a mat-button [routerLink]="['/statistics']">Statistics</a>
         <span class="spacer"></span>
-        <a mat-button [matMenuTriggerFor]="menu">Hi {{userName}}!</a>
+        <a mat-button [matMenuTriggerFor]="menu">Hi {{getUserName()}}!</a>
         <mat-menu #menu="matMenu">
           <a mat-menu-item [routerLink]="['/user-info']">Profile</a>
           <a mat-menu-item [routerLink]="['/']" (click)="logOut()">Log Out</a>
