@@ -16,7 +16,6 @@ export class StatisticsBusinessPanelComponent implements OnInit {
     const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
     this.http.get('/expenses/topExpensesPerBusiness', { params: httpParams }).subscribe((res) => {
       this.expenses = res;
-      console.log(res);
     }); 
   }
 

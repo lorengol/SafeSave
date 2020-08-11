@@ -1,3 +1,4 @@
+import { creditCard } from './../src/app/credit-card-registration/credit-card-registration.component';
 import * as express from 'express';
 import * as CreditCardBL from "./BL/credit-card-bl";
 import { CreditCard } from './src/entity/CreditCard';
@@ -29,6 +30,16 @@ creditCardRoutes.get('/deleteCreditCard', async (req, res) => {
   try {
       CreditCardBL.deleteCreditCard(req.query.creditCardId)
       res.status(201).send({message: 'deleted successfully'});
+  } catch (e) {
+      res.status(400).send(e.message);
+  }
+});
+
+creditCardRoutes.get('/card', async (req, res) => {
+  try {
+     console.log('hi');
+      let creditCard = await CreditCardBL.getCreditCardByCardNumber(req.query.cardNumber);
+      res.status(200).send(creditCard);
   } catch (e) {
       res.status(400).send(e.message);
   }

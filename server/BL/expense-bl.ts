@@ -1,3 +1,4 @@
+import { creditCard } from './../../src/app/credit-card-registration/credit-card-registration.component';
 import * as ExpenseDAL from '../DAL/expense-dal';
 import * as LimitationDAL from '../DAL/limitation-dal';
 import { Expense } from '../src/entity/Expense';
@@ -8,8 +9,10 @@ const getExpensesByUserId = async (userId: number) => {
 
 const getExpensesByCreditcardId = async (creditCardId: number) => {
   const expenses =  (await ExpenseDAL.getExpensesByCreditcardId(creditCardId));
-  expenses.sort((a,b) => a.date > b.date ? 1 : -1);
-  return expenses;
+  console.log(expenses);
+
+  // expenses.sort((a,b) => a.date > b.date ? 1 : -1);
+  // return expenses;
 };
 
 const getAllExpensesByCategory = async (userId: number, categoryId: number) => {

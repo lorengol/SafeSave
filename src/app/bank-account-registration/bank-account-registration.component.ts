@@ -56,26 +56,41 @@ export class BankAccountRegistrationComponent implements OnInit {
   }
 
   submit() {
-    const newBankAccount: bankAccount = {
-      account_number: this.bankAccountToRegister.account_number,
-      branch_number: this.bankAccountToRegister.branch_number,
-      bank_id: this.bankAccountToRegister.bank_id,
-      user_id: JSON.parse(localStorage.getItem('currentUser')).id,
-      first_Name: this.bankAccountToRegister.first_Name,
-      last_Name: this.bankAccountToRegister.last_Name,
-      social_security_number: this.bankAccountToRegister.social_security_number
-    };
 
-    this.bankAccountService.addBankAccount(newBankAccount).subscribe(
-      data => {Swal.fire({
-        text: 'Bank account successfuly added!',
-        icon: 'success',
-        confirmButtonColor: 'white',
-        timer: 1500
-      });
-      this.dialog.closeAll();
-    },
-      error => console.log('error', error)
-    );
+    this.bankAccountService.getBankAccount(this.bankAccountToRegister.account_number)
+    .subscribe(bank => {
+        if (bank != null) {
+          {Swal.fire({
+            text: 'Bank account already exists',
+            icon: 'error',
+            confirmButtonColor: 'white',
+            timer: 1500
+          });
+          this.dialog.closeAll();
+        }
+        } else {
+          const newBankAccount: bankAccount = {
+            account_number: this.bankAccountToRegister.account_number,
+            branch_number: this.bankAccountToRegister.branch_number,
+            bank_id: this.bankAccountToRegister.bank_id,
+            user_id: JSON.parse(localStorage.getItem('currentUser')).id,
+            first_Name: this.bankAccountToRegister.first_Name,
+            last_Name: this.bankAccountToRegister.last_Name,
+            social_security_number: this.bankAccountToRegister.social_security_number
+          };
+      
+          this.bankAccountService.addBankAccount(newBankAccount).subscribe(
+            data => {Swal.fire({
+              text: 'Bank account successfuly added!',
+              icon: 'success',
+              confirmButtonColor: 'white',
+              timer: 1500
+            });
+            this.dialog.closeAll();
+          },
+            error => console.log('error', error)
+          );
+        }
+    });
   }
 }

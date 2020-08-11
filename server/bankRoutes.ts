@@ -48,3 +48,13 @@ bankRoutes.get('/deleteBankAcount', async (req, res) => {
     }
 });
 
+bankRoutes.get('/bankAccount', async (req, res) => {
+    try {
+        res.status(200).send(await BankAccountBL.getBankAccountById(req.query.bankAccountId));
+    } catch (e) {
+        res.status(400).send(e.message);
+    }
+});
+
+
+
