@@ -17,16 +17,24 @@ const saveCreditCard = async (creditCard: CreditCard) => {
   await CreditCardDAL.saveCreditCard(creditCard);
 
   let creditCardsNum = (await getCreditCardByUserId(creditCard.user_id)).length;
-  let bankAccountsNum = (await bankAccountBL.getBankAccountByUserId(creditCard.user_id)).length
 
-  if((creditCardsNum + bankAccountsNum) == 1) {
+  if(creditCardsNum == 0) {
     let user: User = await userBL.getUser(creditCard.user_id);
     let timeDiff = Math.abs(Date.now() - user.birth_date.getTime())
     let Age = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
 
-    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id)
+    var end = new Date();
+    var start = new Date(end.getFullYear(), end.getMonth(), 1);
+
+    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
+
+
+
   } else {
-    expenseGenerator.generate(99, creditCard.user_id, null, creditCard.id)
+    var end = new Date();
+    var start = new Date(end.getFullYear(), end.getMonth(), 1);
+    
+    expenseGenerator.generate(99, creditCard.user_id, null, creditCard.id, start, end)
   }
 };
 
