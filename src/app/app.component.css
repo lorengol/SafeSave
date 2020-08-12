@@ -1,6 +1,7 @@
 .logo {
     height: 45px;
     padding-top: 6%;
+    outline: unset;
 }
 
 .mat-toolbar {
@@ -16,4 +17,3 @@
 .log-out {
     float: right;
 }
-
