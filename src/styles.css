@@ -4,6 +4,7 @@
   }
 *{
     font-family: 'OpenSansHebrew';
+    /* font-family: "Montserrat", sans-serif; */
 
 }
 html, body { 
@@ -13,5 +14,5 @@ html, body {
 }
 
 button{
-    color:  #3f51b5 !important;
+    color:  #9095ad !important;
 }

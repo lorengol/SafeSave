@@ -14,7 +14,7 @@ export class StatisticsMonthlyPanelComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    const ctx = (document.getElementById('expensesChart') as HTMLCanvasElement).getContext('2d');
+    const ctx = (document.getElementById('totalMonthlyExpensesChart') as HTMLCanvasElement).getContext('2d');
 
     const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
     this.http.get('/expenses/expnesesByMonths', { params: httpParams }).subscribe((res) => {

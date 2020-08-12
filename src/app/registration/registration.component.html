@@ -1,65 +1,72 @@
-<mat-grid-list cols="1" rowHeight="3:1">
-    <mat-grid-tile [colspan]="1">
-        <mat-card>
-            <form [formGroup]="registrationForm" class="registration-form">
-                <h2>Create a New Account</h2>
-                
-                    <mat-form-field class="margin">
-                        <mat-label>First name</mat-label>
-                        <input [(ngModel)]="UserToRegister.first_Name" matInput formControlName="firstName" required>
-                        <mat-error *ngIf="f.firstName.errors?.required">First name is required</mat-error>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Last name</mat-label>
-                        <input [(ngModel)]="UserToRegister.last_Name" matInput formControlName="lastName" required>
-                        <mat-error *ngIf="f.lastName.errors?.required">Last name is required</mat-error>
-                    </mat-form-field>
-                
-                <p>
-                    <mat-form-field class="wider">
-                        <mat-label>Email</mat-label>
-                        <input [(ngModel)]="UserToRegister.email" matInput placeholder="ex@gmail.com"
-                            formControlName="email" required>
-                        <mat-error *ngIf="f.email.errors?.required">Email is required</mat-error>
-                        <mat-error *ngIf="f.email.errors?.email">Invalid email</mat-error>
-                    </mat-form-field>
-                </p>
-                <p>
-                <mat-form-field appearance="fill">
-                    <mat-label>Choose your birthdate</mat-label>
-                    <input [(ngModel)]="UserToRegister.birth_date" matInput [matDatepicker]="picker" formControlName="birthDate" required>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field>
-                        <mat-label>Income</mat-label>
-                        <input [(ngModel)]="UserToRegister.income" type="number" matInput formControlName="income">
-                        <mat-error *ngIf="f.income.errors?.income">Income most be positive</mat-error>
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field>
-                        <mat-label>Password</mat-label>
-                        <input [(ngModel)]="UserToRegister.password" type="password" matInput formControlName="password"
-                            required>
-                        <mat-error *ngIf="f.password.errors?.required">Password is required</mat-error>
-                        <mat-error *ngIf="f.password.errors?.minlength">Password needs to contain at least 6 numbers or
-                            letters</mat-error>
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field>
-                        <mat-label>Confirm Password</mat-label>
-                        <input type="password" matInput formControlName="confirmPassword" required>
-                        <mat-error *ngIf="f.confirmPassword.errors?.required">Confirm password is required</mat-error>
-                    </mat-form-field>
-                </p>
-                <button type="submit" (click)="submit()" [disabled]="!registrationForm.valid" mat-stroked-button>Sign
-                    Up</button>
+<body>
+    <mat-grid-list cols="2" rowHeight="3:1">
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+            <img src="assets/img/Logo.png" class="logo">      
+            <mat-card>
+                <form [formGroup]="registrationForm" class="registration-form">
+                    <h2>Create a New Account</h2>
+                    
+                        <mat-form-field class="margin">
+                            <mat-label>First name</mat-label>
+                            <input [(ngModel)]="UserToRegister.first_Name" matInput formControlName="firstName" required>
+                            <mat-error *ngIf="f.firstName.errors?.required">First name is required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Last name</mat-label>
+                            <input [(ngModel)]="UserToRegister.last_Name" matInput formControlName="lastName" required>
+                            <mat-error *ngIf="f.lastName.errors?.required">Last name is required</mat-error>
+                        </mat-form-field>
 
-            </form>
-        </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+                        <br>
+
+                        <mat-form-field class="margin">
+                            <mat-label>Password</mat-label>
+                            <input [(ngModel)]="UserToRegister.password" type="password" matInput formControlName="password"
+                                required>
+                            <mat-error *ngIf="f.password.errors?.required">Password is required</mat-error>
+                            <mat-error *ngIf="f.password.errors?.minlength">Password needs to contain at least 6 numbers or
+                                letters</mat-error>
+                        </mat-form-field>
+                                
+                        <mat-form-field>
+                            <mat-label>Confirm Password</mat-label>
+                            <input type="password" matInput formControlName="confirmPassword" required>
+                            <mat-error *ngIf="f.confirmPassword.errors?.required">Confirm password is required</mat-error>
+                        </mat-form-field>
+                    
+                    <p>
+                        <mat-form-field class="wider">
+                            <mat-label>Email</mat-label>
+                            <input [(ngModel)]="UserToRegister.email" matInput placeholder="ex@gmail.com"
+                                formControlName="email" required>
+                            <mat-error *ngIf="f.email.errors?.required">Email is required</mat-error>
+                            <mat-error *ngIf="f.email.errors?.email">Invalid email</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Choose your birthdate</mat-label>
+                            <input [(ngModel)]="UserToRegister.birth_date" matInput [matDatepicker]="picker"
+                                formControlName="birthDate" required>
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field class="wider">
+                            <mat-label>Income</mat-label>
+                            <input [(ngModel)]="UserToRegister.income" type="number" matInput formControlName="income">
+                            <mat-error *ngIf="f.income.errors?.income">Income most be positive</mat-error>
+                        </mat-form-field>
+                    </p>
+                    
+                    
+                <br>
+                    <button type="submit" (click)="submit()" [disabled]="!registrationForm.valid" mat-stroked-button>Sign
+                        Up</button>
+
+                </form>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</body>

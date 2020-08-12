@@ -1,24 +1,29 @@
-<mat-grid-list cols="1" rowHeight="3:1">
-    <mat-grid-tile [colspan]="1">
-        <mat-card>
-            <form [formGroup]="form">
-                <h2>Sign In to Your Account</h2>
-                <p>
-                    <mat-form-field>
-                        <mat-label>Email</mat-label>
-                        <input [(ngModel)]="email" matInput placeholder="ex@gmail.com" formControlName="email" required
-                            autocomplete="off">
-                        <mat-error *ngIf="form.controls.email.errors?.email">Invalid email</mat-error>
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field>
-                        <mat-label>Password</mat-label>
-                        <input [(ngModel)]="password" type="password" matInput formControlName="password" required>
-                    </mat-form-field>
-                </p>
-                <button type="submit" (click)="signIn()" mat-stroked-button>Sign In</button>
-            </form>
-        </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+<body>
+    <mat-grid-list cols="2" rowHeight="3:1">    
+        <mat-grid-tile [colspan]="2" [rowspan]="2">
+            <img src="assets/img/Logo.png" class="logo">      
+        
+            <mat-card>
+                <form [formGroup]="form">
+                    <h2>Sign In to Your Account</h2>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input [(ngModel)]="email" matInput placeholder="ex@gmail.com" formControlName="email" required
+                                autocomplete="off">
+                            <mat-error *ngIf="form.controls.email.errors?.email">Invalid email</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input [(ngModel)]="password" type="password" matInput formControlName="password" required>
+                        </mat-form-field>
+                    </p>
+                    <button type="submit" (click)="signIn()" mat-stroked-button>Sign In<mat-icon>login</mat-icon>
+                    </button>
+                </form>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</body>
