@@ -22,12 +22,6 @@ export const generate = (Age: number, currUserId: number, currBankAccountId, cur
     userId = currUserId;
     bankAccountId = currBankAccountId;
     creditCardId = currCreditCardId;
-
-
-    // var end = new Date();
-    // var start = new Date(end.getFullYear(), end.getMonth(), 1);
-    // var lastMonthFirst = new Date(today.getFullYear(), today.getMonth() - 1, 30);
-    // var lastMonthLast = new Date(today.getFullYear(), today.getMonth() - 1, 1);
     
     if(Age <= 20) {
         addExpense(FOOD, 50, 150, start,end);

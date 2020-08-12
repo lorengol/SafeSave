@@ -21,18 +21,12 @@ const saveBankAccount = async (bankAccount: BankAccount) => {
   bankAccount.current = 10000
   await BankAccountDAL.saveBankAccount(bankAccount);
 
-  let creditCardsNum = (await creditCardBL.getCreditCardByUserId(bankAccount.user_id)).length;
-  let bankAccountsNum = (await getBankAccountByUserId(bankAccount.user_id)).length
+  let user: User = await userBL.getUser(bankAccount.user_id);
+  var today = new Date();
+  var start = new Date(today.getFullYear(), today.getMonth(), 1);
 
-  if((creditCardsNum + bankAccountsNum) == 1) {
-    let user: User = await userBL.getUser(bankAccount.user_id);
-    let timeDiff = Math.abs(Date.now() - user.birth_date.getTime())
-    let Age = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
-
-    expenseGenerator.generate(Age, bankAccount.user_id, bankAccount.account_number, null)
-  } else {
-    expenseGenerator.generate(99, bankAccount.user_id, bankAccount.account_number, null)
-  }
+  expenseGenerator.generate(99, bankAccount.user_id, bankAccount.account_number, null, start, today)
+ 
 };
 
 const getBankAccountByUserId = async (userId: number) => {

@@ -18,22 +18,38 @@ const saveCreditCard = async (creditCard: CreditCard) => {
 
   let creditCardsNum = (await getCreditCardByUserId(creditCard.user_id)).length;
 
-  if(creditCardsNum == 0) {
+  if(creditCardsNum == 1) {
     let user: User = await userBL.getUser(creditCard.user_id);
     let timeDiff = Math.abs(Date.now() - user.birth_date.getTime())
     let Age = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
 
-    var end = new Date();
-    var start = new Date(end.getFullYear(), end.getMonth(), 1);
+    // This month expenses
+    var today = new Date();
+    var start = new Date(today.getFullYear(), today.getMonth(), 1);
+    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, today)
+     
+    // Last month expenses
+    start = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+    var end = new Date(today.getFullYear(), today.getMonth() - 1, 30);
+
+    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
+
+    // 2 month ago expenses
+    start = new Date(today.getFullYear(), today.getMonth() - 2, 1);
+    end = new Date(today.getFullYear(), today.getMonth() - 2, 30);
+
+    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
+
+    // 3 month ago expenses
+    start = new Date(today.getFullYear(), today.getMonth() - 3, 1);
+    end = new Date(today.getFullYear(), today.getMonth() - 3, 30);
 
     expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
 
 
-
   } else {
     var end = new Date();
-    var start = new Date(end.getFullYear(), end.getMonth(), 1);
-    
+    var start = new Date(end.getFullYear(), end.getMonth(), 1);    
     expenseGenerator.generate(99, creditCard.user_id, null, creditCard.id, start, end)
   }
 };
