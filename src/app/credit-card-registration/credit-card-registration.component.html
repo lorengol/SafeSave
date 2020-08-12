@@ -30,8 +30,11 @@
         <p>
             <mat-form-field>
                 <mat-label>Account number</mat-label>
-                <input id="cc-exp-date" matInput [(ngModel)]="CreditCardToRegister.account_number"
-                    formControlName="accountNumber" type="tel" required>
+                <mat-select [(ngModel)]="CreditCardToRegister.account_number" formControlName="accountNumber">
+                    <mat-option *ngFor="let bankAccount of userBankAccounts" [value]="bankAccount.account_number">
+                        {{bankAccount.account_number}}
+                    </mat-option>
+                </mat-select>
                 <mat-error *ngIf="f.accountNumber.errors?.required">Account number is required</mat-error>
             </mat-form-field>
         </p>

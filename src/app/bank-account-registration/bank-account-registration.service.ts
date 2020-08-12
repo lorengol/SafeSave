@@ -21,4 +21,9 @@ export class BankAccountRegistrationService {
   addBankAccount(bankAccount: bankAccount) {
     return this.http.post('/bank', bankAccount, { responseType: 'text' });
   }
+
+  getBankAccount(bankAccountId) {
+    const httpParams = new HttpParams().set('bankAccountId', bankAccountId);
+    return this.http.get('/bank/bankAccount', { params: httpParams });
+  }
 }

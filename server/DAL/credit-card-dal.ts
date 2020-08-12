@@ -16,3 +16,7 @@ export const getCreditCardByUserId = async (userId: number) => {
 export const deleteCreditCardById = async (id: number) => {
   return getRepository(CreditCard).delete(id);
 };
+
+export const getCreditCardByCardNumber = async (cardNumber: number) => {
+  return getRepository(CreditCard).find({ card_number: cardNumber });
+};
