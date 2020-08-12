@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
-export class User {
+export interface User {
   id: number;
   first_Name: string;
   last_Name: string;

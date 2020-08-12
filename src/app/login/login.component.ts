@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { User } from '../registration/registration.component';
 
 @Component({
   selector: 'login',
@@ -25,13 +26,20 @@ export class LoginComponent implements OnInit {
       email: new FormControl(this.email, Validators.email),
       password: new FormControl()
     });
-  }
 
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+
+  }
+  
   signIn() {
     const httpParams = new HttpParams().set('email', this.email).set('password', this.password);
-    this.http.get("/users/verifyUserLogin", { params: httpParams }).subscribe(
-      data => {
+    this.http.get<User>("/users/verifyUserLogin", { params: httpParams }).subscribe(
+      async data => {
         localStorage.setItem('currentUser', JSON.stringify(data));
+
+        const httpParams = new HttpParams().set('userId', String(data.id)).set('birthYear', String(new Date(data.birth_date).getFullYear()));
+        const tip = await this.http.get('/tips', { params: httpParams }).toPromise();
+        localStorage.setItem('tip', JSON.stringify(tip));
 
         this.router.navigate(['/dashboard']);
       },

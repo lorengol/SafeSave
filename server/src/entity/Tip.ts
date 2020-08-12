@@ -13,6 +13,9 @@ class Tip {
   id: number;
 
   @Column()
+  tip: string;
+
+  @Column()
   tip_content: string;
 
   @Column()
