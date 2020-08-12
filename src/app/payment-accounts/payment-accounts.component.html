@@ -1,5 +1,37 @@
 <div class="payment-accounts">
 
+  <mat-card class="banks-card">
+    <mat-card-header>
+      <mat-card-title class="title">Bank Accounts</mat-card-title>
+      <mat-icon>account_balance</mat-icon>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="scroll">
+      <table>
+        <tr>
+          <th>Bank</th>
+          <th>Branch</th>
+          <th>Account No.</th>
+          <th>Owner</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let account of bankAcoounts">
+          <td>{{account.bank.name}}</td>
+          <td>{{account.branch.name}}</td>
+          <td>{{account.account_number}}</td>
+          <td>{{account.first_Name}} {{account.last_Name}}</td>
+          <td>
+            <mat-icon (click)="deleteBankAccount(account.account_number)">delete_outline</mat-icon>
+          </td>
+        </tr>
+      </table>
+    </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <mat-icon class="addButton" (click)="openBankAccountModal()">add_circle</mat-icon>
+    </mat-card-actions>
+  </mat-card> 
+
   <mat-card class="credits-card">
     <mat-card-header>
       <mat-card-title class="title">Credit Cards</mat-card-title>
@@ -35,36 +67,4 @@
       <mat-icon class="addButton" (click)="openCreditCardModal()">add_circle</mat-icon>
     </mat-card-actions>
   </mat-card>
-
-  <mat-card class="banks-card">
-    <mat-card-header>
-      <mat-card-title class="title">Bank Accounts</mat-card-title>
-      <mat-icon>account_balance</mat-icon>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="scroll">
-      <table>
-        <tr>
-          <th>Bank</th>
-          <th>Branch</th>
-          <th>Account No.</th>
-          <th>Owner</th>
-          <th></th>
-        </tr>
-        <tr *ngFor="let account of bankAcoounts">
-          <td>{{account.bank.name}}</td>
-          <td>{{account.branch.name}}</td>
-          <td>{{account.account_number}}</td>
-          <td>{{account.first_Name}} {{account.last_Name}}</td>
-          <td>
-            <mat-icon (click)="deleteBankAccount(account.account_number)">delete_outline</mat-icon>
-          </td>
-        </tr>
-      </table>
-    </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <mat-icon class="addButton" (click)="openBankAccountModal()">add_circle</mat-icon>
-    </mat-card-actions>
-  </mat-card> 
 </div>

@@ -9,8 +9,9 @@ mat-card {
     border-radius: 20px;
 }
 
-.credits-card {
+.banks-card {
     margin-bottom: 5%;
+    margin-top: 4%;
 }
 
 th, td {
