@@ -56,6 +56,7 @@ export class CreditCardDebitsComponent implements OnInit {
 
     const httpParams = new HttpParams().set('creditCardId', this.activeSlides.slides[0].id.toString());
     this.http.get('/expenses', { params: httpParams }).subscribe((res) => {
+      (res as any).map(item => item.date = new Date(item.date).toLocaleDateString('en-GB'));
       this.dataSource = new MatTableDataSource(res as any);
       this.dataSource.paginator = this.paginator;
     });
