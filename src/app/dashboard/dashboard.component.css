@@ -7,6 +7,25 @@ mat-card {
     height: calc(100% - 50px);
 }
 
-.saved-money {
-    text-align: center;
+img {
+    width: 50%;
 }
+
+.saved-money{
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+}
+
+.mat-card-content{
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.mat-card-header {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+}
+    
+    

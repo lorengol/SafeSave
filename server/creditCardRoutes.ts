@@ -34,3 +34,12 @@ creditCardRoutes.get('/deleteCreditCard', async (req, res) => {
   }
 });
 
+creditCardRoutes.get('/card', async (req, res) => {
+  try {
+      let creditCard = await CreditCardBL.getCreditCardByCardNumber(req.query.cardNumber);
+      res.status(200).send(creditCard);
+  } catch (e) {
+      res.status(400).send(e.message);
+  }
+});
+

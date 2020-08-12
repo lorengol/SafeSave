@@ -63,13 +63,12 @@ export class RegistrationComponent implements OnInit {
           this.UserToRegister.id = JSON.parse(data).identifiers[0].id;
           localStorage.setItem('currentUser', JSON.stringify(this.UserToRegister));
           Swal.fire({
-            text: 'You are successfuly registered!',
+            html: 'You are successfuly registered! <br> Now it is time to set up your Payments Accounts',
             icon: 'success',
-            confirmButtonColor: 'white',
-            timer: 2000
+            confirmButtonColor: 'white'
           });
 
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/Accounts']);
         },
         err => Swal.fire({
           icon: 'error',

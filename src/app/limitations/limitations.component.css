@@ -4,7 +4,7 @@
 }
 
 html, body {
-  background: #f9fafb;
+  background: white;
   height: 50vh;
   position: relative;
   z-index: -2;
@@ -86,7 +86,7 @@ html, body {
           animation: popUp ease-in-out 350ms;
   background: #ffffff;
   border-radius: 25px;
-  /* box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.17); */
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.17);
   margin-top: 40px;
   padding: 28px 30px 30px 35px;
   position: relative;
@@ -106,7 +106,7 @@ html, body {
   border: 1px solid #000000;
   color: #000000;
   display: block;
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
   font-size: 13px;
   padding: 10px;
   text-align: center;
@@ -146,7 +146,7 @@ html, body {
   color: #ff86af;
 }
 .profile__key {
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
   font-size: 13px;
   font-weight: 400;
   text-align: center;
@@ -211,13 +211,13 @@ html, body {
   display: flex;
 }
 .profile__username {
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
   font-weight: 600;
   margin: 0;
   text-align: left;
 }
 .profile__value {
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
   font-size: 28px;
   font-weight: 700;
   text-align: center;
@@ -233,18 +233,16 @@ html, body {
 }
 
 .addButton{
-  display: flex;
-  justify-content: center;
+  width: 1%;
   font-size: 68px;
-  width: 100%;
   cursor: pointer;
-  padding-top: 20px;
+  padding-top: 2%;
 }
 
 .updateLimitForm{
   text-align: center;
     font-size: 20px;
-    font-family: "Montserrat", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
   }
 
   .form {
@@ -256,13 +254,15 @@ html, body {
     padding-left: 10px;
     text-align: left;
     font-weight: bold;
-    font-family: "Montserrat", sans-serif;
+    /* font-family: "Montserrat", sans-serif; */
   }
 
   .total {
     font-size: 21px;
     text-align: center;
-    font-family: "Montserrat", sans-serif;
+    padding-top: 2%;
+    padding-bottom: 1%;
+    /* font-family: "Montserrat", sans-serif; */
   }
 
   .bold {

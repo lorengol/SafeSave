@@ -1,7 +1,7 @@
 <div *ngIf="show">
     <div *ngIf="monthlySavingsExists">
-        <p class="bold">You saved so far {{totalSavings}}<mat-icon>attach_money</mat-icon></p>    
-        <img src="../../../assets/piggy.png">
+        <p class="bold">You saved {{totalSavings}}$ so far</p>
+        <p>Keep up the good job!</p>    
     </div>
     
     <div *ngIf="!monthlySavingsExists">
@@ -10,14 +10,11 @@
                 <p>Last month you saved</p>
                 <p class="bold">{{savedMoney}}<mat-icon>attach_money</mat-icon></p>
                 <button mat-stroked-button (click)="saveMoney()">Move To Piggy Bank</button>
-                <br>
-                <img src="../../../assets/piggy.png">
             </div>
             
             <div *ngIf="!savedInd">
                 <p class="bold">Last month you didn't save any money</p>
-                <p>Check our saving tips section</p>
-                <img src="../../../assets/piggy.png">   
+                <p>Check our saving tips section</p>   
             </div> 
         </div>
 </div>

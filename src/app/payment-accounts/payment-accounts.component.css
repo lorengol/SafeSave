@@ -6,10 +6,12 @@ mat-card {
     margin: 0 auto;
     width: 52%;
     text-align: center;
+    border-radius: 20px;
 }
 
 .banks-card {
-    margin-bottom: 5%;
+    margin-bottom: 4%;
+    margin-top: 3%;
 }
 
 th, td {
@@ -26,6 +28,16 @@ table {
 .scroll {
     display: block;
     overflow-y:scroll;
-    height:150px;
+    height:130px;
     width:100%;
+}
+
+.addButton{
+    font-size: 28px;
+    width: 100%;
+    cursor: pointer;
+  }
+
+.title {
+    font-weight: bold;
 }

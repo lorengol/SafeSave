@@ -48,6 +48,6 @@ class Expense {
   expense: number;
 
   @Column()
-  date: string;
+  date: Date;
 }
 export { Expense };

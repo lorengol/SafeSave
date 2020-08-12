@@ -1,7 +1,9 @@
 <div class="payment-accounts">
+
   <mat-card class="banks-card">
     <mat-card-header>
-      <mat-card-title>Bank Accounts</mat-card-title>
+      <mat-card-title class="title">Bank Accounts</mat-card-title>
+      <mat-icon>account_balance</mat-icon>
     </mat-card-header>
     <mat-card-content>
       <div class="scroll">
@@ -19,20 +21,21 @@
           <td>{{account.account_number}}</td>
           <td>{{account.first_Name}} {{account.last_Name}}</td>
           <td>
-            <button mat-stroked-button (click)="deleteBankAccount(account.account_number)">Remove</button>
+            <mat-icon (click)="deleteBankAccount(account.account_number)">delete_outline</mat-icon>
           </td>
         </tr>
       </table>
     </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="openBankAccountModal()">Add</button>
+      <mat-icon class="addButton" (click)="openBankAccountModal()">add_circle</mat-icon>
     </mat-card-actions>
-  </mat-card>
+  </mat-card> 
 
   <mat-card class="credits-card">
     <mat-card-header>
-      <mat-card-title>Credit Cards</mat-card-title>
+      <mat-card-title class="title">Credit Cards</mat-card-title>
+      <mat-icon>credit_card</mat-icon>
     </mat-card-header>
     <mat-card-content>
       <div class="scroll">
@@ -54,14 +57,14 @@
             {{card.card_holder_name}}
           </td>
           <td>
-            <button mat-stroked-button (click)="deleteCreditCard(card.id)">Remove</button>
+            <mat-icon (click)="deleteCreditCard(card.id)">delete_outline</mat-icon>
           </td>
         </tr>
       </table>
     </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="openCreditCardModal()">Add</button>
+      <mat-icon class="addButton" (click)="openCreditCardModal()">add_circle</mat-icon>
     </mat-card-actions>
   </mat-card>
 </div>

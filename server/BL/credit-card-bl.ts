@@ -1,5 +1,9 @@
 import * as CreditCardDAL from '../DAL/credit-card-dal';
+import * as bankAccountBL  from '../BL/bank-account-bl';
+import * as expenseGenerator from '../expenses-generator';
+import * as userBL from '../BL/user-bl';
 import { CreditCard } from '../src/entity/CreditCard';
+import { User } from '../src/entity/User';
 
 const getCreditCardById = async (id: number) => {
   return CreditCardDAL.getCreditCardById(id);
@@ -10,11 +14,52 @@ const getCreditCardByUserId = async (user_id: number) => {
 };
 
 const saveCreditCard = async (creditCard: CreditCard) => {
-  return CreditCardDAL.saveCreditCard(creditCard);
+  await CreditCardDAL.saveCreditCard(creditCard);
+
+  let creditCardsNum = (await getCreditCardByUserId(creditCard.user_id)).length;
+
+  if(creditCardsNum == 1) {
+    let user: User = await userBL.getUser(creditCard.user_id);
+    let timeDiff = Math.abs(Date.now() - user.birth_date.getTime())
+    let Age = Math.floor((timeDiff / (1000 * 3600 * 24))/365.25);
+
+    // This month expenses
+    var today = new Date();
+    var start = new Date(today.getFullYear(), today.getMonth(), 1);
+    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, today)
+     
+    // Last month expenses
+    start = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+    var end = new Date(today.getFullYear(), today.getMonth() - 1, 30);
+
+    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
+
+    // 2 month ago expenses
+    start = new Date(today.getFullYear(), today.getMonth() - 2, 1);
+    end = new Date(today.getFullYear(), today.getMonth() - 2, 30);
+
+    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
+
+    // 3 month ago expenses
+    start = new Date(today.getFullYear(), today.getMonth() - 3, 1);
+    end = new Date(today.getFullYear(), today.getMonth() - 3, 30);
+
+    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
+
+
+  } else {
+    var end = new Date();
+    var start = new Date(end.getFullYear(), end.getMonth(), 1);    
+    expenseGenerator.generate(99, creditCard.user_id, null, creditCard.id, start, end)
+  }
 };
 
 const deleteCreditCard = async (id: number) => {
   return CreditCardDAL.deleteCreditCardById(id);
 };
 
-export { getCreditCardByUserId, getCreditCardById, saveCreditCard, deleteCreditCard };
+const getCreditCardByCardNumber = async (cardNumber: number) => {
+  return CreditCardDAL.getCreditCardByCardNumber(cardNumber);
+}
+
+export { getCreditCardByUserId, getCreditCardById, saveCreditCard, deleteCreditCard, getCreditCardByCardNumber };

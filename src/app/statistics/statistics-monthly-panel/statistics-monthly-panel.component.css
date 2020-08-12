@@ -1,0 +1,11 @@
+h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    height: 25px;
+}
+
+.chart-container {
+    position: relative;
+    margin-top: 4%;
+}
