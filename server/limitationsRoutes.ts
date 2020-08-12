@@ -29,8 +29,6 @@ limitationRoutes.delete('/delete', async (req, res) => {
     try {
         const limitationId: number = req.query.limitationId;
 
-        console.log(limitationId);
-
         await limitationBl.deleteLimitationById(limitationId);
 
         res.sendStatus(201);
