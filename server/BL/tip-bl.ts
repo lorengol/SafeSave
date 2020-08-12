@@ -35,7 +35,7 @@ const tipsAI = async (userId: number, birthYear: number) => {
     return p;
   });
 
-  return await getTipByCategory(willOverlap.id);
+  return await getTipByCategory(willOverlap ? willOverlap.id : 9);
 };
 
 const getRoundedExpensePercentage = (expense, limit) => {

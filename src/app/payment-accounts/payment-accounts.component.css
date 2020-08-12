@@ -41,3 +41,7 @@ table {
 .title {
     font-weight: bold;
 }
+
+.garbage {
+    cursor: pointer;
+}
