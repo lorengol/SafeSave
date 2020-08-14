@@ -4,6 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { OwlOptions, SlidesOutputData } from 'ngx-owl-carousel-o';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Expense } from 'server/src/entity/Expense';
 
 export interface PeriodicElement {
   date: string;
@@ -17,6 +18,9 @@ export interface PeriodicElement {
   styleUrls: ['./credit-card-debits.component.css']
 })
 export class CreditCardDebitsComponent implements OnInit {
+
+  monthList = ['Jan','Feb','Mar','Apr','May','June','July','Aug','Sep','Oct','Nov','Dec'];
+  currentMonth;
 
   creditCards;
   displayedColumns: string[] = ['date', 'business', 'expense'];
@@ -58,6 +62,17 @@ export class CreditCardDebitsComponent implements OnInit {
     this.http.get('/expenses', { params: httpParams }).subscribe((res) => {
       this.dataSource = new MatTableDataSource(res as any);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.filterPredicate = (data, filter: number) => {
+        console.log(data.date)
+        return data.date.getMonth() == filter;
+      };
     });
   }
-}
+
+  onMonthSelect(event) {
+    console.log(this.dataSource)
+    this.dataSource.filter = event.value;
+    console.log(this.dataSource)
+  }
+
+} 

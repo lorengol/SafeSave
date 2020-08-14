@@ -7,9 +7,18 @@
         </ng-template> 
       </ng-container> 
     </owl-carousel-o>
-  </div>
+  
+  </div>  
 
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8 tableDiv">
+    <mat-form-field>
+      <mat-label>Choose month</mat-label>
+      <mat-select [(ngModel)]="currentMonth" (selectionChange)="onMonthSelect($event)">
+        <mat-option *ngFor="let month of monthList; let i = index" [value]="i + 1">
+            {{month}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef> Date </th>
@@ -30,7 +39,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[4, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
 </div>
   
