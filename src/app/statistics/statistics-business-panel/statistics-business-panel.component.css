@@ -31,3 +31,15 @@ h2 {
     display: flex;
     align-items: center;
 }
+
+[hidden] {
+    display: none !important;
+}
+
+.isEmptyTitle {
+    margin: auto;
+    display: flex;
+    margin: auto;
+    font-size: large;
+    font-weight: bold;
+}

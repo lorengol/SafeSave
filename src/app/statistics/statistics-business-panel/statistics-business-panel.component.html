@@ -2,11 +2,14 @@
     <h2>
         <b>Top 3 Expenses</b>
     </h2>
-    <div class="wrapper">
+    <div class="wrapper" [hidden]="isExpensesEmpty">
         <div *ngFor="let expense of expenses" class="expensesContainer">
             <img src="assets/img/{{expense.category}}.png" style="width: 40px; height: 40px;"/>
             <span class="line-text">{{ expense.name }}</span>
             <span class="line-text">${{ expense.expenses }}</span>
         </div>
+    </div>
+    <div [hidden]="!isExpensesEmpty" class="isEmptyTitle">
+        <p>No Expenses</p>
     </div>
 </div>

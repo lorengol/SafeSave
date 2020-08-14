@@ -24,7 +24,7 @@
                 <input id="cc-exp-date" matInput [(ngModel)]="CreditCardToRegister.expiration_date"
                     formControlName="cardExpDate" type="tel" autocomplete="cc-exp" ccExp required>
                 <mat-error *ngIf="f.cardExpDate.errors?.required">Expiration date is required</mat-error>
-                <mat-error *ngIf="f.cardExpDate.errors?.expDate">Invalid exipration number</mat-error>
+                <mat-error *ngIf="f.cardExpDate.errors?.expDate">Invalid exipration date</mat-error>
             </mat-form-field>
         </p>
         <p>

@@ -1,4 +1,4 @@
-<div>
+<div [hidden]="isCreditCardListEmpty">
   <div style="text-align:center">
     <owl-carousel-o [options]="customOptions" (translated)="getData($event)" (initialized)="getData($event)">
       <ng-container *ngFor="let credit of creditCards">
@@ -32,6 +32,9 @@
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div>
+</div>
+<div [hidden]="!isCreditCardListEmpty" style="display: flex; height: calc(100% - 64px)">
+  <p class="emptyListTitle">No credit cards available</p>
 </div>
   
   

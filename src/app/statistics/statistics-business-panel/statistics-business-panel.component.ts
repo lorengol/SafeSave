@@ -9,12 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class StatisticsBusinessPanelComponent implements OnInit {
 
   expenses;
+  isExpensesEmpty;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     const httpParams = new HttpParams().set('userId', JSON.parse(localStorage.getItem('currentUser')).id);
-    this.http.get('/expenses/topExpensesPerBusiness', { params: httpParams }).subscribe(res => this.expenses = res);
+    this.http.get('/expenses/topExpensesPerBusiness', { params: httpParams }).subscribe((res) => {
+       this.expenses = res
+       this.isExpensesEmpty = Object.keys(res).length == 0;
+    });
   }
-
 }
