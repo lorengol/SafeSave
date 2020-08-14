@@ -66,8 +66,8 @@ export class CreditCardDebitsComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res as any);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = (data, filter: number) => {
-        console.log(data.date)
-        return data.date.getMonth() == filter;
+        console.log(data.date.substring(4,5))
+        return data.date.substring(4,5) == filter.toString();
       };
     });
   }
