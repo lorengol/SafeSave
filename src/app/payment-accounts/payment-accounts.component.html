@@ -21,7 +21,7 @@
           <td>{{account.account_number}}</td>
           <td>{{account.first_Name}} {{account.last_Name}}</td>
           <td>
-            <mat-icon (click)="deleteBankAccount(account.account_number)">delete_outline</mat-icon>
+            <mat-icon class="garbage" (click)="deleteBankAccount(account.account_number)">delete_outline</mat-icon>
           </td>
         </tr>
       </table>
@@ -57,7 +57,7 @@
             {{card.card_holder_name}}
           </td>
           <td>
-            <mat-icon (click)="deleteCreditCard(card.id)">delete_outline</mat-icon>
+            <mat-icon class="garbage" (click)="deleteCreditCard(card.id)">delete_outline</mat-icon>
           </td>
         </tr>
       </table>

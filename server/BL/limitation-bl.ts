@@ -21,11 +21,20 @@ const deleteLimitationById = async (id: number) => {
 const updateLimitation = async (updatedLimitatipn: Limitation) => {
   return LimitationDAL.updateLimitation(updatedLimitatipn);
 };
+const getCurrentUserLimitation = async (userId: number) => {
+  return LimitationDAL.getCurrentUserLimitation(userId);
+};
+
+const getSimilarUsersData = async (birthYear: number) => {
+  return LimitationDAL.getSimilarUsersData(birthYear);
+};
 
 export {
   getAllUserLimitations,
   getLimitationById,
   saveNewLimitation,
   deleteLimitationById,
-  updateLimitation
+  updateLimitation,
+  getCurrentUserLimitation,
+  getSimilarUsersData,
 };

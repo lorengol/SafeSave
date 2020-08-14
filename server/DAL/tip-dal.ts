@@ -8,3 +8,11 @@ export const getAllTips = async () => {
 export const getTipById = async (id: number) => {
   return getRepository(Tip).findOne(id);
 };
+
+export const getTipByCategory = async (categoryId: number) => {
+  return getRepository(Tip)
+    .createQueryBuilder('tips')
+    .where('tips.category_id = :categoryId', { categoryId })
+    .orderBy('rand()')
+    .getOne();
+};

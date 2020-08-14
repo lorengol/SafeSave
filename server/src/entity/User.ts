@@ -19,8 +19,8 @@ class User {
     password: string;
 
     @Column()
-    income: number;    
-
+    income: number;
+    
     @Column()
     birth_date: Date;
 }

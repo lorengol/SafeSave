@@ -62,7 +62,6 @@ export class PaymentAccountsComponent implements OnInit {
 
   openCreditCardModal() {
     let creditCardDialog = this.dialog.open(CreditCardRegistrationComponent, {
-      height: '500px',
       width: '500px',
     });
 

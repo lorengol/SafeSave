@@ -8,6 +8,7 @@ import { createConnection } from "typeorm";
 import { limitationRoutes } from './limitationsRoutes';
 import { categoryRoutes } from './categoryRoutes';
 import { savingRoutes } from './savingRoutes';
+import { tipRoutes } from './tipRoutes';
 const app = express();
 
 // Allow any method from any host and log requests
@@ -45,6 +46,9 @@ app.use('/expenses', expenseRoutes);
 
 // Savings
 app.use('/savings', savingRoutes);
+
+// Tips
+app.use('/tips', tipRoutes);
 
 // Create connection with the DB
 createConnection().then(async connection => {    

@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardTipPanelComponent implements OnInit {
 
+  tip;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.tip = JSON.parse(localStorage.getItem('tip'));
   }
 
 }
