@@ -26,6 +26,7 @@ export class CreditCardDebitsComponent implements OnInit {
   displayedColumns: string[] = ['date', 'business', 'expense'];
   dataSource;
   activeSlides: SlidesOutputData;
+  isCreditCardListEmpty;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -36,6 +37,7 @@ export class CreditCardDebitsComponent implements OnInit {
     const httpParams = new HttpParams().set('user_id', JSON.parse(localStorage.getItem('currentUser')).id);
     this.http.get('/credits', { params: httpParams }).subscribe((res) => {
       this.creditCards = res;
+      this.isCreditCardListEmpty = Object.keys(res).length == 0;
     });    
   }
 
@@ -60,6 +62,7 @@ export class CreditCardDebitsComponent implements OnInit {
 
     const httpParams = new HttpParams().set('creditCardId', this.activeSlides.slides[0].id.toString());
     this.http.get('/expenses', { params: httpParams }).subscribe((res) => {
+      (res as any).map(item => item.date = new Date(item.date).toLocaleDateString('en-GB'));
       this.dataSource = new MatTableDataSource(res as any);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = (data, filter: number) => {
