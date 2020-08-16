@@ -18,3 +18,9 @@ mat-card {
 .mat-dialog-content {
     max-height: unset;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
