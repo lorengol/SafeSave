@@ -13,11 +13,11 @@ import { Validators, FormBuilder } from '@angular/forms';
   styleUrls: ['./user-info.component.css'],
 })
 export class UserInfoComponent implements OnInit {
-  user: User = {} as any;
-  onEdit: Boolean;
+  user;
+  onEdit = true;
   fullName: String;
   profileForm;
-  inputshow = false;
+  // inputshow = false;
 
   get f() { return this.profileForm.controls; }
 
@@ -37,8 +37,8 @@ export class UserInfoComponent implements OnInit {
       birthDate:['', Validators.required]
     })
     this.user = JSON.parse(localStorage.getItem('currentUser'));
-    this.fullName = this.user.first_Name + ' ' + this.user.last_Name;
-    this.onEdit = true;
+    // this.fullName = this.user.first_Name + ' ' + this.user.last_Name;
+    // this.onEdit = true;
   }
 
   submit() {
@@ -55,8 +55,6 @@ export class UserInfoComponent implements OnInit {
     //       confirmButtonColor: 'white'
     //     });
     } else {
-      // this.user.first_Name = this.fullName.split(' ')[0];
-      // this.user.last_Name = this.fullName.split(' ')[1];
       this.http.post('/users/update', this.user, { responseType: 'text' }).subscribe((data) => {
           Swal.fire({
             text: 'You have successfuly updated your details!',
@@ -64,7 +62,7 @@ export class UserInfoComponent implements OnInit {
             confirmButtonColor: 'white',
             timer: 2000,
           });
-          this.user.income = JSON.parse(data).raw.income;
+          localStorage.setItem('currentUser', JSON.stringify(this.user));
         });
     }
   }

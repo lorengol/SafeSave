@@ -39,13 +39,13 @@
                         <mat-error *ngIf="f.lastName.errors?.required">Last name is required</mat-error>
                     </mat-form-field>
                     <br>
-                    <mat-form-field class="margin">
+                    <!-- <mat-form-field class="margin">
                         <mat-label>Password</mat-label>
                         <input [(ngModel)]="user.password" type="password" matInput formControlName="password">
                         <mat-error *ngIf="f.password.errors?.required">Password is required</mat-error>
                         <mat-error *ngIf="f.password.errors?.minlength">Password needs to contain at least 6 numbers or
                             letters</mat-error>
-                    </mat-form-field>
+                    </mat-form-field> -->
                     <!-- <mat-form-field>
                         <mat-label>Confirm Password</mat-label>
                         <input type="password" matInput formControlName="confirmPassword" required>
@@ -64,18 +64,18 @@
                         <mat-form-field class="wider">
                             <mat-label>Income</mat-label>
                             <input [(ngModel)]="user.income" matInput formControlName="income" [disabled]="onEdit">
-                            <mat-error *ngIf="f.income.errors?.income">Income most be positive</mat-error>
+                            <mat-error *ngIf="f.income.errors?.min">Income must be positive</mat-error>
+                            <mat-error *ngIf="f.income.errors?.pattern">Income must contains only numbers</mat-error>
                         </mat-form-field>
                     </p>
-                    <br>
-                    <div *ngIf="!inputshow">
+                    <!-- <div *ngIf="!inputshow">
                         <mat-icon class="icon" (click)="onClickEdit(); inputshow = !inputshow">
                           edit
                         </mat-icon>
-                      </div>
-                      <div *ngIf="inputshow">
-                        <mat-icon class="icon" (click)="inputshow = !inputshow">cancel</mat-icon>
-                        <mat-icon class="rightIcon" (click)="submit()">save</mat-icon>
+                      </div> -->
+                      <div>
+                        <!-- <mat-icon class="icon" (click)="inputshow = !inputshow">cancel</mat-icon> -->
+                        <button mat-stroked-button (click)="submit()">Save</button>
                       </div>
                     <!-- <button mat-stroked-button (click)="onClickEdit()">Edit</button>
                     &nbsp;

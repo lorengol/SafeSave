@@ -29,7 +29,8 @@ html, body {
     columns: 2;
     width: 100%;
     text-align: center;
-    height: 90%;
+    /* height: 90%; */
+    margin-top: -5%;
 }
 
 @-webkit-keyframes popUp {
@@ -233,10 +234,13 @@ html, body {
 }
 
 .addButton{
-  width: 1%;
-  font-size: 68px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 3%;
+  height: 15%;
+  font-size: 300%;
   cursor: pointer;
-  padding-top: 2%;
 }
 
 .updateLimitForm{
