@@ -62,12 +62,12 @@ export class CreditCardDebitsComponent implements OnInit {
 
     const httpParams = new HttpParams().set('creditCardId', this.activeSlides.slides[0].id.toString());
     this.http.get('/expenses', { params: httpParams }).subscribe((res) => {
-      (res as any).map(item => item.date = new Date(item.date).toLocaleDateString('en-GB'));
+      (res as any).map(item => item.date = new Date(item.date));
       this.dataSource = new MatTableDataSource(res as any);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = (data, filter: number) => {
-        console.log(data.date.substring(4,5))
-        return data.date.substring(4,5) == filter.toString();
+        console.log(data.date + " " + filter)
+        return data.date.getMonth() == filter;
       };
     });
   }
