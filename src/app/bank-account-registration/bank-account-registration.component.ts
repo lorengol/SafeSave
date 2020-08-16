@@ -40,7 +40,7 @@ export class BankAccountRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.bankAccountRegistrationForm = this.formBuilder.group({
-      accountNumber: ['', Validators.required],
+      accountNumber: ['', Validators.required, Validators.pattern('^([1-9][0-9]*)$')],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       bankId: ['', Validators.required],

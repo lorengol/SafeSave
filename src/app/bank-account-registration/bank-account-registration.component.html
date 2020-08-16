@@ -4,8 +4,9 @@
             <p>
                 <mat-form-field>
                     <mat-label>Account number</mat-label>
-                    <input [(ngModel)]="bankAccountToRegister.account_number" matInput formControlName="accountNumber" required>
-                    <mat-error *ngIf="formValidations.firstName.errors?.required">Account number is required</mat-error>
+                    <input [(ngModel)]="bankAccountToRegister.account_number" matInput formControlName="accountNumber" required type="number">
+                    <mat-error *ngIf="formValidations.accountNumber.errors?.required">Account number is required</mat-error>
+                    <mat-error *ngIf="formValidations.accountNumber.errors?.pattern">Account number is not valid</mat-error>
                 </mat-form-field>
             </p>
             <p>
