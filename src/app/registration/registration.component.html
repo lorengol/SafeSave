@@ -8,13 +8,15 @@
                     
                         <mat-form-field class="margin">
                             <mat-label>First name</mat-label>
-                            <input [(ngModel)]="UserToRegister.first_Name" matInput formControlName="firstName" required>
+                            <input [(ngModel)]="UserToRegister.first_Name" matInput formControlName="firstName" pattern="[a-zA-Z ]*" required>
                             <mat-error *ngIf="f.firstName.errors?.required">First name is required</mat-error>
+                            <mat-error *ngIf="f.firstName.errors?.pattern">First name is not valid</mat-error>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Last name</mat-label>
-                            <input [(ngModel)]="UserToRegister.last_Name" matInput formControlName="lastName" required>
+                            <input [(ngModel)]="UserToRegister.last_Name" matInput formControlName="lastName" pattern="[a-zA-Z ]*" required>
                             <mat-error *ngIf="f.lastName.errors?.required">Last name is required</mat-error>
+                            <mat-error *ngIf="f.lastName.errors?.pattern">Last name is not valid</mat-error>
                         </mat-form-field>
 
                         <br>

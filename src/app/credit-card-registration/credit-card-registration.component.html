@@ -14,8 +14,9 @@
             <mat-form-field>
                 <mat-label>card holder name</mat-label>
                 <input matInput [(ngModel)]="CreditCardToRegister.card_holder_name" formControlName="cardHolderName"
-                    type="text" required>
+                    type="text" pattern="[a-zA-Z ]*" required>
                 <mat-error *ngIf="f.cardHolderName.errors?.required">Card holder name is required</mat-error>
+                <mat-error *ngIf="f.cardHolderName.errors?.pattern">Card holder name is not valid</mat-error>
             </mat-form-field>
         </p>
         <p>
@@ -42,10 +43,11 @@
             <mat-form-field>
                 <mat-label>CVV</mat-label>
                 <input id="cc-cvc" matInput [(ngModel)]="CreditCardToRegister.CVV" formControlName="cardCvv" type="tel"
-                    autocomplete="off" ccCvc required>
+                    autocomplete="off" ccCvc  type="number" required>
                 <mat-error *ngIf="f.cardCvv.errors?.required">CVV is required</mat-error>
                 <mat-error *ngIf="f.cardCvv.errors?.minlength">CVV needs to contain minimum 3 digits</mat-error>
                 <mat-error *ngIf="f.cardCvv.errors?.maxlength">CVV needs to contain maximum 4 digits</mat-error>
+                <mat-error *ngIf="f.cardCvv.errors?.pattern">CVV is not valid</mat-error>
             </mat-form-field>
         </p>
         <button type="submit" (click)="submit()" [disabled]="!creditForm.valid" mat-stroked-button>Submit</button>

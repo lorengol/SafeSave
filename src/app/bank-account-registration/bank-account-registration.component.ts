@@ -40,12 +40,12 @@ export class BankAccountRegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.bankAccountRegistrationForm = this.formBuilder.group({
-      accountNumber: ['', Validators.required],
+      accountNumber: ['', Validators.required, Validators.pattern('^([1-9][0-9]*)$')],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       bankId: ['', Validators.required],
       branchNumber: ['', Validators.required],
-      socialSecurityNumber: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]]
+      socialSecurityNumber: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9), Validators.pattern('^([1-9][0-9]*)$')]]
     });
 
     this.bankAccountService.getAllBanks().subscribe(banks => this.banks = banks);
