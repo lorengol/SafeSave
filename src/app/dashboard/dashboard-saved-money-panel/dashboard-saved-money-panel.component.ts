@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'dashboard-saved-money-panel',
@@ -16,8 +15,8 @@ export class DashboardSavedMoneyPanelComponent implements OnInit {
   savedInd: boolean = false;
   savedMoney;
   monthlySavingsExists: boolean = false;
-  show:boolean = false;
-  show2:boolean = false;
+  show: boolean = false;
+  show2: boolean = false;
 
   ngOnInit() {
     let userId = JSON.parse(localStorage.getItem('currentUser')).id
@@ -65,11 +64,9 @@ export class DashboardSavedMoneyPanelComponent implements OnInit {
       text: 'Are you sure you want to move the money?',
       icon: 'question',
       showCancelButton: true,
-      confirmButtonText: 'yes',
-      cancelButtonText: 'not sure',
-      confirmButtonColor: 'white',
-      cancelButtonColor: 'white'
-    }).then((result) => {
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'Not sure'
+    }).then(result => {
       if (result.value) {
         let params = {
           userId: JSON.parse(localStorage.getItem('currentUser')).id,

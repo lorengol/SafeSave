@@ -1,10 +1,18 @@
+h2 {
+    text-align: initial;
+}
+
 .bold {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 900;
 }
 
+.description {
+    margin-bottom: 0;
+}
+
 mat-icon {
- font-size: 17px;
+    font-size: 17px;
 }
 
 img {

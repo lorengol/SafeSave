@@ -43,17 +43,3 @@ ngx-simplebar {
     right: 0;
     bottom: 0;
 }
-
-h2 {
-    margin: 0;
-    padding: 0;
-    line-height: 30px;
-    height: 25px;
-}
-
-.title {
-    left: 0;
-    position: absolute;
-    padding-left: 3%;
-    padding-bottom: 3%;
-}

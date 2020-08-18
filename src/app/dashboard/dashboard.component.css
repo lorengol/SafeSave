@@ -1,6 +1,7 @@
-/* mat-grid-tile {
-    background: lightblue;
-} */
+.test {
+    width: 75%;
+    padding-left: 12.5%;
+}
 
 mat-card {
     width: calc(100% - 50px);
@@ -8,12 +9,12 @@ mat-card {
 }
 
 img {
-    width: 50%;
+    width: 40%;
 }
 
-.saved-money{
+.saved-money {
     text-align: center;
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 

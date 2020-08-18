@@ -1,27 +1,24 @@
+<h2>
+    <b>Piggy Bank</b>
+</h2>
 <div *ngIf="show">
     <div *ngIf="monthlySavingsExists">
-        <p class="bold">You saved {{totalSavings}}$ so far</p>
-        <p>Keep up the good job!</p>    
+        <p class="bold">You saved ${{totalSavings}} so far</p>
+        <p class="description">Keep up the good job!</p>
     </div>
-    
+
     <div *ngIf="!monthlySavingsExists">
         <div *ngIf="show2">
             <div *ngIf="savedInd">
-                <p>Last month you saved</p>
-                <p class="bold">{{savedMoney}}<mat-icon>attach_money</mat-icon></p>
+                <p>Last month you saved <span class="bold">${{savedMoney}}</span></p>
+                
                 <button mat-stroked-button (click)="saveMoney()">Move To Piggy Bank</button>
             </div>
-            
+
             <div *ngIf="!savedInd">
                 <p class="bold">Last month you didn't save any money</p>
-                <p>Check our saving tips section</p>   
-            </div> 
+                <p class="description">Check our saving tips section</p>
+            </div>
         </div>
+    </div>
 </div>
-    
-    
-    
-    
-
-</div>
-
