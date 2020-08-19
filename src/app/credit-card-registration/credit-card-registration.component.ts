@@ -33,7 +33,7 @@ export class CreditCardRegistrationComponent implements OnInit {
     this.creditForm = this.formBuilder.group({
       cardNumber: ['', [CreditCardValidators.validateCCNumber]],
       cardExpDate: ['', [CreditCardValidators.validateExpDate]],
-      cardCvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4), Validators.pattern('^([1-9][0-9]*)$')]],
+      cardCvv: ['', [Validators.minLength(3), Validators.maxLength(4), Validators.pattern('^([1-9][0-9]*)$')]],
       cardHolderName: ['', [Validators.required, Validators.minLength(2)]],
       accountNumber: ['', Validators.required]
     });
