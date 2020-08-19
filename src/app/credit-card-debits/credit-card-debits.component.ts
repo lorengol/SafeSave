@@ -43,6 +43,8 @@ export class CreditCardDebitsComponent implements OnInit {
 
   customOptions: OwlOptions  = {
     loop: false,
+    dots: false,
+    navText: [''],
     responsive: {
       0: {
         items: 1,
