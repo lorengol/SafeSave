@@ -33,7 +33,7 @@ export class DashboardStatisticsPanelComponent implements OnInit {
       labels: this.expenses.map(expense => expense.category)
     };
     const sumExpenses = this.expenses.map(expense => expense.expense).reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    const middleText = new Date().toLocaleString('default', { month: 'long' }) + ': $' + sumExpenses;
+    const middleText = new Date().toLocaleString('en-GB', { month: 'long' }) + ': $' + sumExpenses;
 
     this.initChart();
 
@@ -67,7 +67,7 @@ export class DashboardStatisticsPanelComponent implements OnInit {
     
           //Get options from the center object in options
           var centerConfig = chart.config.options.elements.center;
-          var fontStyle = centerConfig.fontStyle || 'Arial';
+          var fontStyle = centerConfig.fontStyle || 'OpenSansHebrew';
           var txt = centerConfig.text;
           var color = centerConfig.color || '#000';
           var sidePadding = centerConfig.sidePadding || 20;
