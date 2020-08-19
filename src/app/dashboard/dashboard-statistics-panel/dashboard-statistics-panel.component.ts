@@ -33,7 +33,7 @@ export class DashboardStatisticsPanelComponent implements OnInit {
       labels: this.expenses.map(expense => expense.category)
     };
     const sumExpenses = this.expenses.map(expense => expense.expense).reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    const middleText = new Date().toLocaleString('default', { month: 'long' }) + ': ' + sumExpenses + '$';
+    const middleText = new Date().toLocaleString('default', { month: 'long' }) + ': $' + sumExpenses;
 
     this.initChart();
 

@@ -1,28 +1,10 @@
-h2{
-    margin: 0;
-    padding: 0;
-    line-height: 30px;
-    height: 25px;
-}
-
-.title {
-    left: 0;
-    position: absolute;
-    padding-left: 3%;
-    padding-bottom: 3%;
-}
-
 .img {
-  height: 130px;
+  width: 35%;
   padding-top: 15%;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
 
 .income {
   text-align: center;
-  font-weight: bold;
-  padding-top: 7%;
-  font-size: x-large;
 }

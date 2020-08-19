@@ -1,18 +1,14 @@
 @font-face {
     font-family: OpenSansHebrew;
     src: url(assets/fonts/OpenSansHebrew-Regular.ttf) format("opentype");
-  }
-*{
-    font-family: 'OpenSansHebrew';
-    /* font-family: "Montserrat", sans-serif; */
-
 }
+
+* {
+    font-family: 'OpenSansHebrew';
+}
+
 html, body { 
     height: 99%;
     background-color: #f2f2f2;
     margin: 0px;
-}
-
-button{
-    color:  #9095ad !important;
 }
