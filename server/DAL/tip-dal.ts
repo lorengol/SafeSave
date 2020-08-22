@@ -12,6 +12,7 @@ export const getTipById = async (id: number) => {
 export const getTipByCategory = async (categoryId: number) => {
   return getRepository(Tip)
     .createQueryBuilder('tips')
+    .leftJoinAndSelect('tips.category', 'categories')
     .where('tips.category_id = :categoryId', { categoryId })
     .orderBy('rand()')
     .getOne();

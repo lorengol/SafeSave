@@ -43,6 +43,8 @@ export class CreditCardDebitsComponent implements OnInit {
 
   customOptions: OwlOptions  = {
     loop: false,
+    dots: false,
+    navText: [''],
     responsive: {
       0: {
         items: 1,
@@ -66,16 +68,13 @@ export class CreditCardDebitsComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res as any);
       this.dataSource.paginator = this.paginator;
       this.dataSource.filterPredicate = (data, filter: number) => {
-        console.log(data.date + " " + filter)
-        return data.date.getMonth() == filter;
+        return data.date.getMonth() + 1 == filter;
       };
     });
   }
 
   onMonthSelect(event) {
-    console.log(this.dataSource)
     this.dataSource.filter = event.value;
-    console.log(this.dataSource)
   }
 
 } 

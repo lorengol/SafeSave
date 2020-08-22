@@ -4,7 +4,7 @@
             <p>
                 <mat-form-field>
                     <mat-label>Account number</mat-label>
-                    <input [(ngModel)]="bankAccountToRegister.account_number" matInput formControlName="accountNumber" required type="number">
+                    <input [(ngModel)]="bankAccountToRegister.account_number" matInput formControlName="accountNumber" required>
                     <mat-error *ngIf="formValidations.accountNumber.errors?.required">Account number is required</mat-error>
                     <mat-error *ngIf="formValidations.accountNumber.errors?.pattern">Account number is not valid</mat-error>
                 </mat-form-field>
@@ -52,7 +52,7 @@
                 <mat-form-field>
                     <mat-label>Social Security Number</mat-label>
                     <input [(ngModel)]="bankAccountToRegister.social_security_number" matInput
-                        formControlName="socialSecurityNumber" type="number" required>
+                     formControlName="socialSecurityNumber" required>
                     <mat-error *ngIf="formValidations.socialSecurityNumber.errors?.required">Social Security Number is
                         required
                     </mat-error>

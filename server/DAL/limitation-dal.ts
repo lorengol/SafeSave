@@ -48,13 +48,14 @@ export const getCurrentUserLimitation = async (userId: number) => {
               group by c.id, c.name) as ec, safe_save.limitations l
             where l.category_id = ec.id
             and l.user_id = ${userId}
+            and l.date_deleted is null
             order by (ec.expense / l.limit) desc
           `);
 };
 
 export const getSimilarUsersData = async (birthYear: number) => {
   return getRepository(Limitation)
-    .query(`select ec.user_id, ec.id, ec.category, ec.expense, l.limit, ec.expense_month, ec.expense_year, IF(ec.expense > l.limit, "true", "false") as overlapsed
+    .query(`select ec.user_id, ec.id, ec.category, ec.expense, l.limit, ec.expense_month, ec.expense_year, IF(ec.expense > l.limit, "yes", "no") as overlapsed
     from (select c.id as id, c.name as category, e.user_id, sum(e.expense) as expense, month(e.date) as expense_month, year(e.date) expense_year
         from safe_save.expenses e, safe_save.businesses b, safe_save.categories c
         where e.business_id = b.id

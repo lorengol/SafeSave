@@ -27,8 +27,10 @@ export class StatisticsExpensesPanelComponent implements OnInit {
     const data = {
       datasets: [{
         data: [this.balance.map(item => item.income)[0], this.balance.map(item => parseInt(item.monthlyExpenses))[0]], 
-        backgroundColor: ["rgba(75, 192, 192, 0.2)", "rgba(255, 99, 132, 0.2)"],
-        borderColor:["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
+        // backgroundColor: ["rgba(75, 192, 192, 0.2)", "rgba(255, 99, 132, 0.2)"],
+        // borderColor:["rgb(75, 192, 192)", "rgb(255, 99, 132)"],
+        backgroundColor:['#43AA8B', '#F94144'],
+        borderColor:['#43AA8B', '#F94144'],
         borderWidth: 1
       }],
       labels: ['Income', 'Expenses']

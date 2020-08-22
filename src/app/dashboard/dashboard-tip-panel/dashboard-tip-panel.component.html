@@ -1,2 +1,15 @@
-<h2>{{tip.tip}}</h2>
-<p>{{tip.tip_content}}</p>
+<div class="header">
+    <h2>
+        <b>Our Tip For You</b>
+    </h2>
+    <p *ngIf="tip.category_id !== 9">We've noticed that you might struggle a little bit with your
+        <b>{{tip.category.name}}</b> limitation, so here's a tip that might
+        help you out!</p>
+    <p *ngIf="tip.category_id === 9">Looks like your'e doing great! Here's a little tip just for fun.</p>
+</div>
+<div class="tip-container">
+    <h3>
+        <b>{{tip.tip}}</b>
+    </h3>
+    <h3>{{tip.tip_content}}</h3>
+</div>

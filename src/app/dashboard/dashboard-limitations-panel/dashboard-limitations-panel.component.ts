@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-limitations-panel.component.css']
 })
 export class DashboardLimitationsPanelComponent implements OnInit {
-  limitations;
+  limitations: any;
   options = { autoHide: false, scrollbarMinSize: 100 };
   
   constructor(private http: HttpClient) { }

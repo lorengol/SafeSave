@@ -1,42 +1,49 @@
-<mat-grid-list cols="4" rowHeight="10:9">
+<mat-grid-list cols="4" rowHeight="44:39" gutterSize="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <mat-card class="center-items">
+            <mat-card-header>
+
+            </mat-card-header>
+            <mat-card-content>
+                <dashboard-tip-panel></dashboard-tip-panel>
+            </mat-card-content>
+            <mat-card-footer>
+                <img src="../../../assets/img/tip.png">
+            </mat-card-footer>
+        </mat-card>
+    </mat-grid-tile>
+
     <mat-grid-tile [colspan]="2" [rowspan]="1">
         <mat-card>
             <dashboard-statistics-panel></dashboard-statistics-panel>
         </mat-card>
     </mat-grid-tile>
+
     <mat-grid-tile [colspan]="1" [rowspan]="1">
         <mat-card>
             <dashboard-income-panel></dashboard-income-panel>
         </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2">
-        <mat-card>
-            <dashboard-comparison-panel></dashboard-comparison-panel>
-        </mat-card>
-    </mat-grid-tile>
+
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-card class="scrollable-content">
-            <mat-card-content>
-                <dashboard-limitations-panel></dashboard-limitations-panel>
-            </mat-card-content>
-        </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-card class="saved-money">
+        <mat-card class="center-items">
             <mat-card-header>
 
             </mat-card-header>
             <mat-card-content>
                 <dashboard-saved-money-panel></dashboard-saved-money-panel>
-            </mat-card-content>   
+            </mat-card-content>
             <mat-card-footer>
                 <img src="../../../assets/piggy.png">
-            </mat-card-footer>                 
+            </mat-card-footer>
         </mat-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <mat-card>
-            <dashboard-tip-panel></dashboard-tip-panel>
+
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-card class="scrollable-content">
+            <mat-card-content>
+                <dashboard-limitations-panel></dashboard-limitations-panel>
+            </mat-card-content>
         </mat-card>
     </mat-grid-tile>
 </mat-grid-list>

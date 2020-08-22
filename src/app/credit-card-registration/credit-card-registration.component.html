@@ -43,7 +43,7 @@
             <mat-form-field>
                 <mat-label>CVV</mat-label>
                 <input id="cc-cvc" matInput [(ngModel)]="CreditCardToRegister.CVV" formControlName="cardCvv" type="tel"
-                    autocomplete="off" ccCvc  type="number" required>
+                    autocomplete="off" ccCvc required>
                 <mat-error *ngIf="f.cardCvv.errors?.required">CVV is required</mat-error>
                 <mat-error *ngIf="f.cardCvv.errors?.minlength">CVV needs to contain minimum 3 digits</mat-error>
                 <mat-error *ngIf="f.cardCvv.errors?.maxlength">CVV needs to contain maximum 4 digits</mat-error>
