@@ -12,7 +12,6 @@ export class DashboardTipPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(JSON.parse(localStorage.getItem('tip')));
     this.tip = JSON.parse(localStorage.getItem('tip'));
   }
 

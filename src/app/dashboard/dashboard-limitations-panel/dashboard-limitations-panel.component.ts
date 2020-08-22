@@ -28,12 +28,7 @@ export class DashboardLimitationsPanelComponent implements OnInit {
           limitation.color = (limitation.percentageValue <= 100) ? '#06c248' : '#FF1919';
         });
       });
-
-      // this.limitations.sort((a,b) => a.percentageValue > b.percentageValue ? 1 : -1);
-      this.limitations.sort((a,b) => ((a.expensesByCategory / a.limit) > (b.expensesByCategory / b.limit) ? 1 : -1));
     });
-
-    // objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0)); 
   }
 
 }
