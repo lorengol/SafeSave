@@ -27,13 +27,20 @@ const tipsAI = async (userId: number, birthYear: number) => {
     );
   });
 
-  const willOverlap = userLimitations.find(async (limitation) => {
+  let willOverlap;
+  for (let i = 0; i < userLimitations.length; i++) {
+    const limitation = userLimitations[i];
+
     const percentage = getRoundedExpensePercentage(limitation.expense, limitation.limit);
     let p = await classifier.categorize(
       `${userId}, ${limitation.category}, ${percentage}`
     );
-    return p;
-  });
+    
+    if (p === 'yes') {
+      willOverlap = limitation;
+      break;
+    }
+  }
 
   return await getTipByCategory(willOverlap ? willOverlap.id : 9);
 };
