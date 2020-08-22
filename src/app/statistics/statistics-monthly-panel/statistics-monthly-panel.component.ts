@@ -27,8 +27,10 @@ export class StatisticsMonthlyPanelComponent implements OnInit {
     const data = {
       datasets: [{
         data: this.expenses.map(expense => expense.expense),
-        backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)","rgba(201, 203, 207, 0.2)"],
-        borderColor:["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"],
+        // backgroundColor: ["rgba(255, 99, 132, 0.2)","rgba(255, 159, 64, 0.2)","rgba(255, 205, 86, 0.2)","rgba(75, 192, 192, 0.2)","rgba(54, 162, 235, 0.2)","rgba(153, 102, 255, 0.2)","rgba(201, 203, 207, 0.2)"],
+        // borderColor:["rgb(255, 99, 132)","rgb(255, 159, 64)","rgb(255, 205, 86)","rgb(75, 192, 192)","rgb(54, 162, 235)","rgb(153, 102, 255)","rgb(201, 203, 207)"],
+        backgroundColor: ['#083D77', '#F94144', '#e5989b', '#F8961E', '#F9C74F', '#90BE6D', '#43AA8B', '#577590'],
+        borderColor: ['#083D77', '#F94144', '#e5989b', '#F8961E', '#F9C74F', '#90BE6D', '#43AA8B', '#577590'],
         borderWidth: 1
       }],
       labels: this.expenses.map(expense => expense.month)
