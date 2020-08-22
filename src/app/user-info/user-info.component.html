@@ -1,26 +1,3 @@
-<!-- <div class="card">
-    <div class="container">
-        <h1>My Profile</h1>
-        <div class="body">
-            <mat-form-field>
-                NAME: <input matInput [(ngModel)]="fullName" type="text" [attr.value]="fullName" [disabled]="onEdit"/>
-            </mat-form-field>
-                <p>ID: {{user.id}}</p>
-                <p>EMAIL: {{user.email}}</p>
-            <mat-form-field>
-                INCOME: <input matInput [(ngModel)]="user.income" type="number" [attr.value]="user.income" [disabled]="onEdit"/>
-            </mat-form-field>
-        </div>
-        <br>
-        <div>
-            <button mat-stroked-button (click)="onClickEdit()">Edit</button>
-            &nbsp;
-            <button mat-stroked-button (click)="submit()">Save</button>
-        </div>
-        <br>
-    </div>
-</div> -->
-
 <body>
     <mat-grid-list cols="2">
         <mat-grid-tile [colspan]="2">
@@ -32,11 +9,13 @@
                         <mat-label>First name</mat-label>
                         <input [(ngModel)]="user.first_Name" matInput formControlName="firstName">
                         <mat-error *ngIf="f.firstName.errors?.required">First name is required</mat-error>
+                        <mat-error *ngIf="f.firstName.errors?.pattern">First name is not valid</mat-error>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Last name</mat-label>
                         <input [(ngModel)]="user.last_Name" matInput formControlName="lastName">
                         <mat-error *ngIf="f.lastName.errors?.required">Last name is required</mat-error>
+                        <mat-error *ngIf="f.lastName.errors?.pattern">Last name is not valid</mat-error>
                     </mat-form-field>
                     <br>
                     <!-- <mat-form-field class="margin">
@@ -68,18 +47,9 @@
                             <mat-error *ngIf="f.income.errors?.pattern">Income must contains only numbers</mat-error>
                         </mat-form-field>
                     </p>
-                    <!-- <div *ngIf="!inputshow">
-                        <mat-icon class="icon" (click)="onClickEdit(); inputshow = !inputshow">
-                          edit
-                        </mat-icon>
-                      </div> -->
                       <div>
-                        <!-- <mat-icon class="icon" (click)="inputshow = !inputshow">cancel</mat-icon> -->
-                        <button mat-stroked-button (click)="submit()">Save</button>
+                        <button type="submit" mat-stroked-button (click)="submit()" [disabled]="!profileForm.valid">Save</button>
                       </div>
-                    <!-- <button mat-stroked-button (click)="onClickEdit()">Edit</button>
-                    &nbsp;
-                    <button mat-stroked-button (click)="submit()">Save</button> -->
                 </form>
             </mat-card>
         </mat-grid-tile>

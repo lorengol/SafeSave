@@ -29,10 +29,10 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.pattern('[A-Za-z]+')]],
+      lastName: ['', [Validators.required, Validators.pattern('[A-Za-z]+')]],
+      // password: ['', [Validators.required, Validators.minLength(6)]],
+      // confirmPassword: ['', Validators.required],
       income: ['', [Validators.min(1), Validators.pattern('^(0|[1-9][0-9]*)$')]],
       birthDate:['', Validators.required]
     })
@@ -42,11 +42,17 @@ export class UserInfoComponent implements OnInit {
   }
 
   submit() {
-    if (this.user.income < 0) {
+    // if (this.user.income < 0) {
+    //   Swal.fire({
+    //     text: 'Income must be positive',
+    //     icon: 'error',
+    //     confirmButtonColor: 'white',
+    //   });
+     if(this.f.birthDate.value > new Date()) {
       Swal.fire({
-        text: 'Income must be positive',
-        icon: 'error',
-        confirmButtonColor: 'white',
+        text: 'Birthdate cannot be a future date',
+        icon: 'warning',
+        confirmButtonColor: 'white'
       });
     // } else if (this.f.password.value != this.f.confirmPassword.value) {
     //     Swal.fire({

@@ -83,7 +83,7 @@ html, body {
   -webkit-animation: popUp ease-in-out 350ms;
           animation: popUp ease-in-out 350ms;
   background: #ffffff;
-  border-radius: 25px;
+  border-radius: 20px;
   box-shadow: 5px 8px rgba(0, 0, 0, 0.17);
   margin-top: 40px;
   padding: 28px 30px 30px 35px;
@@ -276,4 +276,8 @@ html, body {
     flex-direction: column;
     justify-content: space-between;
     height: calc(100% - 64px);
+  }
+
+  h2{
+    color:  #172469;
   }
