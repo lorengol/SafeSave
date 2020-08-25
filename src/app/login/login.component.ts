@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { User } from '../registration/registration.component';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 @Component({
   selector: 'login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   password: string;
 
   constructor(private http: HttpClient,
-    private router: Router) { }
+              private router: Router,
+              private dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.email = "";
@@ -37,9 +39,7 @@ export class LoginComponent implements OnInit {
       async data => {
         localStorage.setItem('currentUser', JSON.stringify(data));
 
-        const httpParams = new HttpParams().set('userId', String(data.id)).set('birthYear', String(new Date(data.birth_date).getFullYear()));
-        const tip = await this.http.get('/tips', { params: httpParams }).toPromise();
-        localStorage.setItem('tip', JSON.stringify(tip));
+        this.dashboardService.loadTipToSession();
 
         this.router.navigate(['/dashboard']);
       },

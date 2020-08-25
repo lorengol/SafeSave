@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BankAccountRegistrationService } from './bank-account-registration.service';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { PaymentAccountsComponent } from '../payment-accounts/payment-accounts.component';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 export class bankAccount {
   account_number: number;
@@ -26,7 +27,9 @@ export class bank {
   templateUrl: './bank-account-registration.component.html',
   styleUrls: ['./bank-account-registration.component.css']
 })
-export class BankAccountRegistrationComponent implements OnInit {
+export class BankAccountRegistrationComponent implements OnInit, OnDestroy {
+
+  private reloadTip: boolean = false;
 
   banks;
   bankBranches;
@@ -34,7 +37,8 @@ export class BankAccountRegistrationComponent implements OnInit {
   bankAccountRegistrationForm: any;
 
   constructor(private bankAccountService: BankAccountRegistrationService,
-    private formBuilder: FormBuilder, public dialog: MatDialog) { }
+              private dashboardService: DashboardService,
+              private formBuilder: FormBuilder, public dialog: MatDialog) { }
 
   get formValidations() { return this.bankAccountRegistrationForm.controls; }
 
@@ -49,6 +53,12 @@ export class BankAccountRegistrationComponent implements OnInit {
     });
 
     this.bankAccountService.getAllBanks().subscribe(banks => this.banks = banks);
+  }
+
+  async ngOnDestroy() {
+    if (this.reloadTip) {
+      await this.dashboardService.loadTipToSession();
+    }
   }
 
   onBankSelect(event) {
@@ -89,7 +99,12 @@ export class BankAccountRegistrationComponent implements OnInit {
               });
               this.dialog.closeAll();
             },
-            error => console.log('error', error)
+            err => Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: err.error,
+              confirmButtonColor: 'white'
+            })
           );
         }
       })

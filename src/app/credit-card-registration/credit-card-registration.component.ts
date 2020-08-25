@@ -1,9 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CreditCardValidators } from 'angular-cc-library';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 export class creditCard {
   card_number: number;
@@ -19,13 +20,18 @@ export class creditCard {
   templateUrl: './credit-card-registration.component.html',
   styleUrls: ['./credit-card-registration.component.css']
 })
-export class CreditCardRegistrationComponent implements OnInit {
+export class CreditCardRegistrationComponent implements OnInit, OnDestroy {
   creditForm;
   userBankAccounts;
 
   get f() { return this.creditForm.controls; }
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, public dialog: MatDialog) { }
+  constructor(private formBuilder: FormBuilder,
+              private http: HttpClient,
+              public dialog: MatDialog,
+              private dashboardService: DashboardService) { }
+
+  private reloadTip: boolean = false;
 
   CreditCardToRegister = {} as any;
 
@@ -42,6 +48,12 @@ export class CreditCardRegistrationComponent implements OnInit {
     this.http.get('/bank/UserBankAcounts', { params: httpParams }).subscribe((res) => {
       this.userBankAccounts = res;
     });
+  }
+
+  async ngOnDestroy() {
+    if (this.reloadTip) {
+      await this.dashboardService.loadTipToSession();
+    }
   }
 
   submit() {
@@ -65,6 +77,7 @@ export class CreditCardRegistrationComponent implements OnInit {
           CVV: this.CreditCardToRegister.CVV
         }
         this.http.post('/credits', newCard, { responseType: 'text' }).subscribe((res) => {
+          this.reloadTip = true;
           Swal.fire({
             text: 'Card successfuly added!',
             icon: 'success',

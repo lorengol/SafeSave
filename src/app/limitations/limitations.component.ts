@@ -1,10 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
-import { pipe } from 'rxjs';
-import { Limitation } from 'server/src/entity/Limitation';
-import { limitationRoutes } from 'server/limitationsRoutes';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 export class limitation {
   id?: number;
@@ -30,7 +28,10 @@ export interface DialogData {
   templateUrl: './limitations.component.html',
   styleUrls: ['./limitations.component.css']
 })
-export class LimitationsComponent implements OnInit {
+export class LimitationsComponent implements OnInit, OnDestroy {
+
+  private reloadTip: boolean = false;
+
   limitations;
   category_id: number;
   category: Category;
@@ -41,7 +42,10 @@ export class LimitationsComponent implements OnInit {
 
   get g() { return this.updateLimitForm.controls; }
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, public dialog: MatDialog) { }
+  constructor(private formBuilder: FormBuilder,
+              private http: HttpClient,
+              private dashboardService: DashboardService,
+              public dialog: MatDialog) { }
 
   openDialog(): void {
     this.limit = undefined;
@@ -62,6 +66,8 @@ export class LimitationsComponent implements OnInit {
         }
         this.http.post("/limitations", newLimitation, { responseType: 'text' }).subscribe(
           data => {
+            this.reloadTip = true;
+            
             newLimitation.category = result.category;
             newLimitation.id = JSON.parse(data).raw.insertId;
             this.limitations.push(newLimitation);
@@ -84,14 +90,19 @@ export class LimitationsComponent implements OnInit {
     });
   }
 
+  async ngOnDestroy() {
+    if (this.reloadTip) {
+      await this.dashboardService.loadTipToSession();
+    }
+  }
+
   onDelete(deletedlimitation) {
     this.limitations.forEach(limitation => {
       limitation.inputshow = false;
     });
     let index = this.limitations.indexOf(deletedlimitation);
     const httpParams = new HttpParams().set('limitationId', deletedlimitation.id);
-    this.http.delete("/limitations/delete", { params: httpParams }).subscribe(
-      data => { });
+    this.http.delete("/limitations/delete", { params: httpParams }).subscribe(data => this.reloadTip = true);
     this.limitations.splice(index, 1);
     this.totalLimitations -= deletedlimitation.limit;
   }
@@ -100,14 +111,14 @@ export class LimitationsComponent implements OnInit {
     if (!this.updateLimitForm.valid) return;
     this.totalLimitations -= Number(savedlimitation.limit)
     savedlimitation.limit = this.limit;
-    this.http.post("/limitations/update", savedlimitation, { responseType: 'text' }).subscribe(
-      data => { });
+    this.http.post("/limitations/update", savedlimitation, { responseType: 'text' }).subscribe(data => this.reloadTip = true);
     savedlimitation.inputshow = false;
     this.totalLimitations += Number(this.limit);
   }
 
   onEdit(editedLimitation) {
     this.limitations.forEach(limitation => {
+      this.reloadTip = true;
       limitation.inputshow = false;
     });
     editedLimitation.inputshow = true;

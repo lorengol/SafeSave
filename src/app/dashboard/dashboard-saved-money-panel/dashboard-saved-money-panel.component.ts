@@ -55,7 +55,12 @@ export class DashboardSavedMoneyPanelComponent implements OnInit {
 
         this.show2 = true;
       },
-      err => console.log(err)
+      err => Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: err.error,
+        confirmButtonColor: 'white'
+      })
     );
   }
 
@@ -77,7 +82,12 @@ export class DashboardSavedMoneyPanelComponent implements OnInit {
             this.monthlySavingsExists = true;
             this.totalSavings += this.savedMoney;
           },
-          err => console.log(err));
+          err => Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: err.error,
+            confirmButtonColor: 'white'
+          }));
       }
     })
 
