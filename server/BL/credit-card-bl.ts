@@ -27,25 +27,15 @@ const saveCreditCard = async (creditCard: CreditCard) => {
     var today = new Date();
     var start = new Date(today.getFullYear(), today.getMonth(), 1);
     expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, today)
-     
-    // Last month expenses
-    start = new Date(today.getFullYear(), today.getMonth() - 1, 1);
-    var end = new Date(today.getFullYear(), today.getMonth() - 1, 30);
 
-    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
+    for(let i=1; i<=7; i++) {
+      // Last month expenses
+      start = new Date(today.getFullYear(), today.getMonth() - i, 1);
+      var end = new Date(today.getFullYear(), today.getMonth() - i, 30);
 
-    // 2 month ago expenses
-    start = new Date(today.getFullYear(), today.getMonth() - 2, 1);
-    end = new Date(today.getFullYear(), today.getMonth() - 2, 30);
-
-    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
-
-    // 3 month ago expenses
-    start = new Date(today.getFullYear(), today.getMonth() - 3, 1);
-    end = new Date(today.getFullYear(), today.getMonth() - 3, 30);
-
-    expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
-
+      expenseGenerator.generate(Age, creditCard.user_id, null, creditCard.id, start, end)
+    }
+    
 
   } else {
     var end = new Date();
