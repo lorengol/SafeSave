@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       async data => {
         localStorage.setItem('currentUser', JSON.stringify(data));
 
-        this.dashboardService.loadTipToSession();
+        await this.dashboardService.loadTipToSession();
 
         this.router.navigate(['/dashboard']);
       },
